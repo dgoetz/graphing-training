@@ -2,7 +2,7 @@
 
 This training is designed as a two days hands-on training introducing Graphite and Grafana.
 
-In the training you will get basic knowlegde of Graphite and Grafana.
+In the training you will get basic knowledge of Graphite and Grafana.
 
 Targeted audience are experienced Linux administrators.
 
