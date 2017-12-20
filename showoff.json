@@ -1,0 +1,33 @@
+{ 
+  "name": "Graphite + Grafana | Time Series Metrics",
+  "location": "Nuremberg",
+  "author": "Blerim Sheqa & Markus Waldm&uuml;ller",
+  "release": "1.0.0",
+
+  "favicon": "image/global/favicon.ico",
+
+  "protected": ["presenter", "onepage", "print"],
+  "user": "netways",
+  "password": "awesome",
+
+  "templates" : {
+	"default": "./global/templates/default.tpl"
+  },
+
+  "sections": [
+   {"section":"global/Pre/Title"},
+
+   {"section":"sections/introduction/"},
+   {"section":"sections/tools/"},
+   {"section":"sections/graphite/"},
+   {"section":"sections/clients/"},
+   {"section":"sections/webapp/"},
+   {"section":"sections/dashboards/"},
+   {"section":"sections/graphite_cluster/"},
+   {"section":"sections/influxdb/"},
+   {"section":"sections/opentsdb/"},
+   {"section":"sections/integrations/"},
+
+   {"section":"global/Post"}
+  ]
+}

@@ -1,0 +1,5762 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Graphite + Grafana | Time Series Metrics</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  <link rel="stylesheet" href=".//css/reset.css" type="text/css"/>
+
+  
+  <link rel="icon" href="image/global/favicon.ico"/>
+  
+
+  <link type="text/css" href=".//css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href=".//css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href=".//css/sh_style.css" rel="stylesheet" />
+  <link type="text/css" href=".//css/tipsy.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href=".//css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src=".//js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src=".//js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src=".//js/jquery-print.js"></script>
+  <script type="text/javascript" src=".//js/jquery.batchImageLoad.js"></script>
+  <script type="text/javascript" src=".//js/jquery.parsequery.min.js"></script>
+  <script type="text/javascript" src=".//js/jquery.doubletap-0.1.js"></script>
+  <script type="text/javascript" src=".//js/jquery.tipsy.js"></script>
+
+  <script type="text/javascript" src=".//js/fg.menu.js"></script>
+  <script type="text/javascript" src=".//js/showoff.js"></script>
+  <script type="text/javascript" src=".//js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src=".//js/sh_main.min.js"></script>
+  <script type="text/javascript" src=".//js/core.js"></script>
+  <script type="text/javascript" src=".//js/showoffcore.js"></script>
+  <script type="text/javascript" src=".//js/coffee-script.js"></script>
+
+  
+    
+      <script type="text/javascript" src=".//js/sh_lang/sh_sh.min.js"></script>
+    
+      <script type="text/javascript" src=".//js/sh_lang/sh_sql.min.js"></script>
+    
+      <script type="text/javascript" src=".//js/sh_lang/sh_ruby.min.js"></script>
+    
+  
+
+  
+    
+    <link rel="stylesheet" href=".//file/netways.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+    $(function(){
+      setupPreso(false, './');
+    });
+
+    editUrl  = "";
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+<a tabindex="1" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="stylemenu"><span class="ui-icon ui-icon-triangle-1-s"></span>styles</a>
+<div id="stylepicker" class="hidden"></div>
+
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">b</td><td>blank screen</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">g</td><td>toggle follow</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+    <tr><td class="key">P</td><td>toggle pause</td></tr>
+    <tr><td class="key">s</td><td>choose style</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso"><center>loading presentation...</center></div>
+<div id="footer">
+  <span id="followMode"></span>
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+  <span id="slideFilename"></span>
+  <img id="disconnected" src=".//css/disconnected.png" />
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div id="global_Pre_Title_01_Title" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="global/Pre/Title/01_Title/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<div class="title-name"><p>Graphite + Grafana | Time Series Metrics</p></div>
+
+<div class="title-location"><p>created by NETWAYS GmbH</p></div>
+
+<div class="title-author"><p>Original Authors: Blerim Sheqa &amp; Markus Waldmüller</p></div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__01_what" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/introduction//01_what/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>1 Performance Graphing</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__01_what" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/introduction//01_what/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>What it is</h1>
+
+<ul>
+<li>All about numbers and time</li>
+<li>Collect and store data</li>
+<li>View the past</li>
+<li>Predict trends</li>
+<li>View the state of something</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__01_what" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/introduction//01_what/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>What it is not</h1>
+
+<ul>
+<li>Alerting in any way</li>
+<li>Telling you what the problem is</li>
+<li>Telling you how to solve it</li>
+<li>You are the interpreter</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__02_why_and_where" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/introduction//02_why_and_where/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>2 Why we need graphs</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__02_why_and_where" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/introduction//02_why_and_where/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Why Operators need it</h1>
+
+<ul>
+<li>State of single server or application</li>
+<li>Correlate the state of multiple servers</li>
+<li>Network usage</li>
+<li>Trace problems</li>
+<li>Transparancy of the data center
+
+<ul>
+<li>Load</li>
+<li>Disk</li>
+<li>Processes</li>
+<li>Memory</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__02_why_and_where" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/introduction//02_why_and_where/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Why Devs need it</h1>
+
+<ul>
+<li>Debugging</li>
+<li>Application profiling</li>
+<li>Trace performance issues </li>
+<li>Follow impacts of application changes</li>
+<li>Follow impacts of growing usage</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__02_why_and_where" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/introduction//02_why_and_where/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Why Managers need it</h1>
+
+<ul>
+<li>Service Level Agreements (SLAs)</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_introduction__02_why_and_where" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/introduction//02_why_and_where/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Why all of us need it</h1>
+
+<ul>
+<li>Capacity Management
+
+<ul>
+<li>Storage</li>
+<li>Network</li>
+<li>Temperature</li>
+<li>Consumption of electricity</li>
+<li>Rack space</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__00_overview" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/tools//00_overview">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>3 Tools</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__01_graphite" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/tools//01_graphite">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite</h1>
+
+<ul>
+<li>Store numeric time-series data</li>
+<li>Render graphs of this data on demand</li>
+<li>No collection of data</li>
+<li>Components
+
+<ul>
+<li>Carbon</li>
+<li>Whisper</li>
+<li>Graphite Web</li>
+</ul>
+</li>
+<li>Language: Python</li>
+</ul>
+
+<p>Graphite is not just a single product. It consists of multiple components which work together to build a complete performance monitoring solution.</p>
+
+<div class="handouts">
+
+<hr>
+
+<p>Website: <a href="https://graphiteapp.org">https://graphiteapp.org</a>
+<br>
+Project: <a href="https://github.com/graphite-project">https://github.com/graphite-project</a>
+<br>
+Docs: <a href="http://graphite.readthedocs.org/">http://graphite.readthedocs.org/</a>
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__02_influxdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/tools//02_influxdb">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>InfluxDB</h1>
+
+<ul>
+<li>Part of TICK-Stack</li>
+<li>Store time series data</li>
+<li>SQL like Query Language</li>
+<li>HTTP API</li>
+<li>No rendering of data</li>
+<li>No collection of data</li>
+<li>Language: Go</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="http://influxdb.com">http://influxdb.com</a>
+<br>
+Docs: <a href="http://influxdb.com/docs">http://influxdb.com/docs</a>
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__03_opentsdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/tools//03_opentsdb">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>OpenTSDB</h1>
+
+<ul>
+<li>Time series database</li>
+<li>Scalable</li>
+<li>Distributed </li>
+<li>HTTP API</li>
+<li>No rendering of data</li>
+<li>No collection of data</li>
+<li>Based on HBase</li>
+<li>Language: Java</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="http://opentsdb.net">http://opentsdb.net</a>
+<br>
+Docs: <a href="http://opentsdb.net/docs/build/html">http://opentsdb.net/docs/build/html</a>
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__04_collectd" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/tools//04_collectd">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>collectd</h1>
+
+<ul>
+<li>Collects data </li>
+<li>Variety of ways to store data
+
+<ul>
+<li>RRD</li>
+<li>OpenTSDB</li>
+<li>HTTP </li>
+<li>Redis</li>
+<li>Graphite (InfluxDB)</li>
+<li>...</li>
+</ul>
+</li>
+<li>Wide choice of plugins
+
+<ul>
+<li>CPU, Memory, Load, Network, ...</li>
+<li>MySQL, PostgreSQL, Apache, Bind, ...</li>
+<li>cURL, Exec, Perl, Python, Java, ...</li>
+</ul>
+</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://collectd.org">https://collectd.org</a>
+<br>
+Docs: <a href="https://collectd.org/documentation.shtml">https://collectd.org/documentation.shtml</a>
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__05_icinga" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/tools//05_icinga">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Icinga</h1>
+
+<ul>
+<li>Active monitoring</li>
+<li>Wide choice of plugins
+
+<ul>
+<li>CPU, Load, Memory, Disk, ...</li>
+<li>Dell, Hewlett Packard, Microsoft, VMware, Juniper, ...</li>
+</ul>
+</li>
+<li>Performance data included</li>
+<li>Scalable</li>
+<li>Alerting</li>
+<li>Native Graphite support (since Icinga 2)</li>
+</ul>
+
+<p>Icinga is actually a tool for active monitoring, which tells you if your services have any problems. As a part of this monitoring most of the plugins are able to deliver also performance data which can be stored in Graphite (Carbon).</p>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://www.icinga.com">https://www.icinga.com</a>
+<br>
+Docs: <a href="https://www.icinga.com/resources/docs">https://www.icinga.com/resources/docs</a>
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__06_logstash" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/tools//06_logstash">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Logstash</h1>
+
+<ul>
+<li>Part of Elastic Stack</li>
+<li>Managing logs and events</li>
+<li>Collect, parse and forward logs</li>
+<li>Pipe on steroids</li>
+<li>Parse metrics from logs</li>
+<li>Forward metrics to Graphite</li>
+</ul>
+
+<p>The logs processed with logstash can be filtered and forwarded to Graphite. Doing this you can tap metrics even from logfiles generated by Apache, Nginx or other applications.</p>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://www.elastic.co/products/logstash">https://www.elastic.co/products/logstash</a>
+<br>
+Docs: <a href="http://www.elastic.co/guide/en/logstash/current/index.html">http://www.elastic.co/guide/en/logstash/current/index.html</a>
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_tools__07_statsd" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/tools//07_statsd">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>StatsD</h1>
+
+<ul>
+<li>Receive metrics via network (UDP/TCP)</li>
+<li>Aggregate metrics</li>
+<li>Transport metrics to one or multiple backends</li>
+<li>No collection</li>
+<li>No rendering</li>
+<li>Language: NodeJS</li>
+</ul>
+
+<p>StatsD is most interesting for developers since it is very easy to embed code which sends metrics to a central StatsD.</p>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://github.com/etsy/statsd">https://github.com/etsy/statsd</a>
+<br>
+Docs: <a href="https://github.com/etsy/statsd/tree/master/docs">https://github.com/etsy/statsd/tree/master/docs</a>
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__00_title" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/graphite//00_title">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>4 Graphite</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__01_components" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite//01_components/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>4.1 Graphite Components</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__01_components" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//01_components/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Components of Graphite</h1>
+
+<p>Graphite is a scalable system which provides realtime graphing. Graphite was originally developed by Chris Davis from orbitz.com, where it was used to visualize business-critical data. Graphite is not a single application, it consists of multiple components which together provide a fully functional performance monitoring solution.</p>
+
+<p>Parts of Graphite:</p>
+
+<ul>
+<li>Carbon
+
+<ul>
+<li>Cache</li>
+<li>Aggregator</li>
+<li>Relay</li>
+</ul>
+</li>
+<li>Graphite Web</li>
+<li>Whisper</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Graphite was published in 2008 under the "Apache 2.0" license.
+</p>
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__01_components" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//01_components/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Cache</h1>
+
+<ul>
+<li>Accepts metrics over TCP or UDP</li>
+<li>Various protocols
+
+<ul>
+<li>Plaintext</li>
+<li>Python pickle</li>
+<li>AMQP</li>
+</ul>
+</li>
+<li>Caches metrics</li>
+<li>Provides query port (in-memory metrics)</li>
+<li>Writes data to disk</li>
+</ul>
+
+<p>Carbon Cache accepts metrics and provides a mechanism to cache those for a defined amount of time. It uses the underlying Whisper libraries to store permanently to disk. In a growing environment with more I/O a single carbon-cache process may not be enough. To scale you can simply spawn multiple Carbon Caches.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__01_components" class="slide smbullets noprint" data-transition="none">
+<div class="content smbullets noprint" ref="sections/graphite//01_components/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Aggregator</h1>
+
+<ul>
+<li>In front of Carbon Cache</li>
+<li>Buffers metrics</li>
+<li>Aggregation of metrics by rules</li>
+<li>Reduce I/O by aggregating data</li>
+</ul>
+
+<p>Carbon Aggregator sits in front of Carbon Cache and receives metrics. The function of this daemon is to aggregate the data it receives and forwards it to Carbon Cache for permanent storage. For instance it can sum statistics of multiple servers into one metric.</p>
+
+<p></p>
+<center><img src="./file/sections/graphite//./_images/graphite-cache-aggregator.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__01_components" class="slide smbullets noprint" data-transition="none">
+<div class="content smbullets noprint" ref="sections/graphite//01_components/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Relay</h1>
+
+<ul>
+<li>Forward incoming metrics to another Carbon daemon</li>
+<li>Replicate metrics to one or more destinations</li>
+<li>Sharding</li>
+<li>Forward based on consistent hash (default) or</li>
+<li>Rule based routing</li>
+</ul>
+
+<p>Carbon Relay is a kind of "loadbalancer" for Carbon Cache and/or Aggregator. It can forward metrics based on consistent hashes or with defined regex rules.</p>
+
+<p></p>
+<center><img src="./file/sections/graphite//./_images/graphite-cache-aggregator-relay.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__01_components" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//01_components/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Web</h1>
+
+<ul>
+<li>Webinterface (Django)</li>
+<li>Render graphs</li>
+<li>Save graphs in dashboards</li>
+<li>Share graphs</li>
+</ul>
+
+<p>Graphite Web is the visualizing component. To create graphics, it obtains the data simultaneously from the related Whisper files and the Carbon Cache. Graphite Web combines data points from both sources and returns a single image. By doing this it ensures that data always can be shown in real time, even if some data points are not written yet into Whisper files and therefore written on the hard drive.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__02_setup" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite//02_setup/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>4.2 Single-Node Setup</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__02_setup" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite//02_setup/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Single-Node Setup</h1>
+
+<p></p>
+<center><img src="./file/sections/graphite//./_images/graphite-single-node.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite//03_installation/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>4.3 Graphite Installation</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//03_installation/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Training VMs</h1>
+
+<ul>
+<li>Virtual Box</li>
+<li>Host-only network (192.168.56.x)</li>
+<li>
+<code>graphing1</code> is the primary training VM</li>
+<li>
+<code>graphing2</code> is used for Cluster setup</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Instance</th>
+<th>IP</th>
+<th>Login</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>graphing1</td>
+<td>192.168.56.101</td>
+<td>training/netways (sudo su)</td>
+</tr>
+<tr>
+<td>graphing2</td>
+<td>192.168.56.102</td>
+<td>training/netways (sudo su)</td>
+</tr>
+</tbody>
+</table>
+
+<div class="handouts">
+
+<hr>
+
+<p>VirtualBox user manual: <a href="https://www.virtualbox.org/manual/UserManual.html">https://www.virtualbox.org/manual/UserManual.html</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//03_installation/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Base Linux Installation</h1>
+
+<ul>
+<li>CentOS 7</li>
+<li>
+<code>Systemd</code> as init system</li>
+<li>
+<code>Firewalld</code> (Stopped)</li>
+<li>
+<code>SELinux</code> (Permissive)</li>
+<li>EPEL repository for additional packages</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//03_installation/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Installation methods</h1>
+
+<ul>
+<li>Installation from source</li>
+<li>Installation from PyPI (Python Package Index) via pip</li>
+<li>Installation via binary packages
+
+<ul>
+<li>Most common operating systems</li>
+</ul>
+</li>
+<li>Installation in isolated Python environment with Virtualenv</li>
+<li>Script based installation with Synthesize (Vagrant)</li>
+<li>Installation with configuration management tools
+
+<ul>
+<li>Puppet</li>
+<li>Ansible</li>
+<li>Chef</li>
+<li>Salt</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//03_installation/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Puppet Installation</h1>
+
+<ul>
+<li>Configuration management solution</li>
+<li>Supports multiple operating systems
+
+<ul>
+<li>RedHat, CentOS, Debian, Ubuntu, SLES, Scientific Linux, Oracle Linux, ...</li>
+</ul>
+</li>
+<li>Covers all common Graphite options</li>
+<li>Fully automated installation of all components</li>
+<li>Optional: Installation of webserver</li>
+</ul>
+
+<p>Puppet module: <a href="https://forge.puppetlabs.com/dwerder/graphite">https://forge.puppetlabs.com/dwerder/graphite</a></p>
+
+<div class="notes"><p>
+Installing Graphite on Windows is unsuported and definitely not suggested!
+</p></div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//03_installation/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>PyPI vs. Binary Package Installation</h1>
+
+<p>PyPI:</p>
+
+<ul>
+<li>All versions and features available</li>
+<li>More installation and configuration effort</li>
+<li>More flexibility</li>
+<li>Harder to debug</li>
+</ul>
+
+<p>Binary package:</p>
+
+<ul>
+<li>Availability depends on the operating system</li>
+<li>Older and more stable versions</li>
+<li>Easier to install</li>
+</ul>
+
+<p>In this course we've decided to do the installation from PyPI via pip. So the attendees will get a better understanding of the Graphite components and how they work together.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//03_installation/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Prerequisites</h1>
+
+<p>To prepare the Graphite installation we need to install some required packages first:</p>
+
+<pre class="sh_sh"><code># yum install python2-pip gcc
+# yum install python-devel cairo-devel libffi-devel</code></pre>
+
+<p>Required packages for Graphite Web:</p>
+
+<pre class="sh_sh"><code># yum install python-scandir
+# yum install mod_wsgi</code></pre>
+
+<p>An exported shell variable will simplify the navigation when copying or moving files around:</p>
+
+<pre class="sh_sh"><code># export GRAPHITE=/opt/graphite</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//03_installation/8">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Installation</h1>
+
+<p>After all requirements are fulfilled, the installation of the Graphite components is pretty simple.</p>
+
+<pre class="sh_sh"><code># pip install carbon==1.0.1
+# pip install whisper==1.0.1
+# pip install graphite-web==1.0.1</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//03_installation/9">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Python packages</h1>
+
+<p>Due to a bug in Carbon and Graphite Web &gt;= 1.0.0 Python packages are not stored correctly, so we create symlinks as workaround:</p>
+
+<pre class="sh_sh"><code># ln -s $GRAPHITE/lib/carbon-1.0.1-py2.7.egg-info/ \
+/usr/lib/python2.7/site-packages/
+# ln -s $GRAPHITE/webapp/graphite_web-1.0.1-py.2.7.egg-info/ \
+/usr/lib/python2.7/site-packages/</code></pre>
+
+<p>Finally <code>pip</code> should list the installed Graphite packages:</p>
+
+<pre class="sh_sh"><code># pip list
+...
+carbon (1.0.1)
+graphite-web (1.0.1)
+whisper (1.0.1)</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite//03_installation/10">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Configuration - Carbon Cache</h1>
+
+<p>All variations of the Carbon daemon (Cache, Aggregator and Relay) require some basic configuration. The PyPI packages provide for each configuration file at least one example. To be able to start Carbon Cache we need to copy at least two config files.</p>
+
+<pre class="sh_sh"><code># cp $GRAPHITE/conf/carbon.conf.example \
+$GRAPHITE/conf/carbon.conf</code></pre>
+
+<p><code>carbon.conf</code> includes the basic configuration for all Carbon daemons (Cache, Aggregator and Relay). Options like IP's and ports to bind and some other settings are located here.</p>
+
+<pre class="sh_sh"><code># cp $GRAPHITE/conf/storage-schemas.conf.example \
+$GRAPHITE/conf/storage-schemas.conf</code></pre>
+
+<p><code>storage-schemas.conf</code> includes configuration about the storage retention of metrics. More details about this will follow.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite//03_installation/11">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Start - Carbon Cache</h1>
+
+<p>It's time to start the Carbon Cache daemon for the first time:</p>
+
+<pre class="sh_sh"><code># $GRAPHITE/bin/carbon-cache.py status
+carbon-cache (instance a) is not running
+
+# $GRAPHITE/bin/carbon-cache.py start
+Starting carbon-cache (instance a)
+
+# $GRAPHITE/bin/carbon-cache.py status
+carbon-cache (instance a) is running with pid 2344</code></pre>
+
+<p><strong>Note:</strong> With this method Carbon Cache daemon will not be started after a reboot of the system.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets smaller" data-transition="none">
+<div class="content smbullets smaller" ref="sections/graphite//03_installation/12">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Systemd Service Unit</h1>
+
+<p>File: <code>/etc/systemd/system/carbon-cache.service</code></p>
+
+<pre class="sh_sh"><code>[Unit]
+Description=Graphite Carbon Cache
+After=network.target
+
+[Service]
+Type=forking
+StandardOutput=syslog
+StandardError=syslog
+ExecStart=/opt/graphite/bin/carbon-cache.py --config=/opt/graphite/conf/carbon.conf \
+  --pidfile=/var/run/carbon-cache.pid --logdir=/var/log/carbon/ start
+ExecReload=/bin/kill -USR1 $MAINPID
+PIDFile=/var/run/carbon-cache.pid
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+
+<p>Start Carbon Cache daemon with systemd:</p>
+
+<pre class="sh_sh"><code># $GRAPHITE/bin/carbon-cache.py stop
+
+# systemctl start carbon-cache.service
+# systemctl enable carbon-cache.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite//03_installation/13">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Configuration - Graphite Web</h1>
+
+<p>Graphite Web needs some more configuration. In addition to a working Apache 2 virtual host, the WSGI script and a basic configuration is required.</p>
+
+<pre class="sh_sh"><code># cp $GRAPHITE/examples/example-graphite-vhost.conf \
+/etc/httpd/conf.d/graphite-web.conf
+
+# cp $GRAPHITE/conf/graphite.wsgi.example \
+$GRAPHITE/conf/graphite.wsgi</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//03_installation/14">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Configuration - Graphite Web</h1>
+
+<p><code>local_settings.py</code> includes all configuration for the webapp. Here you can enable a memcache daemon and configure multiple Carbon Cache backends. For now we only need to set a secret key which is needed for the database initialization and adjust the time zone.</p>
+
+<pre class="sh_sh"><code># cp $GRAPHITE/webapp/graphite/local_settings.py.example \
+$GRAPHITE/webapp/graphite/local_settings.py</code></pre>
+
+<p>File: <code>/opt/graphite/webapp/graphite/local_settings.py</code></p>
+
+<pre class="sh_sh"><code>SECRET_KEY = 'random-string'
+
+TIME_ZONE = 'Europe/Berlin'</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//03_installation/15">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Initalization - Graphite Web</h1>
+
+<p>We will use a SQLite database which needs to be initialized first:</p>
+
+<pre class="sh_sh"><code># PYTHONPATH=$GRAPHITE/webapp django-admin.py \
+migrate --settings=graphite.settings --run-syncdb</code></pre>
+
+<p>And also the static files:</p>
+
+<pre class="sh_sh"><code># PYTHONPATH=$GRAPHITE/webapp django-admin.py \
+collectstatic --noinput --settings=graphite.settings</code></pre>
+
+<p>The initialization of the DB also creates a user. This user can later be used to login to Graphite Web and store graphs and dashboards. </p>
+
+<p><br><br>
+Django's command-line utility also provides subcommands to <code>check</code> and <code>test</code> the installed components.</p>
+
+<pre class="sh_sh"><code># PYTHONPATH=$GRAPHITE/webapp django-admin.py check \
+--settings=graphite.settings
+# PYTHONPATH=$GRAPHITE/webapp django-admin.py test \
+--settings=graphite.settings</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//03_installation/16">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Permissions - Graphite Web</h1>
+
+<p>The SQLite database and the webapp logs are located in the storage directory, therefore we change the owner to <code>apache</code>.</p>
+
+<pre class="sh_sh"><code># chown apache:root $GRAPHITE/storage
+# chown apache:apache $GRAPHITE/storage/graphite.db</code></pre>
+
+<p>It's also important to change the permissions for the log directory, otherwise you will get the error: <code>"populate() isn't reentrant"</code>.</p>
+
+<pre class="sh_sh"><code># chown -Rf apache:root $GRAPHITE/storage/log</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//03_installation/17">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Apache - Graphite Web</h1>
+
+<p>The default HTTP name for Graphite Web is <code>graphite</code> and configured in <code>graphite-web.conf</code>. In order to access Graphite Web we have to set permissions to the static directory.</p>
+
+<p>File: <code>/etc/httpd/conf.d/graphite-web.conf</code></p>
+
+<pre class="sh_sh"><code>&lt;Directory /opt/graphite/static&gt;
+    Require all granted
+&lt;/Directory&gt;</code></pre>
+
+<p>Finally we can start the Apache webserver:</p>
+
+<pre class="sh_sh"><code># systemctl start httpd.service
+# systemctl enable httpd.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//03_installation/18">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Verification</h1>
+
+<p>To prove if everything worked open your browser with the default URL of Graphite Web: <a href="http://graphite">http://graphite</a></p>
+
+<p>However it's <strong>always</strong> recommended to <strong>have a look at the logs</strong>!</p>
+
+<ul>
+<li>Graphite Web: <code>/opt/graphite/storage/log/webapp/</code>
+</li>
+<li>Carbon Cache: <code>/var/log/carbon/</code>
+</li>
+<li>Apache: <code>/var/log/httpd/</code>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__03_installation" class="slide smbullets smaller" data-transition="none">
+<div class="content smbullets smaller" ref="sections/graphite//03_installation/19">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Package Installation Overview</h1>
+
+<p>Graphite 0.9.16 on CentOS 7:</p>
+
+<pre class="sh_sh"><code># yum install python-carbon python-whisper graphite-web
+# systemctl enable carbon-cache.service --now</code></pre>
+
+<p>File: <code>/etc/graphite-web/local_settings.py</code></p>
+
+<pre><code>SECRET_KEY = 'random-key'
+TIME_ZONE = 'Europe/Berlin'
+
+# python /usr/lib/python2.7/site-packages/graphite/manage.py syncdb
+</code></pre>
+
+<p>File: <code>/etc/httpd/conf.d/graphite-web.conf</code></p>
+
+<pre><code>&lt;Directory "/usr/share/graphite"&gt;
+  &lt;IfModule mod_authz_core.c&gt;
+    # Apache 2.4
+    # Require local
+    Require all granted
+  &lt;/IfModule&gt;
+  ...
+&lt;/Directory&gt;
+
+# chown apache:apache /var/lib/graphite-web/graphite.db 
+# systemctl enable httpd.service --now
+</code></pre>
+
+<p>Graphite Web URL: <a href="http://graphite-web">http://graphite-web</a><br>
+Configs: <code>/etc/carbon/</code> and <code>/etc/graphite-web/</code><br>
+Logs: <code>/var/log/carbon/</code> and <code>/var/log/httpd/</code></p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite//04_storage/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>4.4 Data Storage</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//04_storage/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whisper</h1>
+
+<ul>
+<li>File based time-series database</li>
+<li>Fixed size (like RRD)</li>
+<li>Values paired with timestamps</li>
+<li>Rollup aggregation</li>
+<li>Multiple archives</li>
+</ul>
+
+<p>Carbon Cache uses Whisper to store the received datapoints. Each datapoint gets paired with its linked timestamp. Data can be stored into multiple archives, where one archive describes the precision and retention of this data.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite//04_storage/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whisper - Anatomy</h1>
+
+<p></p>
+<center><img src="./file/sections/graphite//./_images/graphite-whisper.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//04_storage/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whisper - Differences to RRD</h1>
+
+<p>In a different way from RRD, Whisper supports updates to time slots with timestamps prior to its most recent one. This means that there is no way with RRD to back-fill data properly.</p>
+
+<p>Whisper is slower than RRD, but fast enough for most purposes. This is the consequence of Whisper being written in Python, where RRD is written in C. The performance is in theory, depending on the operation, 2 to 5 times slower. </p>
+
+<p>In practice the difference is measured in hundreds of microseconds which leads to less than a millisecond difference for most operations. Anyway, storing time-series data always causes high I/O on your disk. Using Carbon Relay you can distribute this load to multiple servers.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite//04_storage/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Metric Path</h1>
+
+<p>The metric path determines the hierarchy in which data is being held and can be seen as an address of your data. Each element of the metric path describes also a directory on the filesystem where Whisper files are stored. The last element is the filename.</p>
+
+<pre class="sh_sh"><code>berlin.dc1.r12.server1.load.longterm
+├── berlin
+│   └── dc1
+│       └── r12
+│           ├── server1
+│           │   └── load
+│           │       └── longterm.wsp
+│           │       └── midterm.wsp
+│           │       └── shortterm.wsp
+│           ├── server2</code></pre>
+
+<p>With Graphite Web metrics can be accessed by using globs (wildcards or character lists) in the metric path. Graphite Web will then return the datapoints of all matching metrics.</p>
+
+<pre class="sh_sh"><code>berlin.*.r12.server1.load.longterm
+berlin.dc1.r12.server{1,2,3}.load.longterm</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//04_storage/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Storage Schema</h1>
+
+<p><code>storage-schemas.conf</code> stores configuration about retention and frequency in which datapoints should be stored. The config file includes multiple sections which are applied from the top to the bottom. Based on patterns it matches metric paths and tells Whisper how to store the data. The first pattern that matches is being applied for the metric path, other sections are ignored.</p>
+
+<ul>
+<li>Config file is read every 60 seconds, no need for reload</li>
+<li>Patterns are regex</li>
+<li>First pattern that matches is used</li>
+<li>Patterns from top to bottom</li>
+<li>Whisper file is created on first metric received</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite//04_storage/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Storage Schema - Configuration</h1>
+
+<p>Each section has 3 lines:</p>
+
+<ul>
+<li>name</li>
+<li>pattern</li>
+<li>frequency/retention (multiple)</li>
+</ul>
+
+<p>Example storage schemas:</p>
+
+<pre class="sh_sh"><code>[carbon]
+pattern = ^carbon\.
+retentions = 60:90d
+
+[default]
+pattern = .*
+retentions = 1s:30m,1m:1d,5m:7d</code></pre>
+
+<p>By aggregating data you can save I/O on your disks. Already created Whisper files will not be affected by configuration changes!</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite//04_storage/8">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Storage Aggregation</h1>
+
+<p>When downsampling data Whisper will do an average over a set of datapoints. This behaviour can be changed in <code>storage-aggregation.conf</code>. Like in other configuration files the entries are scanned from top to the bottom and the first match applies to the Whisper files.</p>
+
+<ul>
+<li>Pattern
+
+<ul>
+<li>Regex pattern to match metric paths</li>
+</ul>
+</li>
+<li>xFilesFactor
+
+<ul>
+<li>Ratio of datapoints that are required to do an aggregation to the next archive (float between 0 and 1)</li>
+</ul>
+</li>
+<li>aggregationMethod
+
+<ul>
+<li>average, sum, min, max, or last</li>
+</ul>
+</li>
+</ul>
+
+<p>Default aggregation entry:</p>
+
+<pre class="sh_sh"><code>[default_average]
+pattern = .*
+xFilesFactor = 0.5 # 50 percent
+aggregationMethod = average</code></pre>
+
+<p>This configuration doesn't affect the first archive and already created Whisper files will not be affected by configuration changes!</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite//04_storage/9">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whisper File Size</h1>
+
+<p>Example storage schema:</p>
+
+<pre class="sh_sh"><code>1s:30m,1m:1d,5m:7d</code></pre>
+
+<p>Convert into seconds:</p>
+
+<pre class="sh_sh"><code>1s:30m=1s:(30*60)=1s:1800s
+1m:1d=60s:(24*60*60)=60s:86400s
+5m:7d=(5*60):(7*24*60*60)=300s:604800s</code></pre>
+
+<p>12 bytes for each datapoint and 12 bytes of archive information for every retention period:</p>
+
+<pre class="sh_sh"><code>1800s/1s*12b+12b=21612b
+86400s/60s*12b+12b=17292b
+604800s/300s*12b+12b=24204b
+
+21612b+17292b+24204b=63108b</code></pre>
+
+<p>16 bytes of database metadata:</p>
+
+<pre class="sh_sh"><code>63108b+16b=63124b/1024=61.64kb</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide " data-transition="none">
+<div class="content " ref="sections/graphite//04_storage/10">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whisper File Size Calculator</h1>
+
+<p>Online calculator: <a href="http://m30m.github.io/whisper-calculator/">http://m30m.github.io/whisper-calculator/</a></p>
+
+<p></p>
+<center><img src="./file/sections/graphite//./_images/whisper-file-size-calculator.png" style="width:70%"></center>
+
+<div class="handouts">
+
+<hr>
+
+<p>There's also a script for the calculation of the Whisper file size available: <a href="https://gist.github.com/jjmaestro/5774063">https://gist.github.com/jjmaestro/5774063</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite//04_storage/11">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whisper Tools (1/2)</h1>
+
+<p>Whisper comes with some default tools. With those it is possible to create, edit and view Whisper files.</p>
+
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>rrd2whisper.py</strong></td>
+<td> Convert a rrd file into a whisper (.wsp) file</td>
+</tr>
+<tr>
+<td><strong>whisper-auto-resize.py</strong></td>
+<td>Resize archives with default settings (&gt;=1.0.0)</td>
+</tr>
+<tr>
+<td><strong>whisper-auto-update.py</strong></td>
+<td> Update values (&gt;=1.0.0)</td>
+</tr>
+<tr>
+<td><strong>whisper-create.py</strong></td>
+<td>Create a new Whisper file</td>
+</tr>
+<tr>
+<td><strong>whisper-diff.py</strong></td>
+<td>Differences beetwen two Whisper files</td>
+</tr>
+<tr>
+<td><strong>whisper-dump.py</strong></td>
+<td>Dump raw Whisper data</td>
+</tr>
+<tr>
+<td><strong>whisper-fetch.py</strong></td>
+<td>Dump readable (timestamp + value) data from Whisper files</td>
+</tr>
+<tr>
+<td><strong>whisper-fill.py</strong></td>
+<td>Backfill datapoints from one whisper file into another</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite//04_storage/12">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whisper Tools (2/2)</h1>
+
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>whisper-info.py</strong></td>
+<td>Get metadata</td>
+</tr>
+<tr>
+<td><strong>whisper-merge.py</strong></td>
+<td>Merge two Whisper files</td>
+</tr>
+<tr>
+<td><strong>whisper-resize.py</strong></td>
+<td>Resize archives with individual settings</td>
+</tr>
+<tr>
+<td><strong>whisper-set-aggregation-method.py</strong></td>
+<td>Change aggregation method</td>
+</tr>
+<tr>
+<td><strong>whisper-set-xfilesfactor.py</strong></td>
+<td> Change xFilesFactor (&gt;=1.0.0)</td>
+</tr>
+<tr>
+<td><strong>whisper-update.py</strong></td>
+<td>Update value</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide smbullets smaller" data-transition="none">
+<div class="content smbullets smaller" ref="sections/graphite//04_storage/13">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Usage - Common Whisper Tools</h1>
+
+<pre class="sh_sh"><code># whisper-fetch.py --pretty metricsReceived.wsp
+...
+Fri Jun  2 08:53:00 2017    976.000000
+Fri Jun  2 08:54:00 2017    1001.000000
+Fri Jun  2 08:55:00 2017    1011.000000
+
+# whisper-info.py metricsReceived.wsp 
+maxRetention: 7776000
+xFilesFactor: 0.5
+aggregationMethod: average
+fileSize: 1555228
+
+Archive 0
+retention: 7776000
+secondsPerPoint: 60
+points: 129600
+size: 1555200
+offset: 28
+
+# whisper-resize.py --nobackup metricsReceived.wsp 60s:120d
+Retrieving all data from the archives
+Creating new whisper database: metricsReceived.wsp.tmp
+Created: metricsReceived.wsp.tmp (1555228 bytes)
+Migrating data without aggregation...
+Renaming old database to: metricsReceived.wsp.bak
+Renaming new database to: metricsReceived.wsp
+
+# whisper-create test.wsp 1s:30m 1m:1d 5m:7d
+Created: test.wsp (63124 bytes)</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite//04_storage/14">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Whitelist/Blacklist</h1>
+
+<p>When this feature is enabled, each Carbon daemon will only accept metrics that are whitelisted and reject those which are blacklisted. </p>
+
+<p>Each file, <code>whitelist.conf</code> and <code>blacklist.conf</code> takes one regular expression per line. If <code>whitelist.conf</code> does not exist, everything is whitelisted by default. Configuration is reloaded automatically, no restart of the daemon is necessary.</p>
+
+<p>To enable the functionality, edit <code>carbon.conf</code>:</p>
+
+<pre class="sh_sh"><code>USE_WHITELIST = True</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__04_storage" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite//04_storage/15">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Rewrite Rules</h1>
+
+<p>With rewrite rules metric paths can be rewritten before Whisper files are created. This is handy when your collector sends metric paths which are not accurate. The configuration for rewrite rules takes place in <code>rewrite-rules.conf</code>. This functionality is currently only available for Carbon Aggregator.</p>
+
+<p>A rewrite rule should look like as follows:</p>
+
+<pre class="sh_sh"><code>regex-pattern = replacement-text</code></pre>
+
+<p>These are some rewrite rules commonly used when CollectD sends metrics:</p>
+
+<pre class="sh_sh"><code>[pre]
+\.load\.load\. = .load.
+\.memory\.memory\. = .memory.
+\.mysql\.stats\. = .mysql.
+_TCP80 = .TCP80</code></pre>
+
+<p>Rewrite rules consist of two sections <code>[pre]</code> and <code>[post]</code>. Rules in the pre section are applied before aggregation and rules in the post section after aggregation takes place.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__05_flow" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite//05_flow/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>4.5 Data Flow</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__05_flow" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//05_flow/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Receive Data</h1>
+
+<p>To receive metrics, Graphite provides by default two interfaces. On Port 2003 Carbon  is listening with a plain text protocol, on port 2004 with the so-called "Pickle protocol".</p>
+
+<p>While the plain text protocol is pretty simple "&lt;metric path&gt;.&lt;metric value&gt;.&lt;metric timestamp&gt;", the Pickle protocol is more complex and looks more like a multidimensional array. The advantage of the plain text protocol is its simplicity, the Pickle protocol instead is more efficient. In addition, multiple metrics can be transferred in a bulk.</p>
+
+<pre class="sh_sh"><code># echo "localhost.tmp.files `ls /tmp | wc -l` `date +%s`" \
+  | nc -q 1 localhost 2003
+
+localhost.tmp.files 1 1431512100
+localhost.tmp.files 9 1431512120
+localhost.tmp.files 4 1431512180
+localhost.tmp.files 4 1431512240</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__05_flow" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//05_flow/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Cache Datapoint Flow</h1>
+
+<ul>
+<li>Datapoint arrives at Carbon Cache</li>
+<li>According to its metric a queue is created
+
+<ul>
+<li>If the queue already exists, datapoint is added to it</li>
+<li>One queue represents one metric path, hence one Whisper file</li>
+</ul>
+</li>
+<li>A writer thread periodically writes down all the datapoints
+
+<ul>
+<li>There are 4 different algorithms for writing down datapoints</li>
+<li>All datapoints of one queue are written at once to the corresponding Whisper file: update_many()</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__05_flow" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite//05_flow/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Cache Write Algorithms (1/2)</h1>
+
+<p>The thread that writes metrics to disk can use on of the following strategies determining the order in which metrics are removed from cache and flushed to disk. This setting can be adjusted in <code>carbon.conf</code> with <code>CACHE_WRITE_STRATEGY</code> in the <code>[cache]</code> section.</p>
+
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>sorted</strong> (default)</td>
+<td>All metrics in the cache will be counted and an ordered list of them will be sorted according to the number of datapoints in the cache at the moment of the list's creation. Metrics will then be flushed from the cache to disk in that order.</td>
+</tr>
+<tr>
+<td><strong>timesorted</strong></td>
+<td>All metrics in the list will be looked at and sorted according to the timestamp of there datapoints. The metric that were the least recently written will be written first. This is an hybrid strategy between max and sorted which is particularly adapted to sets of metrics with non-uniform resolutions.</td>
+</tr>
+<tr>
+<td><strong>max</strong></td>
+<td>The writer thread will always pop and flush the metric from cache that has the most datapoints. This will give a strong flush preference to frequently updated metrics and will also reduce random file-io. Infrequently updated metrics may only ever be persisted to disk at daemon shutdown if there are a large number of metrics which receive very frequent updates OR if disk i/o is very slow.</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__05_flow" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite//05_flow/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Cache Write Algorithms (2/2)</h1>
+
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>naive</strong></td>
+<td>Metrics will be flushed from the cache to disk in an unordered fashion. This strategy may be desirable in situations where the storage for whisper files is solid state, CPU resources are very limited or deference to the OS's i/o scheduler is expected to compensate for the random write pattern.</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__05_flow" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//05_flow/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Internal Statistics (1/2)</h1>
+
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>activeConnections</strong></td>
+<td>Number of active connections. (&gt;=1.0.0)</td>
+</tr>
+<tr>
+<td><strong>avgUpdateTime</strong></td>
+<td>The average amount of time spent per Whisper update operation.</td>
+</tr>
+<tr>
+<td><strong>blacklistMatches</strong></td>
+<td>Number of blacklist matches.</td>
+</tr>
+<tr>
+<td><strong>cache.bulk_queries</strong></td>
+<td>Number of bulk queries to the carbon-cache instance.</td>
+</tr>
+<tr>
+<td><strong>cache.overflow</strong></td>
+<td>Number of datapoints received while the cache was full.</td>
+</tr>
+<tr>
+<td><strong>cache.queries</strong></td>
+<td>Number of all cache queries received by the cache from the webapp.</td>
+</tr>
+<tr>
+<td><strong>cache.queues</strong></td>
+<td>Number of metric keys (metric name) in the cache at the time of recording.</td>
+</tr>
+<tr>
+<td><strong>cache.size</strong></td>
+<td>Number of metric datapoints in the cache at the time of recording.</td>
+</tr>
+<tr>
+<td><strong>committedPoints</strong></td>
+<td>Number of metric datapoints flushed to disk.</td>
+</tr>
+<tr>
+<td><strong>cpuUsage</strong></td>
+<td>CPU usage of the carbon-cache instance.</td>
+</tr>
+<tr>
+<td><strong>creates</strong></td>
+<td>Number of Whisper files successfully created.</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__05_flow" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/graphite//05_flow/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Internal Statistics (2/2)</h1>
+
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>droppedCreates</strong></td>
+<td>Number of failed Whisper create operations. (&gt;=1.0.0)</td>
+</tr>
+<tr>
+<td><strong>errors</strong></td>
+<td>Number of failed Whisper update operations.</td>
+</tr>
+<tr>
+<td><strong>memUsage</strong></td>
+<td>Memory usage of the carbon-cache daemon.</td>
+</tr>
+<tr>
+<td><strong>metricsReceived</strong></td>
+<td>Number of datapoints received by the carbon-cache listener.</td>
+</tr>
+<tr>
+<td><strong>pointsPerUpdate</strong></td>
+<td>Average number of datapoints written per Whisper update operation. The higher the value, the more effective the cache is performing at batch writes (fewer I/O operations).</td>
+</tr>
+<tr>
+<td><strong>updateOperations</strong></td>
+<td>Number of successful Whisper update operations.</td>
+</tr>
+<tr>
+<td><strong>whitelistRejects</strong></td>
+<td>Number of whitelist rejects.</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__06_alternatives" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite//06_alternatives/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>4.6 Alternatives</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__06_alternatives" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//06_alternatives/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Ceres</h1>
+
+<p>Ceres is an alternative time-series database to Whisper. It is intended to replace Whisper as the default storage for Graphite.</p>
+
+<ul>
+<li>Not fixed-sized</li>
+<li>Calculate timestamps instead of storing them for each datapoint</li>
+<li>Store datapoints of one metric accross multiple servers</li>
+</ul>
+
+<p>Unfortunately Ceres is not intended to be used in production yet. There is no roadmap if and when a final release will happen.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__06_alternatives" class="slide " data-transition="none">
+<div class="content " ref="sections/graphite//06_alternatives/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Cyanite</h1>
+
+<p>Cyanite is an Apache Cassandra based time-series database designed to be API-compatible with the Graphite eco-system and easy to scale.</p>
+
+<p>Graphite-Cyanite is the component between the Cyanite backend and Graphite. It requires access to the Graphite Render API.</p>
+
+<div class="handouts">
+
+<hr>
+
+<p>Cyanite project: <a href="https://github.com/pyr/cyanite">https://github.com/pyr/cyanite</a></p>
+
+<p>Graphite-Cyanite project: <a href="https://github.com/brutasse/graphite-cyanite">https://github.com/brutasse/graphite-cyanite</a></p>
+
+<p>Documentation: <a href="http://cyanite.io">http://cyanite.io</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__06_alternatives" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//06_alternatives/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Relay Alternatives</h1>
+
+<p>There are a few alternatives for Carbon Relay, they are written in other languages than Python and aim to be faster. Also they provide more features:</p>
+
+<ul>
+<li>carbon-c-relay</li>
+<li>carbon-relay-ng</li>
+<li>graphite-relay</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__06_alternatives" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//06_alternatives/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>carbon-c-relay</h1>
+
+<ul>
+<li>Written in C</li>
+<li>Cleansing of received metrics</li>
+<li>Support for multiple clusters</li>
+<li>Lots of relay methods available</li>
+<li>Rewrite rules</li>
+<li>Aggregation functionality</li>
+<li>Plaintext input</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>carbon-c-relay project: <a href="https://github.com/grobian/carbon-c-relay">https://github.com/grobian/carbon-c-relay</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__06_alternatives" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//06_alternatives/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>carbon-relay-ng</h1>
+
+<ul>
+<li>Written in Go</li>
+<li>Validation on all incoming metrics</li>
+<li>Adjust the routing table in runtime</li>
+<li>Advanced routing functions (i.e. queue data to disk)</li>
+<li>Rewrite rules</li>
+<li>Aggregation functionality</li>
+<li>Plaintext, pickle and AMQP input</li>
+<li>Plaintext, pickle, metrics 2.0 and kafka output</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>carbon-relay-ng project: <a href="https://github.com/graphite-ng/carbon-relay-ng">https://github.com/graphite-ng/carbon-relay-ng</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite__06_alternatives" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/graphite//06_alternatives/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>graphite-relay</h1>
+
+<ul>
+<li>Written with Netty</li>
+<li>Different backend strategies</li>
+<li>Overflow handler</li>
+<li>Plaintext input</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>graphite-relay project: <a href="https://github.com/markchadwick/graphite-relay">https://github.com/markchadwick/graphite-relay</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_clients__00_title" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/clients//00_title">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>5 Clients</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_clients__01_collectd" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/clients//01_collectd/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>5.1 collectd</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_clients__01_collectd" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/clients//01_collectd/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>collectd</h1>
+
+<p>collectd is a daemon that runs on your server and collects periodically performance data about several parts of the system. One of many plugins is <code>write_graphite</code> which lets you send those collected data to a Graphite server. </p>
+
+<p>collectd provides a lot of plugins by default. Each plugin serves a specific set of data and mostly can be configured to fit your needs. Some plugins differ from others, for example there are plugins which are just for forwarding the statistics to receivers like Graphite. There are also plugins which enable you to write your own plugins in languages like Perl, Python or Java.</p>
+
+<p>With the included SNMP support collectd stays not limited to the host it's running. You can get performance counters of the network activity from switches, routers or other devices that are capable of SNMP.</p>
+
+<div class="handouts">
+
+<hr>
+
+<p>Website: <a href="https://collectd.org">https://collectd.org</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_clients__01_collectd" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/clients//01_collectd/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>collectd - Installation</h1>
+
+<p>collectd can be installed via packages. You should take care that you install a version &gt;= 5.0, because the Graphite plugin in earlier versions had to be configured in a different way than it is described here.</p>
+
+<pre class="sh_sh"><code># yum install collectd</code></pre>
+
+<p>After the installation you should edit <code>/etc/collectd.conf</code>. It should include the following content:</p>
+
+<pre class="sh_sh"><code>Hostname        "graphing1"
+FQDNLookup      false
+Interval        60
+MaxReadInterval 86400
+Timeout         2
+ReadThreads     5
+WriteThreads    5
+Include "/etc/collectd.d"</code></pre>
+
+<p>By creating config files inside <code>/etc/colletcd.d</code> the configuration of plugins will be way more tidy than configuring them all in one single file.</p>
+
+<pre class="sh_sh"><code># systemctl enable collectd.service --now</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_clients__01_collectd" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/clients//01_collectd/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>collectd - Plugins</h1>
+
+<p>Plugins are enabled with the phrase <code>LoadPlugin &lt;plugin&gt;</code>. You can find a list of all collectd plugins here: <a href="https://collectd.org/wiki/index.php/Table_of_Plugins">https://collectd.org/wiki/index.php/Table_of_Plugins</a>. 
+This page also includes the documentation of each plugin.</p>
+
+<p>This example shows the content of <code>/etc/collectd.d/df.conf</code>. All other plugins are configured in the same manner.</p>
+
+<pre class="sh_sh"><code>LoadPlugin df
+
+&lt;Plugin df&gt;
+  FSType "rootfs"
+  FSType "xfs"
+  IgnoreSelected false
+  ReportByDevice false
+  ReportInodes true
+  ValuesAbsolute true
+  ValuesPercentage false
+&lt;/Plugin&gt;</code></pre>
+
+<p>The configuration of plugins is in many cases optional. In some cases it's sufficient to just load the plugin without any configuration. Examples for this are <code>memory</code>, <code>load</code> or <code>cpu</code>.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_clients__01_collectd" class="slide smbullets smaller" data-transition="none">
+<div class="content smbullets smaller" ref="sections/clients//01_collectd/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>collectd - Graphite</h1>
+
+<p>Sending the collected data to Graphite is not more than enabling and configuring the appropriate plugin.</p>
+
+<p>File: <code>/etc/collectd.d/write_graphite.conf</code></p>
+
+<pre class="sh_sh"><code>LoadPlugin write_graphite
+
+&lt;Plugin write_graphite&gt;
+  &lt;Node "graphing1"&gt;
+    Host "localhost"
+    Port "2003"
+    Protocol "tcp"
+    ReconnectInterval 0
+    LogSendErrors true
+    Prefix "collectd."
+    StoreRates true
+    AlwaysAppendDS false
+    EscapeCharacter "_"
+    SeparateInstances true
+    PreserveSeparator false
+    DropDuplicateFields false
+  &lt;/Node&gt;
+&lt;/Plugin&gt;</code></pre>
+
+<p>After configuration changes collectd needs to be restarted:</p>
+
+<pre class="sh_sh"><code># systemctl restart collectd.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_clients__01_collectd" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/clients//01_collectd/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>collectd - Storage Schema</h1>
+
+<p>To store the data correctly, you need to configure a proper storage schema for data coming from collectd. The frequency which is configured here must be the same as configured in <code>collectd.conf</code>. </p>
+
+<p>File: <code>/opt/graphite/conf/storage-schemas.conf</code></p>
+
+<pre class="sh_sh"><code>[ ... ]
+
+[collectd]
+pattern = ^collectd\.
+retentions = 60s:5d
+
+[ ... ]</code></pre>
+
+<p>When <code>LOG_CREATES</code> in <code>carbon.conf</code> is set to <code>True</code>, you can follow the logging of Carbon Cache in <code>/var/log/carbon/creates.log</code> to track if your Whisper files are being generated with the correct storage schema.</p>
+
+<pre class="sh_sh"><code>new metric collectd.graphing1.interface-enp0s3.if_dropped.tx \
+  matched schema collectd
+new metric collectd.graphing1.interface-enp0s3.if_dropped.tx \
+  matched schema default</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__01_graphite-web" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/webapp//01_graphite-web/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>6 Webapp</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__01_graphite-web" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/webapp//01_graphite-web/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Web</h1>
+
+<p></p>
+<center><img src="./file/sections/webapp//./_images/graphite-screen1.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__01_graphite-web" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/webapp//01_graphite-web/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Web</h1>
+
+<p>Graphite Web is the visualization component of the Graphite stack. It consists mainly of 3 parts.</p>
+
+<p><strong>Composer</strong></p>
+
+<p>The composer is the first thing you see when opening Graphites web application. It enables you to browse through your metrics and display those. Multiple graph options can change the look and feel of graphs. For permanent usage templates can be stored (<code>graphTemplates.conf</code>) and applied to graphs. With plenty of functions you can combine, transform, calculate or filter datapoints. This functionality, which is also available for the API, makes Graphite Web to one of the most powerful webinterfaces for graph visualization.</p>
+
+<p><strong>Dashboard</strong></p>
+
+<p>The dashboard brings the same functionality as the composer, but combines multiple graphs to one overview. When logged in, users can save dashboards for later usage. The behaviour of the dashboard can be adjusted in <code>dashboard.conf</code>.</p>
+
+<p><strong>API</strong></p>
+
+<p>Using the API you can retrieve data in different formats. This can be used for integration into third party tools or monitoring purposes. The API represents almost the same functionality as the composer.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__01_graphite-web" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/webapp//01_graphite-web/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Indexing</h1>
+
+<p>For faster access to metrics Graphite supports an index. This index is actually just a text file that includes all available metrics. It can be generated by a cronjob periodically.</p>
+
+<p>Content of <code>/opt/graphite/storage/index</code>:</p>
+
+<pre class="sh_sh"><code>[...]
+collectd.graphing1.cpu-0.cpu-wait
+collectd.graphing1.cpu-0.cpu-user
+collectd.graphing1.interface-lo.if_packets.rx
+collectd.graphing1.interface-lo.if_packets.tx
+collectd.graphing1.interface-lo.if_octets.tx
+collectd.graphing1.interface-lo.if_octets.rx
+[...]</code></pre>
+
+<p>An optional cronjob that creates the index each hour may look like this:</p>
+
+<pre class="sh_sh"><code>0 * * * * /opt/graphite/bin/build-index.sh &gt; /dev/null</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__02_api" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/webapp//02_api/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>6.1 Graphite API</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__02_api" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/webapp//02_api/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>HTTP API</h1>
+
+<p>The interactive webinterface of Graphite Web is called Composer. Aside to this Graphite Web also has a HTTP API which consists of two parts:</p>
+
+<ul>
+<li>Render API</li>
+<li>Metrics API</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__02_api" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/webapp//02_api/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Render API</h1>
+
+<p>The Render API can be used to retrieve and visualize datapoints. The API can be used to embed graphs in own applications or webinterfaces. Mostly the API is used by 3rd party dashboard tools like Grafana.</p>
+
+<ul>
+<li>Different formats:
+
+<ul>
+<li>png</li>
+<li>raw</li>
+<li>csv</li>
+<li>json</li>
+<li>svg</li>
+<li>pdf</li>
+<li>dygraph</li>
+<li>rickshaw</li>
+<li>pickle</li>
+</ul>
+</li>
+<li>Paths with Wildcards</li>
+<li>Relative or absolute time periods</li>
+<li>Template function with variables</li>
+<li>Almost full functionality of Composer</li>
+</ul>
+
+<p>Parameters: <a href="http://graphite.readthedocs.org/en/latest/render_api.html#graph-parameters">http://graphite.readthedocs.org/en/latest/render_api.html#graph-parameters</a></p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__02_api" class="slide small" data-transition="none">
+<div class="content small" ref="sections/webapp//02_api/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Render API - Sample 1</h1>
+
+<p>Create a simple graph of the load of one of your servers in the last hour. Output as PNG with the resolution of 800x600.</p>
+
+<pre class="sh_sh"><code>/render?target=collectd.graphing1.load.load.*
+&amp;from=-1h
+&amp;width=800
+&amp;height=600</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__02_api" class="slide small" data-transition="none">
+<div class="content small" ref="sections/webapp//02_api/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Render API - Sample 2</h1>
+
+<p>Create a JSON output of the free diskspace from one of your servers. Output only the last 5 minutes.</p>
+
+<pre class="sh_sh"><code>/render
+?target=collectd.graphing1.df-root.df_complex-free
+&amp;from=-5min
+&amp;format=json
+[
+  {
+  "target": "...graphing1.df-root.df_complex-free", 
+  "datapoints": 
+    [
+      [5632802816.0, 1431524460], 
+      [5632798720.0, 1431524520], 
+      [5632782336.0, 1431524580], 
+      [5632757760.0, 1431524640], 
+      [5632757760.0, 1431524700]
+    ]
+  }
+]</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__02_api" class="slide small" data-transition="none">
+<div class="content small" ref="sections/webapp//02_api/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Render API - Sample 3</h1>
+
+<p>Build an average of the CPUs system time from two of your servers. Add a title to the graph and change the background color. Set a minimum of 0 and create an alias for the legend called "CPU system".</p>
+
+<pre class="sh_sh"><code>/render
+?target=
+  alias
+    (
+      averageSeries
+      (
+        collectd.graphing[1-2].cpu-*.cpu-system
+      ), 
+    "CPU system"
+    )
+&amp;title=CPU of all servers
+&amp;bgcolor=red
+&amp;yMin=0</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_webapp__02_api" class="slide " data-transition="none">
+<div class="content " ref="sections/webapp//02_api/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Metrics API</h1>
+
+<p>Graphite Web supports some functionality to browse through metrics.</p>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/metrics/index.json</td>
+<td>Walks the metrics tree and returns every metric found as a sorted JSON array.</td>
+</tr>
+<tr>
+<td>/metrics/find?query=a.b.c.d</td>
+<td> Finds metrics under a given path.</td>
+</tr>
+<tr>
+<td>/metrics/expand?query=a.b.c.d</td>
+<td> Expands the given query with matching paths.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="handouts">
+
+<hr>
+
+<p>Metrics API: <a href="http://graphite-api.readthedocs.io/en/latest/api.html#the-metrics-api">http://graphite-api.readthedocs.io/en/latest/api.html#the-metrics-api</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_dashboards__00_title" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/dashboards//00_title">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>7 Dashboards</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_dashboards__01_grafana" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/dashboards//01_grafana/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>7.1 Grafana</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_dashboards__01_grafana" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/dashboards//01_grafana/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Grafana</h1>
+
+<p>Grafana is an Open Source webinterface that lets you visualize data from a lot of different data sources. Currently offical supported data sources are Graphite, Elasticsearch, CloudWatch, InfluxDB, OpenTSDB and Prometheus.</p>
+
+<p>Since version 2.0 Grafana ships with its own backend server and since 3.0 additional data sources can be installed as plugins and mixed in the same chart. </p>
+
+<ul>
+<li>Visualize graphs</li>
+<li>Create dashboards</li>
+<li>Share</li>
+<li>Annotations</li>
+<li>Templates</li>
+<li>Multiple backends</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="http://grafana.org">http://grafana.org</a><br>
+Docs: <a href="http://docs.grafana.org">http://docs.grafana.org</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_dashboards__01_grafana" class="slide small" data-transition="none">
+<div class="content small" ref="sections/dashboards//01_grafana/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Grafana Installation</h1>
+
+<p>On RPM-based Linux systems like CentOS, Grafana can be installed via source, YUM repository or using YUM directly:</p>
+
+<pre class="sh_sh"><code># yum install https://s3-us-west-2.amazonaws.com/\
+grafana-releases/release/grafana-4.3.1-1.x86_64.rpm</code></pre>
+
+<p>Start the Grafana server:</p>
+
+<pre class="sh_sh"><code># systemctl enable grafana-server.service --now</code></pre>
+
+<p>After that Grafana should be accessible via HTTP on port 3000 and the administrative user <code>admin</code> with password <code>admin</code>.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_dashboards__01_grafana" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/dashboards//01_grafana/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Grafana Data Source</h1>
+
+<p>The first step after installation is to add a data source:</p>
+
+<p></p>
+<center><img src="./file/sections/dashboards//./_images/grafana-data-source.png" style="width:80%"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_dashboards__01_grafana" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/dashboards//01_grafana/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Import Grafana Dashboards</h1>
+
+<p>You can either create dashboards by yourself or import them from <a href="https://grafana.com/dashboards">https://grafana.com/dashboards</a>. A good start with Graphite as backend is a dashboard provided from the main developer of Grafana, Torkel Ödegaard, called "Graphite Carbon Metrics" with ID "43".</p>
+
+<p></p>
+<center><img src="./file/sections/dashboards//./_images/grafana-dashboard.png" style="width:80%"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_dashboards__01_grafana" class="slide " data-transition="none">
+<div class="content " ref="sections/dashboards//01_grafana/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Build Custom Grafana Dashboards</h1>
+
+<p>To build your own dashboards with Grafana you should start with the "Getting started" chapter of the official documentation, available at: <a href="http://docs.grafana.org/guides/getting_started/">http://docs.grafana.org/guides/getting_started/</a></p>
+
+<p>There's also a video with a 10min beginners guide from Torkel Ödegaard and many other assistances available.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__00_title" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/graphite_cluster//00_title">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>8 Graphite Cluster</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite_cluster//01_single/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>8.1 Single-Node Cluster</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite_cluster//01_single/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster</h1>
+
+<p>In this scenario Carbon Relay distributes metrics over 2 Carbon Caches. As the communication between all Carbon daemons, they all can be located on different hosts.</p>
+
+<p></p>
+<center><img src="./file/sections/graphite_cluster//./_images/graphite-cluster-middle.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite_cluster//01_single/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster - Carbon Caches</h1>
+
+<p>All Carbon daemons are configured in <code>carbon.conf</code> where each daemon gets its own section.</p>
+
+<p>Configure multiple caches in <code>/opt/graphite/conf/carbon.conf</code> and start them:</p>
+
+<pre class="sh_sh"><code>[cache]
+LINE_RECEIVER_PORT   = 2103
+UDP_RECEIVER_PORT    = 2103
+PICKLE_RECEIVER_PORT = 2104
+CACHE_QUERY_PORT     = 7102
+
+[cache:b]
+LINE_RECEIVER_PORT   = 2203
+UDP_RECEIVER_PORT    = 2203
+PICKLE_RECEIVER_PORT = 2204
+CACHE_QUERY_PORT     = 7202
+
+
+# /opt/graphite/bin/carbon-cache.py --instance=a start
+Starting carbon-cache (instance a)
+# /opt/graphite/bin/carbon-cache.py --instance=b start
+Starting carbon-cache (instance b)</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//01_single/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster - Carbon Relay with Caches</h1>
+
+<p>Configure the Carbon Relay <code>/opt/graphite/conf/carbon.conf</code>, take care of <code>relay-rules.conf</code> and start it:</p>
+
+<pre class="sh_sh"><code>[relay]
+LINE_RECEIVER_INTERFACE = 0.0.0.0
+LINE_RECEIVER_PORT = 2003
+PICKLE_RECEIVER_INTERFACE = 0.0.0.0
+PICKLE_RECEIVER_PORT = 2004
+RELAY_METHOD = consistent-hashing
+REPLICATION_FACTOR = 1
+DESTINATIONS = 127.0.0.1:2104:a, 127.0.0.1:2204:b
+
+# cp /opt/graphite/conf/relay-rules.conf.example \
+/opt/graphite/conf/relay-rules.conf
+
+# /opt/graphite/bin/carbon-relay.py start
+Starting carbon-relay (instance a) </code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite_cluster//01_single/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Relay - Relay Method</h1>
+
+<p>The <code>RELAY_METHOD</code> defines how metrics are distributed. </p>
+
+<ul>
+<li>
+<code>consistent-hashing</code>
+
+<ul>
+<li>Even distribution of metrics between destinations.</li>
+</ul>
+</li>
+<li>
+<code>aggregated-consistent-hashing</code>
+
+<ul>
+<li>Send to a group of Carbon Aggregators.</li>
+</ul>
+</li>
+<li>
+<code>rule-based</code>
+
+<ul>
+<li>Route metrics to destinations based on pattern rules.</li>
+<li><code>relay-rules.conf</code></li>
+</ul>
+</li>
+</ul>
+
+<p>Example rule in <code>/opt/graphite/conf/relay-rules.conf</code> with <code>rule-based</code> RELAY_METHOD:</p>
+
+<pre class="sh_sh"><code>[collectd_dc1]
+pattern = ^collectd\.dc1\.
+destinations = 127.0.0.1:2104:a
+
+[collectd_dc2]
+pattern = ^collectd\.dc2\.
+destinations = 127.0.0.1:2204:b</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite_cluster//01_single/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster with Graphite Web</h1>
+
+<p></p>
+<center><img src="./file/sections/graphite_cluster//./_images/graphite-cluster-graphite-web.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite_cluster//01_single/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster - Graphite Web Configuration</h1>
+
+<p>Graphite Web needs to be configured to query both Carbon Caches.</p>
+
+<p>File: <code>/opt/graphite/webapp/graphite/local_settings.py</code>:</p>
+
+<pre class="sh_sh"><code>CARBONLINK_HOSTS = ["127.0.0.1:7102:a", "127.0.0.1:7202:b"]</code></pre>
+
+<p>Restart Apache:</p>
+
+<pre class="sh_sh"><code># systemctl restart httpd.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite_cluster//01_single/8">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster with Aggregator</h1>
+
+<p></p>
+<center><img src="./file/sections/graphite_cluster//./_images/graphite-cluster-aggregator.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//01_single/9">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster - Carbon Relay with Aggregator</h1>
+
+<p>Stop Carbon Relay:</p>
+
+<pre class="sh_sh"><code># /opt/graphite/bin/carbon-relay.py stop</code></pre>
+
+<p>Change Relay configuration in <code>carbon.conf</code>:</p>
+
+<pre class="sh_sh"><code>[relay]
+LINE_RECEIVER_INTERFACE = 0.0.0.0
+LINE_RECEIVER_PORT = 2003
+PICKLE_RECEIVER_INTERFACE = 0.0.0.0
+PICKLE_RECEIVER_PORT = 2004
+RELAY_METHOD = consistent-hashing # Only with 1 Aggregator
+REPLICATION_FACTOR = 1
+DESTINATIONS = 127.0.0.1:2024</code></pre>
+
+<p>Start Carbon Relay:</p>
+
+<pre class="sh_sh"><code># /opt/graphite/bin/carbon-relay.py start
+Starting carbon-relay (instance a)</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//01_single/10">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Single-Node Cluster - Carbon Aggregator with Caches</h1>
+
+<p>Change Aggregator configuration in <code>carbon.conf</code>:</p>
+
+<pre class="sh_sh"><code>[aggregator]
+LINE_RECEIVER_INTERFACE = 0.0.0.0
+LINE_RECEIVER_PORT = 2023
+PICKLE_RECEIVER_INTERFACE = 0.0.0.0
+PICKLE_RECEIVER_PORT = 2024
+FORWARD_ALL = True # Forward all metrics
+DESTINATIONS = 127.0.0.1:2104:a, 127.0.0.1:2204:b
+REPLICATION_FACTOR = 1</code></pre>
+
+<p>Take care of <code>aggregation-rules.conf</code> and start Carbon Aggregator:</p>
+
+<pre class="sh_sh"><code># cp /opt/graphite/conf/aggregation-rules.conf.example \
+/opt/graphite/conf/aggregation-rules.conf
+
+# /opt/graphite/bin/carbon-aggregator.py start
+Starting carbon-aggregator (instance a)</code></pre>
+
+<p>Note: The configuration for the Carbon Caches remains unchanged.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite_cluster//01_single/11">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Aggregator</h1>
+
+<p>When using Carbon Aggregator, the most important configuration is made in <code>aggregation-rules.conf</code>. The file accepts input patterns for metrics and is able to merge multiple incoming metrics to one final metric which is then written as single Whisper file.</p>
+
+<p>Each line of the configuration should look like this:</p>
+
+<pre class="sh_sh"><code>output_template (frequency) = method input_pattern</code></pre>
+
+<p>This will capture any metric that matches <code>input_pattern</code>. Every <code>frequency</code> seconds it will calculate the destination metric using the specified <code>method</code> which can be <code>sum</code> or <code>avg</code>. The config also accepts placeholders.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/graphite_cluster//01_single/12">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbon Aggregator - Example</h1>
+
+<p>Here is an example of an Apache environment. Goal is to track requests from all application servers and store the sum in a single metric.</p>
+
+<pre class="sh_sh"><code>&lt;env&gt;.applications.&lt;app&gt;.all.requests (60) 
+  = sum &lt;env&gt;.applications.&lt;app&gt;.*.requests</code></pre>
+
+<p>The result is, that metrics matching the pattern will get summed each 60 seconds and written to one single destination:</p>
+
+<pre class="sh_sh"><code># input
+prod.applications.apache.www01.requests
+prod.applications.apache.www02.requests
+prod.applications.apache.www03.requests
+
+# output
+prod.applications.apache.all.requests</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite_cluster//01_single/13">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Relaying of Carbon Aggregator</h1>
+
+<p>The Aggregator does not have the same complement of routing methods as the Relay and supports only consistent-hashing. For rule-based routing an additional Relay beetwen Aggregator and Cache is needed.</p>
+
+<p></p>
+<center><img src="./file/sections/graphite_cluster//./_images/graphite-cluster-aggregator-relay.png" style="width:40%"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite_cluster//01_single/14">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Queues and Caches</h1>
+
+<p>Each Carbon daemon will start dropping or not accepting metrics if its queue or cache is full. The parameters <code>MAX_QUEUE_SIZE</code> and <code>MAX_CACHE_SIZE</code> are configured in <code>carbon.conf</code> in the proper section.</p>
+
+<p></p>
+<center><img src="./file/sections/graphite_cluster//./_images/graphite-queues-and-caches.png" style="width:45%"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//01_single/15">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbonate</h1>
+
+<p>Carbonate brings some usefull tools to handle different tasks in Graphite clusters, for example to redistribute datapoints manually when new nodes are introduced.</p>
+
+<pre class="sh_sh"><code># pip install carbonate</code></pre>
+
+<p>The configuration of Carbonate is done in: <code>/opt/graphite/conf/carbonate.conf</code></p>
+
+<pre class="sh_sh"><code>[main]
+DESTINATIONS = 127.0.0.1:2104:a, 127.0.0.1:2204:b
+REPLICATION_FACTOR = 1
+SSH_USER = carbonate # optional</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__01_single" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//01_single/16">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Carbonate Tools</h1>
+
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>carbon-hosts</strong></td>
+<td>Return the addresses for all nodes in a cluster</td>
+</tr>
+<tr>
+<td><strong>carbon-list</strong></td>
+<td>List the metrics this carbon node contains</td>
+</tr>
+<tr>
+<td><strong>carbon-lookup</strong></td>
+<td>Lookup where a metric lives in a carbon cluster</td>
+</tr>
+<tr>
+<td><strong>carbon-path</strong></td>
+<td>Transform metric paths to (or from) filesystem paths</td>
+</tr>
+<tr>
+<td><strong>carbon-sieve</strong></td>
+<td>Given a list of metrics, output those that belong to a node</td>
+</tr>
+<tr>
+<td><strong>carbon-stale</strong></td>
+<td>Find and list potentially stale metrics</td>
+</tr>
+<tr>
+<td><strong>carbon-sync</strong></td>
+<td>Sync local metrics using remote nodes in the cluster</td>
+</tr>
+<tr>
+<td><strong>whisper-aggregate</strong></td>
+<td>Set aggregation for whisper-backed metrics this carbon instance contains</td>
+</tr>
+<tr>
+<td><strong>whisper-fill</strong></td>
+<td>Backfill datapoints from one whisper file into another</td>
+</tr>
+</tbody>
+</table>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://github.com/graphite-project/carbonate">https://github.com/graphite-project/carbonate</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__02_multi" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/graphite_cluster//02_multi/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>8.2 Multi-Node Cluster</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__02_multi" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/graphite_cluster//02_multi/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Multi-Node Cluster</h1>
+
+<p></p>
+<center><img src="./file/sections/graphite_cluster//./_images/graphite-big-cluster.png" style="width:55%"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__02_multi" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//02_multi/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Cluster - Multiple Graphite Web Instances</h1>
+
+<p>For failover purposes of Graphite Web we have to edit <code>/opt/graphite/webapp/graphite/local_settings.py</code>:</p>
+
+<pre class="sh_sh"><code>CLUSTER_SERVERS = ["192.168.56.101", "192.168.56.102"]</code></pre>
+
+<p>And reload Apache:</p>
+
+<pre class="sh_sh"><code># systemctl reload httpd.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__02_multi" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//02_multi/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Cluster - Multiple Whisper Directories</h1>
+
+<p>It's possible to use different storage directories for each Carbon Cache. We have to adjust the configuration in <code>/opt/graphite/conf/carbon.conf</code> and to restart the Cache daemons.</p>
+
+<pre class="sh_sh"><code>[cache]
+LOCAL_DATA_DIR = /opt/graphite/storage/whisper1/
+
+# /opt/graphite/bin/carbon-cache.py --instance=a stop
+# /opt/graphite/bin/carbon-cache.py --instance=a start
+Starting carbon-cache (instance a)
+
+[cache:b]
+LOCAL_DATA_DIR = /opt/graphite/storage/whisper2/
+
+# /opt/graphite/bin/carbon-cache.py --instance=b stop
+# /opt/graphite/bin/carbon-cache.py --instance=b start
+Starting carbon-cache (instance b)</code></pre>
+
+<p>And also the configuration for Graphite Web in <code>/opt/graphite/webapp/graphite/local_settings.py</code> and reload Apache:</p>
+
+<pre class="sh_sh"><code>STANDARD_DIRS = [ "/opt/graphite/storage/whisper1", \
+"/opt/graphite/storage/whisper2" ]
+
+# systemctl reload httpd.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_graphite_cluster__02_multi" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite_cluster//02_multi/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Multi-Node Cluster with collectd</h1>
+
+<p>The <code>write_graphite</code> plugin of collectd is able to put metrics to all relays, but we have to edit the configuration for that and to restart collectd afterwards.</p>
+
+<pre class="sh_sh"><code>&lt;Plugin write_graphite&gt;
+  &lt;Node "graphing1"&gt;
+    ...
+  &lt;/Node&gt;
+  &lt;Node "graphing2"&gt;
+    Host "192.168.56.102"
+    Port "2003"
+    Protocol "tcp"
+    ReconnectInterval 0
+    LogSendErrors true
+    Prefix "collectd."
+    StoreRates true
+    AlwaysAppendDS false
+    EscapeCharacter "_"
+    SeparateInstances true
+    PreserveSeparator false
+    DropDuplicateFields false
+  &lt;/Node&gt;
+&lt;/Plugin&gt;</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/influxdb//01_influxdb/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>9 InfluxDB</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/influxdb//01_influxdb/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>InfluxDB</h1>
+
+<ul>
+<li>Time series data storage</li>
+<li>SQL like query language</li>
+<li>HTTP(S) API</li>
+<li>Management interface</li>
+<li>Store event data (exceptions, deploys, logins, ...)</li>
+</ul>
+
+<p>Note: Unfortunately Clustering is a feature of InfluxEnterprise only.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>InfluxDB Installation</h1>
+
+<p>InfluxDB provides packages for CentOS:</p>
+
+<pre class="sh_sh"><code># cat &lt;&lt;EOF | sudo tee /etc/yum.repos.d/influxdb.repo
+[influxdb]
+name = InfluxDB Repository - RHEL \$releasever
+baseurl = https://repos.influxdata.com/rhel/\$releasever/\
+\$basearch/stable
+enabled = 1
+gpgcheck = 1
+gpgkey = https://repos.influxdata.com/influxdb.key
+EOF
+
+# yum install influxdb-1.2.4</code></pre>
+
+<p>Note: The repo is already pre-installed on <code>graphing1.localdomain</code>.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>InfluxDB Configuration</h1>
+
+<p>We have to enable the admin user interface in <code>/etc/influxdb/influxdb.conf</code>:</p>
+
+<pre class="sh_sh"><code>[admin]
+  enabled = true</code></pre>
+
+<p>And start InfluxDB:</p>
+
+<pre class="sh_sh"><code># systemctl start influxdb.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/influxdb//01_influxdb/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>InfluxDB Ports</h1>
+
+<p>InfluxDB opens a bunch of ports. Not all of them are used by default, but its good to know what they are good for.</p>
+
+<ul>
+<li>Default ports
+
+<ul>
+<li>
+<code>8083</code>: Admin user interface</li>
+<li>
+<code>8086</code>: HTTP(S) API for client-server communication</li>
+<li>
+<code>8088</code>: RPC service for backup and restore</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/influxdb//01_influxdb/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>InfluxDB Service Plugins</h1>
+
+<p>Service plugins describe methods which are used to feed in data into InfluxDB. All client libraries go through one of these plugins. </p>
+
+<ul>
+<li>HTTP API
+
+<ul>
+<li>Send <code>Post</code> request to with a proper body to InfluxDB to add datapoints to a database.</li>
+<li>Default port: <code>8086</code>
+</li>
+</ul>
+</li>
+<li>Graphite
+
+<ul>
+<li>Support for Carbon protocol, which Graphite uses for receiving metrics.</li>
+</ul>
+</li>
+<li>CollectD
+
+<ul>
+<li>collectd has its own binary protocol to communicate with other collectd nodes.</li>
+<li>Default port: <code>25826</code>
+</li>
+</ul>
+</li>
+<li>OpenTSDB
+
+<ul>
+<li>InfluxDB supports both the telnet and HTTP OpenTSDB protocol.</li>
+<li>Default port: <code>4242</code>
+</li>
+</ul>
+</li>
+<li>UDP
+
+<ul>
+<li>Sending data in JSON format via UDP is supported.</li>
+<li>Default port: <code>8089</code>
+</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide " data-transition="none">
+<div class="content " ref="sections/influxdb//01_influxdb/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>InfluxDB Web Admin Interface</h1>
+
+<p>InfluxDB brings its own webinterface for administration tasks on port 8083. You can create, edit and delete databases. Also data can be explored by using the build in query language.</p>
+
+<p></p>
+<center><img src="./file/sections/influxdb//./_images/influxdb-admin.png" style="width:90%"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/8">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Write Single Points Using HTTP API</h1>
+
+<p>The easiest method for adding datapoints to a InfluxDB database is by using the HTTP API. Most client libraries use this and its easy to build into custom applications.
+Here is an example how you could use InfluxDB as metric database.</p>
+
+<pre class="sh_sh"><code># curl -i -XPOST http://localhost:8086/query \
+--data-urlencode "q=CREATE DATABASE metrics"
+
+# curl -i -XPOST 'http://localhost:8086/write?db=metrics' \
+--data-binary 'cpu_load_short,host=server01,region=us-west \
+value=0.64 1434055562000000000'</code></pre>
+
+<ul>
+<li>measurement: cpu_load_short</li>
+<li>tag keys: host, region</li>
+<li>tag values: server01, us-west</li>
+<li>field key: value</li>
+<li>field value: 0.64</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/influxdb//01_influxdb/9">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>HTTP Repsonses</h1>
+
+<ul>
+<li>
+<strong>2xx</strong>: If your write request received <code>HTTP 204 No Content</code>, it was a success!</li>
+<li>
+<strong>4xx</strong>: InfluxDB could not understand the request.</li>
+<li>
+<strong>5xx</strong>: The system is overloaded or significantly impaired.</li>
+</ul>
+
+<p>Example output after adding points:</p>
+
+<pre class="sh_sh"><code>HTTP/1.1 204 No Content
+Content-Type: application/json
+Request-Id: e28fee07-4cde-11e7-8083-000000000000
+X-Influxdb-Version: 1.2.4
+Date: Fri, 09 Jun 2017 06:43:02 GMT</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/10">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Write Multiple Points Using HTTP API</h1>
+
+<pre class="sh_sh"><code># curl -i -XPOST 'http://localhost:8086/write?db=metrics' \
+--data-binary 'cpu_load_short,host=server02 value=0.67\
+
+cpu_load_short,host=server02,region=us-west \
+value=0.55 1422568543702900257\
+
+cpu_load_short,direction=in,host=server01,region=us-west \
+value=2.0 1422568543702900257'</code></pre>
+
+<p>Note: If points are provided without timestamp, the server's local timestamp is used.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/11">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Query Data Using HTTP API</h1>
+
+<p>The output of queries is returned in JSON.</p>
+
+<pre class="sh_sh"><code># curl -G 'http://localhost:8086/query?pretty=true' \
+--data-urlencode "db=metrics" --data-urlencode "q=SELECT \
+\"value\" FROM \"cpu_load_short\" WHERE \"region\"='us-west'"</code></pre>
+
+<p>Multiple queries can be stacked together with semicolon as delimiter.</p>
+
+<pre class="sh_sh"><code># curl -G 'http://localhost:8086/query?pretty=true' \
+--data-urlencode "db=metrics" --data-urlencode "q=SELECT \
+\"value\" FROM \"cpu_load_short\" WHERE \"region\"='us-west'; \
+SELECT count(\"value\") FROM \"cpu_load_short\" \
+WHERE \"region\"='us-west'"</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/12">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Prepare InfluxDB for collectd</h1>
+
+<p>Both, "CollectD" and "Graphite"-Service Plugins can be used to connect collectd to InfluxDB. In this case we want to use the "CollectD" Service Plugin and enable it in <code>/etc/influxdb/influxdb.conf</code>:</p>
+
+<pre class="sh_sh"><code>[[collectd]]
+  enabled = true
+  bind-address = ":25826"
+  database = "collectd"</code></pre>
+
+<p>After a restart of InfluxDB the <code>collectd</code> database must be created manually:</p>
+
+<pre class="sh_sh"><code># systemctl restart influxdb.service
+
+# curl -i -XPOST http://localhost:8086/query \
+--data-urlencode "q=CREATE DATABASE collectd"</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/13">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Connect collectd to InfluxDB</h1>
+
+<p>InfluxDB opens port 25826 after the restart, so we can connect collectd to send data to InfluxDB and reload the collectd daemon afterwards:</p>
+
+<pre class="sh_sh"><code>&lt;Plugin network&gt;
+  Server "localhost" "25826"
+&lt;/Plugin&gt; 
+
+# systemctl restart collectd.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/14">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Queries (1/2)</h1>
+
+<p>Return a list of series for the specified database:</p>
+
+<pre><code>SHOW SERIES</code></pre>
+
+<p>Return a list of measurements:</p>
+
+<pre class="sh_sh"><code>SHOW MEASUREMENTS</code></pre>
+
+<p>Return a list of tag keys:</p>
+
+<pre class="sh_sh"><code>SHOW TAG KEYS</code></pre>
+
+<p>Load of one server:</p>
+
+<pre class="sh_sql"><code>SELECT "time","host","value" FROM collectd.load_shortterm
+
+SELECT * FROM load_shortterm
+  WHERE "host" = 'graphing1.localdomain'</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/15">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Queries (2/2)</h1>
+
+<p>Select timeframe:</p>
+
+<pre class="sh_sql"><code>SELECT * FROM load_shortterm WHERE time &gt; now() - 3m
+
+SELECT * FROM load_shortterm
+  WHERE time &lt; '2017-05-18 12:50' 
+  WHERE time &gt; '2017-05-18 12:50'</code></pre>
+
+<div class="handouts">
+
+<hr>
+
+<p>Query Language: <a href="https://docs.influxdata.com/influxdb/v1.2/query_language/">https://docs.influxdata.com/influxdb/v1.2/query_language/</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/influxdb//01_influxdb/16">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Query Screenshot</h1>
+
+<p></p>
+<center><img src="./file/sections/influxdb//./_images/influxdb-query.png" style="width:800px"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide smbullets small" data-transition="none">
+<div class="content smbullets small" ref="sections/influxdb//01_influxdb/17">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Functions</h1>
+
+<p>InfluxDB supports a couple of methods to aggregate, select, transform and predict data:</p>
+
+<ul>
+<li>
+<strong>Aggregations:</strong><br>
+COUNT(), DISTINCT(), INTEGRAL(), MEAN(), MEDIAN(), MODE(), SPREAD(), STDDEV(), SUM() </li>
+<li>
+<strong>Selectors:</strong><br>
+BOTTOM(), FIRST(), LAST(), MAX(), MIN(), PERCENTILE(), SAMPLE(), TOP()</li>
+<li>
+<strong>Transformations:</strong><br>
+CEILING(), CUMULATIVE_SUM(), DERIVATIVE(), DIFFERENCE(), ELAPSED(), FLOOR(), HISTOGRAM(), MOVING_AVERAGE(), NON_NEGATIVE_DERIVATIVE()</li>
+<li>
+<strong>Predictors:</strong><br>
+HOLT_WINTERS()</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Functions: <a href="https://docs.influxdata.com/influxdb/v1.2/query_language/functions/">https://docs.influxdata.com/influxdb/v1.2/query_language/functions/</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_influxdb__01_influxdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb//01_influxdb/18">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Delete data</h1>
+
+<p>Queries can also be used to delete data. The <code>delete</code> statement lets you locate datapoints by metric name and timeframe.</p>
+
+<pre class="sh_sh"><code>DELETE FROM load_shortterm
+  WHERE time &gt; now() - 3m</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_opentsdb__01_opentsdb" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/opentsdb//01_opentsdb/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>10 OpenTSDB</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_opentsdb__01_opentsdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/opentsdb//01_opentsdb/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>OpenTSDB</h1>
+
+<p>OpenTSDB is a time series database based on Apaches HBase. With this underlying technology it is possible to distribute and scale data across a big amount of servers.</p>
+
+<ul>
+<li>Time Series Daemon (TSD)
+
+<ul>
+<li>One or multiple daemons that talk to HBase</li>
+<li>TSDs are independent from each other</li>
+</ul>
+</li>
+<li>HTTP API
+
+<ul>
+<li>User do not need to talk to HBase</li>
+</ul>
+</li>
+<li>Telnet interface</li>
+<li>Simple built-in GUI</li>
+<li>Commandline Tools</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="http://opentsdb.net">http://opentsdb.net</a><br>
+Docs: <a href="http://opentsdb.net/docs/build/html">http://opentsdb.net/docs/build/html</a><br>
+HBase: <a href="http://hbase.apache.org">http://hbase.apache.org</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_opentsdb__01_opentsdb" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/opentsdb//01_opentsdb/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>OpenTSDB Concept</h1>
+
+<p></p>
+<center><img src="./file/sections/opentsdb//./_images/opentsdb-concept.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_opentsdb__01_opentsdb" class="slide small" data-transition="none">
+<div class="content small" ref="sections/opentsdb//01_opentsdb/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>OpenTSDB Metrics</h1>
+
+<p>OpenTSDB uses some kind of Graphites metric path combined with tags to identify datapoints.</p>
+
+<pre class="sh_sh"><code>&lt;metric&gt; &lt;timestamp&gt; &lt;value&gt; &lt;tagk1=tagv1 ... tagkN=tagvN]
+sys.cpu.user 1356998400 42.5 host=webserver01 cpu=0</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_opentsdb__01_opentsdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/opentsdb//01_opentsdb/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>OpenTSDB Collectors</h1>
+
+<p>To collect data several clients are available:</p>
+
+<ul>
+<li>TCollector<br>
+<a href="http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html">http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html</a>
+</li>
+<li>SCollector (API v2)<br>
+<a href="http://bosun.org/scollector/">http://bosun.org/scollector/</a>
+</li>
+<li>CollectD<br>
+<a href="https://github.com/auxesis/collectd-opentsdb">https://github.com/auxesis/collectd-opentsdb</a>
+</li>
+<li>Icinga 2<br>
+<a href="https://www.icinga.com">https://www.icinga.com</a>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_opentsdb__01_opentsdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/opentsdb//01_opentsdb/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>OpenTSDB Client Libraries</h1>
+
+<p>For communication with OpenTSDB multiple client libraries exist. Some of them can just pull data where other may read and write metrics.</p>
+
+<ul>
+<li>R (read) </li>
+<li>Erlang (write)</li>
+<li>Ruby (read/write)</li>
+<li>Go (read/write) </li>
+<li>Python (write)</li>
+<li>vert.x (write)</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_opentsdb__01_opentsdb" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/opentsdb//01_opentsdb/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>OpenTSDB Frontends</h1>
+
+<p>Beside the simple built-in GUI there are some other webinterfaces for OpenTSDB dashboards.</p>
+
+<ul>
+<li>Grafana<br>
+<a href="http://grafana.org">http://grafana.org</a>
+</li>
+<li>TSDash<br>
+<a href="https://github.com/facebookarchive/tsdash">https://github.com/facebookarchive/tsdash</a>
+</li>
+<li>OpenTSDB Dashboard<br>
+<a href="https://github.com/turn/opentsdb-dashboard">https://github.com/turn/opentsdb-dashboard</a>
+</li>
+<li>Status Wolf<br>
+<a href="https://github.com/box/StatusWolf">https://github.com/box/StatusWolf</a>
+</li>
+<li>Metrilyx<br>
+<a href="https://github.com/Ticketmaster/metrilyx-2.0">https://github.com/Ticketmaster/metrilyx-2.0</a>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__00_title" class="slide subsection" data-transition="none">
+<div class="content subsection" ref="sections/integrations//00_title">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>11 Integrations</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/integrations//01_icinga/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>11.1 Icinga</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/integrations//01_icinga/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Icinga</h1>
+
+<p>Icinga is an open source tool for active monitoring. It executes checks and evaluates results to trigger notifications or events. A spin-off product of these checks are performance data.</p>
+
+<ul>
+<li>Checks run periodically</li>
+<li>Checks can be
+
+<ul>
+<li>disk, load, memory, cpu, processes, ...</li>
+<li>VMWare, Microsoft, Dell, HP, ...</li>
+<li>MySQL, PostgreSQL, Apache2, NginX, ...</li>
+<li>Many more</li>
+</ul>
+</li>
+<li>Full compatibility to Nagios plugins</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/integrations//01_icinga/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Forwarding Data</h1>
+
+<p>One of Icinga 2s key features is the forwarding of stuff. Nearly any data can be forwarded to one or multiple backends.</p>
+
+<ul>
+<li>
+<p>Forward</p>
+
+<ul>
+<li>Performance Data</li>
+<li>Check results</li>
+<li>Thresholds</li>
+<li>Logs</li>
+</ul>
+</li>
+<li>
+<p>Forward to</p>
+
+<ul>
+<li><strong>Graphite</strong></li>
+<li><strong>OpenTSDB</strong></li>
+<li><strong>InfluxDB</strong></li>
+<li>Greylog (gelf)</li>
+<li>Logstash (gelf)</li>
+<li>PNP4Nagios (perfdata)</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/integrations//01_icinga/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Installation</h1>
+
+<p>There are repositories and packages for Icinga under <a href="http://packages.icinga.com">http://packages.icinga.com</a></p>
+
+<ul>
+<li>Debian<br>
+<a href="http://packages.icinga.com/debian">http://packages.icinga.com/debian</a>
+</li>
+<li>Ubuntu<br>
+ppa:formorer/icinga</li>
+<li>RedHat/CentOS<br>
+<a href="http://packages.icinga.com/epel/ICINGA-release.repo">http://packages.icinga.com/epel/ICINGA-release.repo</a>
+</li>
+<li>Fedora<br>
+<a href="http://packages.icinga.com/fedora/ICINGA-release.repo">http://packages.icinga.com/fedora/ICINGA-release.repo</a>
+</li>
+<li>SLES 11<br>
+<a href="http://packages.icinga.com/SUSE/ICINGA-release-11.repo">http://packages.icinga.com/SUSE/ICINGA-release-11.repo</a>
+</li>
+<li>SLES 12<br>
+<a href="http://packages.icinga.com/SUSE/ICINGA-release.repo">http://packages.icinga.com/SUSE/ICINGA-release.repo</a>
+</li>
+<li>openSUSE<br>
+<a href="http://packages.icinga.com/openSUSE/ICINGA-release.repo">http://packages.icinga.com/openSUSE/ICINGA-release.repo</a>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small smbullets noprint" data-transition="none">
+<div class="content small smbullets noprint" ref="sections/integrations//01_icinga/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Training Environment</h1>
+
+<p>One of your training virtual machines already includes the following installation:</p>
+
+<ul>
+<li>Icinga 2
+
+<ul>
+<li>Monitoring plugins</li>
+<li>IDO support (MariaDB Database)</li>
+</ul>
+</li>
+<li>Icinga Web 2</li>
+</ul>
+
+<p></p>
+<center><img src="./file/sections/integrations//./_images/icinga2-installation-overview.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/integrations//01_icinga/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Icinga Web 2</h1>
+
+<p>Icinga Web 2 is a webinterface for Icinga. You can view the current state of your services and check out historical data.</p>
+
+<ul>
+<li>Create dashboards</li>
+<li>Current and historical states of services</li>
+<li>Groups</li>
+<li>Contacts</li>
+<li>Acknowledge problems</li>
+<li>Set downtimes</li>
+<li>Comments</li>
+<li>Reschedule checks</li>
+<li>Reporting</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/integrations//01_icinga/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Icinga Web 2</h1>
+
+<p>Icinga Web 2 is available on "graphing1.localdomain" under "/icingaweb2" with user "icingaadmin" and password "icinga".</p>
+
+<p></p>
+<center><img src="./file/sections/integrations//./_images/icingaweb2.png" style="width:60%"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//01_icinga/8">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Icinga 2 Graphite Feature</h1>
+
+<p>Every part of Icinga 2 is a module, also called feature. To add Graphite support to Icinga 2 you need to enable and configure the proper feature.</p>
+
+<pre class="sh_sh"><code># icinga2 feature list
+# icinga2 feature enable graphite</code></pre>
+
+<p>Edit <code>/etc/icinga2/features-enabled/graphite.conf</code>. The target host can be either Graphite or InfluxDB with Graphite input plugin.</p>
+
+<pre class="sh_sh"><code>object GraphiteWriter "graphite" {
+  host = "127.0.0.1"
+  port = 2003
+
+  enable_send_thresholds = true // required
+  enable_send_metadata = true // optional
+}</code></pre>
+
+<p>Validate and start Icinga 2:</p>
+
+<pre class="sh_sh"><code># icinga2 daemon -C
+# systemctl start icinga2.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//01_icinga/9">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Icinga 2 Storage Schema</h1>
+
+<p>Icinga 2 provides a storage schema with use for Graphite. Keep in mind that storage schemas are applied from the top to the bottom and the first match wins. How your storage schema looks like depends on your check intervals. By default the check interval is set to 1 minute.</p>
+
+<pre class="sh_sh"><code>...
+
+[icinga2_internals]
+pattern = ^icinga2\..*\.metadata\.
+retentions = 1m:7d
+
+[icinga2_default]
+pattern = ^icinga2\.
+retentions = 1m:2d,5m:10d,30m:90d,360m:4y
+
+...</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//01_icinga/10">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Add a Host</h1>
+
+<p>For testing purposes you can add any host to your Icinga 2 configuration. The <code>ping</code> check is appropriate for testing the Graphite feature and is enabled by default on each host.</p>
+
+<p>Edit <code>/etc/icinga2/conf.d/hosts.conf</code> and add a new host:</p>
+
+<pre class="sh_sh"><code>object Host "netways.de" {
+  import "generic-host"
+  address = "netways.de"
+}</code></pre>
+
+<p>After configuration changes Icinga 2 needs to be reloaded</p>
+
+<pre class="sh_sh"><code># systemctl reload icinga2.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/integrations//01_icinga/11">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphing</h1>
+
+<p>Many of the Icinga plugins provide configured thresholds in addition to the performance counters. This is very usefull when creating graphs using this data.</p>
+
+<p></p>
+<center><img src="./file/sections/integrations//./_images/icinga2-grafana.png"></center>
+
+<p>With graphs that also show thresholds one can see occuring problems on first sight.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/integrations//01_icinga/12">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Modules for Icinga Web 2</h1>
+
+<p>Icinga Web 2 can be extended with so called "modules". There are some modules available for the integration of Graphite and Grafana.</p>
+
+<p>Here's a screenshot of the current state of the Grafana module:</p>
+
+<p></p>
+<center><img src="./file/sections/integrations//./_images/grafana-module.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//01_icinga/13">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Grafana Module for Icinga Web 2</h1>
+
+<p>The best module for Grafana is provided from GitHub user "mikesch-mp" and can be installed via git:</p>
+
+<pre class="sh_sh"><code># cd /usr/share/icingaweb2/modules/
+# git clone https://github.com/Mikesch-mp/\
+icingaweb2-module-grafana.git grafana</code></pre>
+
+<p>It must be explicitly enabled and needs a directory to store its configuration:</p>
+
+<pre class="sh_sh"><code># icingacli module enable grafana
+# mkdir /etc/icingaweb2/modules/grafana
+# chown apache:icingaweb2 /etc/icingaweb2/modules/grafana</code></pre>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://github.com/Mikesch-mp/icingaweb2-module-grafana">https://github.com/Mikesch-mp/icingaweb2-module-grafana</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//01_icinga/14">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Configuration of Grafana Module</h1>
+
+<p>The Grafana module provides two default dashboards <code>base-metrics.json</code> and <code>icinga2-default.json</code> which have to be imported into Grafana.</p>
+
+<p>After that Icinga Web 2 needs a configuration in order to use Grafana as backend for the module in <code>/etc/icingaweb2/modules/grafana/config.ini</code>:</p>
+
+<pre class="sh_sh"><code>[grafana]
+host = 192.168.56.101:3000
+datasource = "graphite"
+username = "admin"
+password = "admin"
+accessmode = "proxy" </code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/integrations//01_icinga/15">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graph Monitoring</h1>
+
+<p>Icinga can be used to monitor nearly anything. It goes without saying that there is a way you can monitor also your graphs with it.</p>
+
+<ul>
+<li>
+<code>check_graphite</code> to check graphs</li>
+<li>Set any metric path</li>
+<li>Set thresholds</li>
+<li>Set timeframe</li>
+<li>Apply function on target metric</li>
+</ul>
+
+<p>Note: The <code>check_graphite</code> plugin and its dependency <code>rubygem-rest-client</code> are already pre-installed on <code>graphing1.localdomain</code>.</p>
+
+<p>To suppress Ruby warnings you should set '<code>$VERBOSE = nil</code>' in the <code>check_graphite</code> plugin on newer operating systems.</p>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://github.com/obfuscurity/nagios-scripts">https://github.com/obfuscurity/nagios-scripts</a><br>
+Docs: <a href="http://obfuscurity.com/2012/05/Polling-Graphite-with-Nagios">http://obfuscurity.com/2012/05/Polling-Graphite-with-Nagios</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__01_icinga" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/integrations//01_icinga/16">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graph Monitoring</h1>
+
+<p>Add a new service to one of your hosts to check the load of a server in <code>/etc/icinga2/conf.d/services.conf</code>. Ideally the datapoints you are checking do not come from Icinga itself. The CheckCommand for the <code>check_graphite</code> plugin is preconfigured on your training environment.</p>
+
+<pre class="sh_sh"><code>apply Service "graphite-load" {
+  import "generic-service"
+
+  check_command = "graphite"
+
+  vars.graphite_url = "http://graphite"
+  vars.graphite_metric = "collectd.graphing1.load.
+    load.shortterm"
+  vars.graphite_warning = 1
+  vars.graphite_critical = 2
+  vars.graphite_duration = 5
+
+  assign where host.name == "graphing1.localdomain"
+}</code></pre>
+
+<p>Icinga 2 needs a reload:</p>
+
+<pre class="sh_sh"><code># systemctl reload icinga2.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/integrations//02_logstash/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>11.2 Logstash</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/integrations//02_logstash/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Logstash</h1>
+
+<ul>
+<li>Receive events from various sources
+
+<ul>
+<li>Syslog</li>
+<li>Windows eventlog</li>
+<li>E-mail</li>
+<li>SNMP traps</li>
+</ul>
+</li>
+<li>Transform events
+
+<ul>
+<li>Transform timestamps</li>
+<li>Resolve DNS names</li>
+<li>Resolve GeoIP information</li>
+<li>And so on</li>
+</ul>
+</li>
+<li>Forward to various targets
+
+<ul>
+<li>Elasticsearch</li>
+<li>Icinga (2)</li>
+<li>E-mail</li>
+<li><strong>Graphite</strong></li>
+</ul>
+</li>
+<li>Can not store events</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="http://logstash.net">http://logstash.net</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/integrations//02_logstash/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Logstash</h1>
+
+<p>Logstash is a "pipe on steroids". Every event comes in via a input, goes through all filters and is sent through all outputs.</p>
+
+<p><img src="./file/sections/integrations//./_images/graphite-logstash.png" style="width:120%"></p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/integrations//02_logstash/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Example Inputs, Filters and Outputs</h1>
+
+<ul>
+<li>Input
+
+<ul>
+<li><code>syslog</code></li>
+<li><code>eventlog</code></li>
+<li>
+<code>file</code> (every line is one event)</li>
+<li>
+<code>exec</code> (run an executable and use output as event)</li>
+</ul>
+</li>
+<li>Filter
+
+<ul>
+<li>
+<code>grok</code> (predefined regex patterns)</li>
+<li><code>dns</code></li>
+<li><code>geoip</code></li>
+<li><code>throttle</code></li>
+</ul>
+</li>
+<li>Output
+
+<ul>
+<li>Elasticsearch</li>
+<li>Redis</li>
+<li>Logstash</li>
+<li>Icinga (2)</li>
+<li>Graphite</li>
+</ul>
+</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//02_logstash/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Split into fields</h1>
+
+<p>Before:</p>
+
+<pre><code>192.168.1.10 – guest [04/Dec/2013:08:54:23 +0100] "POST 
+/icinga-web/web/api/jsonHTTP/1.1" 200 788 
+"https://icinga-private.demo.netways.de/icinga-web/
+modules/web/portal" "Mozilla/5.0 (X11; Linux x86_64;)"
+</code></pre>
+
+<p>After:</p>
+
+<pre><code>"http_clientip"    : "192.168.1.10",
+"http_auth"        : "guest",
+"timestamp"        : "04/Dec/2013:08:54:23 +0100",
+"http_verb"        : "POST",
+"http_request"     : "/icinga-web/web/api/json",
+"http_httpversion" : "1.1",
+"http_response"    : "200",
+"http_bytes"       : "788",
+"http_referrer"    : "https://graphite.demo.netways...",
+"http_agent"       : "Mozilla/5.0 (X11; Linux x86_64;)"
+</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//02_logstash/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Logstash Installation</h1>
+
+<p>Elastic, the company behind Logstash, provides repositories for all common Linux distributions.</p>
+
+<pre class="sh_sh"><code># rpm --import https://artifacts.elastic.co/\
+GPG-KEY-elasticsearch
+
+# cat &lt;&lt;EOF | sudo tee /etc/yum.repos.d/logstash.repo
+[logstash-5.x]
+name=Elastic repository for 5.x packages
+baseurl=https://artifacts.elastic.co/packages/5.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+EOF
+
+# yum install logstash-5.4.1</code></pre>
+
+<p>Note: <code>java-openjdk</code> and the repo are already pre-installed on <code>graphing1.localdomain</code>.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide smbullets" data-transition="none">
+<div class="content smbullets" ref="sections/integrations//02_logstash/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Goal</h1>
+
+<ul>
+<li>Read Apache logfiles</li>
+<li>Filter properly</li>
+<li>Write <code>bytes</code> and <code>returncode</code> to Graphite</li>
+</ul>
+
+<p>Configuration files will be splitted into seperate files for each section.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//02_logstash/8">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>File Input</h1>
+
+<p>To read logfiles we need a simple <code>file</code> input.</p>
+
+<p>File: <code>/etc/logstash/conf.d/input.conf</code></p>
+
+<pre class="sh_sh"><code>input {
+  file {
+    path =&gt; '/opt/graphite/storage/log/webapp/access.log'
+  }
+}</code></pre>
+
+<p>Logstash doesn't provide any default configuration. For proper debugging it can be started manually:</p>
+
+<pre class="sh_sh"><code># /usr/share/logstash/bin/logstash -f [configuration-file]</code></pre>
+
+<p>In our case:</p>
+
+<pre class="sh_sh"><code># /usr/share/logstash/bin/logstash --path.settings \
+"/etc/logstash" -f /etc/logstash/conf.d/input.conf</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//02_logstash/9">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>File Input Options</h1>
+
+<p>The <code>file</code> input supports some more useful options. Here are the most handy settings:</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delimiter</td>
+<td>Set the delimiter of newlines. By default this is '\n'.</td>
+</tr>
+<tr>
+<td>discover_interval</td>
+<td>How often to search for new files when globs are used in <code>path</code>.</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>Exclude specific files. Only useful if <code>path</code> includes glob(s).</td>
+</tr>
+<tr>
+<td>sincedb_path</td>
+<td>Logstash can remember the last position it has read. This is helpful when you need to restart Logstash. The sincedb is a file that stores these position information</td>
+</tr>
+<tr>
+<td>start_position</td>
+<td>Choose where to start reading files, at the beginning or at the end. By default Logstash will read from the beginning.</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//02_logstash/10">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Grok Filter</h1>
+
+<p>The <code>grok</code> filter comes with plenty of preconfigured patterns. One of these pattern can split Apache logs into seperate fields.</p>
+
+<p>File: <code>/etc/logstash/conf.d/filter.conf</code></p>
+
+<pre class="sh_sh"><code>filter {
+  grok {
+    pattern =&gt; "%{COMMONAPACHELOG}"
+  }
+
+  date {
+    match =&gt; ["timestamp", "dd/MM/yyyy:HH:mm:ss Z"]
+    remove_field =&gt; ["timestamp"]
+  }
+}</code></pre>
+
+<p>Logstash has its own <code>@timestamp</code> field. With the <code>date</code> filter we overwrite this implicit timestamp with the timestamp of the log entry.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//02_logstash/11">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Grok Patterns</h1>
+
+<p>The <code>grok</code> filter plugin brings plenty of preconfigured regex patterns. Those built-int patterns can also be extended by your own. This table lists a small amount of common patterns, just to give you an overview. </p>
+
+<table>
+<thead>
+<tr>
+<th> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SYSLOGBASE</td>
+<td>COMMONAPACHELOG</td>
+</tr>
+<tr>
+<td>COMBINEDAPACHELOG</td>
+<td>SYSLOGTIMESTAMP</td>
+</tr>
+<tr>
+<td>SYSLOGFACILITY</td>
+<td>DATESTAMP_RFC822</td>
+</tr>
+<tr>
+<td>DATESTAMP_RFC2822</td>
+<td>IPV4</td>
+</tr>
+<tr>
+<td>IPV6</td>
+<td>MONTH</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>HOUR</td>
+</tr>
+<tr>
+<td>MINUTE</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<div class="handouts">
+
+<hr>
+
+<p>Grok Debugger: <a href="https://grokdebug.herokuapp.com/">https://grokdebug.herokuapp.com/</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//02_logstash/12">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Graphite Output</h1>
+
+<p>Logstash brings a built-in plugin to forward filtered logs to Graphite. </p>
+
+<p>File: <code>/etc/logstash/conf.d/output.conf</code></p>
+
+<pre class="sh_sh"><code>output {
+  graphite {
+    host =&gt; "127.0.0.1"
+    port =&gt; 2003
+    metrics_format =&gt; "logstash.*"
+    metrics =&gt; {
+        "%{host}.apache_bytes"    =&gt; "%{bytes}"
+        "%{host}.apache_response" =&gt; "%{response}"
+    }
+  }
+}</code></pre>
+
+<p>Start Logstash:</p>
+
+<pre class="sh_sh"><code># systemctl start logstash.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__02_logstash" class="slide small noprint" data-transition="none">
+<div class="content small noprint" ref="sections/integrations//02_logstash/13">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>The Problem</h1>
+
+<p>Depending on website requests, logs arrive in an irregular manner at Logstash which leads to irregular updates in Whisper files. If one slot in a Whisper archive represents 10 seconds, updates to this Whisper file will only be taken every 10 seconds. The result is data loss.</p>
+
+<p></p>
+<center><img src="./file/sections/integrations//./_images/graphite-whisper-empty-slots.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide subsectionnonum" data-transition="none">
+<div class="content subsectionnonum" ref="sections/integrations//03_statsd/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>11.3 StatsD</h1>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small smbullets" data-transition="none">
+<div class="content small smbullets" ref="sections/integrations//03_statsd/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>StatsD</h1>
+
+<p>StatsD acts like a front-end proxy to Graphite. The major task of StatsD is to listen for metrics and periodically flush results to Graphite. Values of metrics that are being sent to StatsD may change during the time between receivement and forward to Graphite.</p>
+
+<ul>
+<li>Implementations in other languages
+
+<ul>
+<li>Python, C, Go, Ruby, Perl, Clojure</li>
+</ul>
+</li>
+</ul>
+
+<h2>Key concept:</h2>
+
+<ul>
+<li>Buckets
+
+<ul>
+<li>This represents one metric.</li>
+</ul>
+</li>
+<li>Values
+
+<ul>
+<li>The value of a metric. This may change during the duration of the metric in StatsD.</li>
+</ul>
+</li>
+<li>Flush
+
+<ul>
+<li>Writing collected data to a backend.</li>
+</ul>
+</li>
+</ul>
+
+<div class="handouts">
+
+<hr>
+
+<p>Project: <a href="https://github.com/etsy/statsd">https://github.com/etsy/statsd</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide noprint" data-transition="none">
+<div class="content noprint" ref="sections/integrations//03_statsd/3">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>StatsD and Graphite</h1>
+
+<p></p>
+<center><img src="./file/sections/integrations//./_images/statsd-graphite.png"></center>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/4">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>StatsD Installation</h1>
+
+<p>StatsD requires NodeJS to run, this requirement is automatically fullfilled during the package installation:</p>
+
+<pre class="sh_sh"><code># yum install statsd</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/5">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Configuration</h1>
+
+<p>For a simple environment you need only a small piece of configuration. For everything else default settings are sufficient.</p>
+
+<p>Make sure that <code>/etc/statsd/config.js</code> contains the following content:</p>
+
+<pre class="sh_ruby"><code>{
+  graphitePort: 2003
+, graphiteHost: "localhost"
+, port: 8125
+, backends: [ "./backends/graphite" ]
+, graphite: {
+    legacyNamespace: false
+  }
+}</code></pre>
+
+<p>To see all available settings, take a look into <code>exampleConfig.js</code>.</p>
+
+<p>Run StatsD:</p>
+
+<pre class="sh_sh"><code># systemctl start statsd.service</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/6">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Metric Types (1/3)</h1>
+
+<p>StatsD supports multiple types of metrics. Depending on the metric type datapoints a different aggregation method is applied.</p>
+
+<h2>Counting</h2>
+
+<p>A simple counter that adds a value to a bucket. On each flush interval the bucket gets written to Graphite and reset to 0.</p>
+
+<pre class="sh_sh"><code>gitcommits:1|c</code></pre>
+
+<h2>Timing</h2>
+
+<p>The timing type comes in when measuring how long something took. For timers StatsD calculates automatically percentiles, average, standard deviation, sum, lower and upper bounds for each flush interval.</p>
+
+<pre class="sh_sh"><code>request:480|ms</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/7">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Metric Types (2/3)</h1>
+
+<h2>Gauge</h2>
+
+<p>Arbitrary values that describe the current state of something. Gauge values are recorded as they are. By default, if a gauge metric does not change, StatsD will send the last value again to Graphite. This behaviour can be changed in the configuration. Gauge values can be increased or decreased instead of setting fixed values.</p>
+
+<pre class="sh_sh"><code>processes:250|g
+processes:-20|g
+processes:+10|g</code></pre>
+
+<h2>Sets</h2>
+
+<p>When defining a set, StatsD counts all occurances of unique values between flush times. For example one could count the number of unique users logged in.</p>
+
+<pre class="sh_sh"><code>userid:200|s</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/8">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Metric Types (3/3)</h1>
+
+<h2>Multi-Metric Packets</h2>
+
+<p>Multiple metrics can be sent to StatsD at once by seperating them with a newline. The size of one packet should not exceed the payload limit of your networks MTU.</p>
+
+<pre class="sh_sh"><code>gitcommits:1|c\nprocesses:250|g\nresponse:200|s</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/9">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Storage Schema</h1>
+
+<p>The default flush interval of StatsD is 10 seconds. A proper storage schema needs to be created to handle this.</p>
+
+<p>Edit <code>/opt/graphite/conf/storage-schemas.conf</code></p>
+
+<pre class="sh_ruby"><code>[statsd]
+pattern = ^stats
+retentions = 10s:1d,1m:7d</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/10">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Storage Aggregation</h1>
+
+<p>Since StatsD supports several aggregation methods those need to be handled by Graphite too.</p>
+
+<p>Add the following to <code>/opt/graphite/conf/storage-aggregation.conf</code>. Keep in mind that patterns are applied from top to bottom and first match wins. You should keep the following rules above other rules.</p>
+
+<pre class="sh_ruby"><code>[min_statsd]
+pattern = \.lower$
+xFilesFactor = 0.1
+aggregationMethod = min
+
+[max_statsd]
+pattern = \.upper(_\d+)?$
+xFilesFactor = 0.1
+aggregationMethod = max
+
+[sum_statsd]
+pattern = \.sum$
+xFilesFactor = 0
+aggregationMethod = sum
+
+[count_legacy]
+pattern = ^stats_counts.*
+xFilesFactor = 0
+aggregationMethod = sum</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/11">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Feed in your data</h1>
+
+<p>Everything should be ready now to accept your data. Before starting you should clear Whisper files that may have been created automatically with wrong storage schemas.</p>
+
+<pre class="sh_sh"><code># rm -rf /opt/graphite/storage/whisper/stats*</code></pre>
+
+<p>Feeding data through StatsD to Graphite as simple as writing directly to Graphite.</p>
+
+<pre class="sh_sh"><code># echo "mycounter:5|c" | nc -u -w1 localhost 8125
+
+# echo "mygauge:230|g" | nc -u -w1 localhost 8125</code></pre>
+
+<p>By repeating the counter within the flush interval will increase the resulting counter. The gauge value will be forwarded as is.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/12">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Admin Interface</h1>
+
+<p>StatsD brings a simple TCP interface. It can be used to monitor a running StatsD server.</p>
+
+<p>To interact with it, at first connect</p>
+
+<pre class="sh_sh"><code># nc localhost 8126</code></pre>
+
+<p>Available commands:</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stats</td>
+<td>Some stats about the running server.</td>
+</tr>
+<tr>
+<td>counters</td>
+<td>A dump of all the current counters.</td>
+</tr>
+<tr>
+<td>gauges</td>
+<td>A dump of all the current gauges.</td>
+</tr>
+<tr>
+<td>timers</td>
+<td>A dump of the current timers.</td>
+</tr>
+<tr>
+<td>delcounters</td>
+<td>Delete a counter or folder of counters.</td>
+</tr>
+<tr>
+<td>delgauges</td>
+<td>Delete a gauge or folder of gauges.</td>
+</tr>
+<tr>
+<td>deltimers</td>
+<td>Delete a timer or folder of timers.</td>
+</tr>
+<tr>
+<td>health</td>
+<td>A way to set the health status of statsd.</td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/13">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Client Libraries</h1>
+
+<p>For all common programing languages libraries exist that enable you to talk to StatsD and send datapoints. In addition, some applications support StatsD natively or with a plugin.</p>
+
+<table>
+<thead>
+<tr>
+<th> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Ruby</td>
+</tr>
+<tr>
+<td>Perl</td>
+<td>PHP</td>
+</tr>
+<tr>
+<td>Clojure</td>
+<td>Io</td>
+</tr>
+<tr>
+<td>C</td>
+<td>CPP</td>
+</tr>
+<tr>
+<td>.NET</td>
+<td>Go</td>
+</tr>
+<tr>
+<td>Apache</td>
+<td>Varnish</td>
+</tr>
+<tr>
+<td>PowerShell</td>
+<td>Browser</td>
+</tr>
+<tr>
+<td>Objective-C</td>
+<td>ActionScript</td>
+</tr>
+<tr>
+<td>Wordpress</td>
+<td>Drupal</td>
+</tr>
+<tr>
+<td>Haskell</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/14">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Logstash</h1>
+
+<p>Like for Graphite, Logstash brings a built-in output plugin also for StatsD. Here is an example on how to use it for Apache logs we covered in the Logstash section.</p>
+
+<p>File: <code>/etc/logstash/conf.d/filter.conf</code></p>
+
+<pre class="sh_ruby"><code>output {
+  statsd {
+    host =&gt; "127.0.0.1"
+    port =&gt; 8125
+    increment  =&gt; ["apache.response.%{response}"]
+    count =&gt; { "apache.bytes" =&gt; "%{bytes}" }
+  } 
+}</code></pre>
+
+<p>Restart Logstash:</p>
+
+<pre class="sh_sh"><code># service logstash restart</code></pre>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="sections_integrations__03_statsd" class="slide small" data-transition="none">
+<div class="content small" ref="sections/integrations//03_statsd/15">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Third Party Backends</h1>
+
+<p>Beside the default Graphite backend, there are also several other backends which are not maintained by the StatsD project.</p>
+
+<table>
+<thead>
+<tr>
+<th> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amqp</td>
+<td>librato</td>
+</tr>
+<tr>
+<td>atsd</td>
+<td>mongo</td>
+</tr>
+<tr>
+<td>aws-cloudwatch</td>
+<td>monitis</td>
+</tr>
+<tr>
+<td>node-bell</td>
+<td>netuitive</td>
+</tr>
+<tr>
+<td>couchdb</td>
+<td><strong>opentsdb</strong></td>
+</tr>
+<tr>
+<td>datadog</td>
+<td>socket.io</td>
+</tr>
+<tr>
+<td>elasticsearch</td>
+<td>stackdriver</td>
+</tr>
+<tr>
+<td>ganglia</td>
+<td>statsd</td>
+</tr>
+<tr>
+<td>hosted graphite</td>
+<td>statsd http</td>
+</tr>
+<tr>
+<td><strong>influxdb</strong></td>
+<td>statsd aggregation</td>
+</tr>
+<tr>
+<td>instrumental</td>
+<td>warp10</td>
+</tr>
+<tr>
+<td>jut</td>
+<td> zabbix</td>
+</tr>
+<tr>
+<td>leftronic</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<div class="handouts">
+
+<hr>
+
+<p>Links to all backends: <a href="https://github.com/etsy/statsd/blob/master/docs/backend.md">https://github.com/etsy/statsd/blob/master/docs/backend.md</a></p>
+
+</div>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="global_Post_01_Feedback" class="slide noprint center" data-transition="none">
+<div class="content noprint center" ref="global/Post/01_Feedback">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Feedback</h1>
+
+<p>We look forward to your feedback</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="global_Post_02_Thanks" class="slide noprint center" data-transition="none">
+<div class="content noprint center" ref="global/Post/02_Thanks">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Thank You</h1>
+
+<p>Thank you for your attention!</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="global_Post_03_Contribute" class="slide noprint center" data-transition="none">
+<div class="content noprint center" ref="global/Post/03_Contribute/1">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Contributing</h1>
+
+<p>Contribute to the Graphite + Grafana training on <a href="https://github.com/NETWAYS/graphing-training">Github</a> to make it even better.</p>
+
+<p>Material is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.</p>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+<div id="global_Post_03_Contribute" class="slide noprint smbullets" data-transition="none">
+<div class="content noprint smbullets" ref="global/Post/03_Contribute/2">
+<div id="net-header">
+    <div class="logo"></div>
+</div>
+
+<h1>Contributors</h1>
+
+<ul>
+<li>Markus Waldmüller</li>
+<li>Blerim Sheqa</li>
+</ul>
+
+<div id="net-footer">
+    <p id="footer-left">Graphite + Grafana Training</p>
+    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+</div>
+</div>
+<div id="pauseScreen">
+  PAUSED
+</div>
+
+</body>
+</html>
