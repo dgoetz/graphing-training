@@ -10,7 +10,7 @@ In addition to the sources you can find the rendered material on
 [netways.github.io](https://netways.github.io/graphing-training)
 
 * [Presentation](https://netways.github.io/graphing-training)
-* [Handouts](https://github.com/NETWAYS/graphing-training/releases/download/v1.0/graphing-training-handouts.pdf)
+* [Handouts](https://github.com/NETWAYS/graphing-training/releases/download/v1.0.0/graphing-training-handouts.pdf)
 
 ## Provide your training
 
