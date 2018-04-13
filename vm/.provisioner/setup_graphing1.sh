@@ -143,6 +143,3 @@ systemctl disable kibana.service
 yum -y install https://github.com/Icinga/icingabeat/releases/download/v6.1.1/icingabeat-6.1.1.x86_64.rpm
 icingabeat setup
 systemctl disable icingabeat
-
-# Shutdown
-shutdown -h now

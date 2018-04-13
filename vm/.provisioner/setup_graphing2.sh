@@ -73,6 +73,3 @@ chown -Rf apache:root /opt/graphite/storage/log
 
 systemctl start httpd.service
 systemctl enable httpd.service
-
-# Shutdown
-shutdown -h now
