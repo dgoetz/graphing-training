@@ -1,32 +1,38 @@
 { 
-  "name": "Graphite + Grafana | Time Series Metrics",
+  "title": "Graphite + Grafana",
+  "subtitle": "Time Series Metrics",
   "location": "Nuremberg",
   "author": "Blerim Sheqa & Markus Waldm&uuml;ller",
-  "release": "1.0.0",
+  "release": "2.0.0",
 
   "favicon": "image/global/favicon.ico",
+  "logo": "/global/_images/netways/netways-logo-1366.png",
 
   "protected": ["presenter", "onepage", "print"],
   "user": "netways",
   "password": "awesome",
 
   "templates" : {
-	"default": "./global/templates/default.tpl"
+    "default": "./global/templates/default.tpl"
   },
 
   "sections": [
    {"section":"global/Pre/Title"},
 
    {"section":"sections/introduction/"},
-   {"section":"sections/tools/"},
    {"section":"sections/graphite/"},
-   {"section":"sections/clients/"},
+   {"section":"sections/collectd/"},
    {"section":"sections/webapp/"},
-   {"section":"sections/dashboards/"},
-   {"section":"sections/graphite_cluster/"},
+   {"section":"sections/grafana/"},
+   {"section":"sections/cluster/"},
+   {"section":"sections/StatsD/"},
    {"section":"sections/influxdb/"},
    {"section":"sections/opentsdb/"},
+   {"section":"sections/icinga/"},
    {"section":"sections/integrations/"},
+   {"section":"sections/alternatives/"},
+   {"section":"sections/optimization/"},
+   {"section":"sections/bestpractice/"},
 
    {"section":"global/Post"}
   ]

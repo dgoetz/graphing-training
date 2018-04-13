@@ -10,11 +10,11 @@ In addition to the sources you can find the rendered material on
 [netways.github.io](https://netways.github.io/graphing-training)
 
 * [Presentation](https://netways.github.io/graphing-training)
-* [Handouts](https://github.com/NETWAYS/graphing-training/releases/download/v1.0.0/graphing-training-handouts.pdf)
+* [Handouts](https://github.com/NETWAYS/graphing-training/releases/download/v2.0.0/graphing-training-handouts.pdf)
 
 ## Provide your training
 
-To run the presentation you will need [showoff 0.9.11.1](https://rubygems.org/gems/showoff/versions/0.9.11.1).
+To run the presentation you will need [showoff 0.19.x](https://rubygems.org/gems/showoff/versions/0.19.6).
 After installing it simply run `showoff serve` to get presenter mode with additional notes
 and display window to present to your students.
 

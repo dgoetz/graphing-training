@@ -1,5 +1,22 @@
-!SLIDE subsection
-#~~~SECTION:MAJOR~~~ OpenTSDB
+!SLIDE smbullets
+# OpenTSDB
+
+* Time series database
+* Scalable
+* Distributed
+* HTTP API
+* No rendering of data
+* No collection of data
+* Based on HBase
+* Language: Java
+
+~~~SECTION:handouts~~~
+****
+
+Project: http://opentsdb.net<br/>
+Docs: http://opentsdb.net/docs/build/html
+
+~~~ENDSECTION~~~
 
 
 !SLIDE smbullets
@@ -17,7 +34,6 @@ OpenTSDB is a time series database based on Apaches HBase. With this underlying 
 * Commandline Tools
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Project: http://opentsdb.net<br>
@@ -42,10 +58,10 @@ HBase: http://hbase.apache.org
 !SLIDE small
 # OpenTSDB Metrics
 
-OpenTSDB uses some kind of Graphites metric path combined with tags to identify datapoints.
+OpenTSDB uses some kind of Graphites metric path combined with tags to identify datapoints:
 
     @@@Sh
-    <metric> <timestamp> <value> <tagk1=tagv1 ... tagkN=tagvN]
+    <metric> <timestamp> <value> <tagk1=tagv1 ... tagkN=tagvN>
     sys.cpu.user 1356998400 42.5 host=webserver01 cpu=0
 
 
@@ -58,7 +74,7 @@ To collect data several clients are available:
 http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html
 * SCollector (API v2)<br/>
 http://bosun.org/scollector/
-* CollectD<br/>
+* collectd<br/>
 https://github.com/auxesis/collectd-opentsdb
 * Icinga 2<br/>
 https://www.icinga.com
@@ -80,15 +96,19 @@ For communication with OpenTSDB multiple client libraries exist. Some of them ca
 !SLIDE smbullets
 # OpenTSDB Frontends
 
-Beside the simple built-in GUI there are some other webinterfaces for OpenTSDB dashboards.
+Beside the simple built-in GUI there are some other webinterfaces for OpenTSDB dashboards:
 
 * Grafana<br/>
 http://grafana.org
+
 * TSDash<br/>
 https://github.com/facebookarchive/tsdash
+
 * OpenTSDB Dashboard<br/>
 https://github.com/turn/opentsdb-dashboard
+
 * Status Wolf<br/>
 https://github.com/box/StatusWolf
+
 * Metrilyx<br/>
 https://github.com/Ticketmaster/metrilyx-2.0

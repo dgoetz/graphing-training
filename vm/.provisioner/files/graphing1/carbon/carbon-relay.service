@@ -1,0 +1,17 @@
+[Unit]
+Description=Graphite Carbon Relay
+After=network.target
+
+[Service]
+Type=forking
+StandardOutput=syslog
+StandardError=syslog
+ExecStart=/opt/graphite/bin/carbon-relay.py \
+  --config=/opt/graphite/conf/carbon.conf \
+  --pidfile=/var/run/carbon-relay.pid \
+  --logdir=/var/log/carbon/ start
+ExecReload=/bin/kill -USR1 $MAINPID
+PIDFile=/var/run/carbon-relay.pid
+
+[Install]
+WantedBy=multi-user.target

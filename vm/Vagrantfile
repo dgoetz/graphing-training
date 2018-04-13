@@ -1,0 +1,49 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+
+Vagrant.configure("2") do |config|
+  config.vm.define "graphing1" do |graphing1|
+    graphing1.vm.box = "bento/centos-7.4"
+    graphing1.vm.hostname = "graphing1.localdomain"
+    graphing1.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
+    graphing1.vm.provision "file", source: ".provisioner/files/graphing1", destination: "/usr/local/src"
+
+    graphing1.vm.provision :shell, :path => ".provisioner/setup_graphing1.sh"
+    graphing1.ssh.username = "root"
+    graphing1.ssh.password = "vagrant"
+    graphing1.ssh.insert_key = "true"
+
+    graphing1.vm.network "private_network", ip: "192.168.56.101"
+
+    graphing1.vm.provider "virtualbox" do |vb|
+      vb.name = "graphing1"
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+
+  config.vm.define "graphing2" do |graphing2|
+    graphing2.vm.box = "bento/centos-7.4"
+    graphing2.vm.hostname = "graphing2.localdomain"
+    graphing2.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
+    graphing2.vm.provision "file", source: ".provisioner/files/graphing2", destination: "/usr/local/src"
+
+    graphing2.vm.provision :shell, :path => ".provisioner/setup_graphing2.sh"
+    graphing2.ssh.username = "root"
+    graphing2.ssh.password = "vagrant"
+    graphing2.ssh.insert_key = "true"
+
+    graphing2.vm.network "private_network", ip: "192.168.56.102"
+
+    graphing2.vm.provider "virtualbox" do |vb|
+      vb.name = "graphing2"
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+end

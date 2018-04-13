@@ -1,8 +1,10 @@
-<div id="net-header">
-    <div class="logo"></div>
+<div class="net-header">
+    <img src="/global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
 </div>
+
 ~~~CONTENT~~~
-<div id="net-footer">
-    <p id="footer-left">Graphite + Grafana Training</p>
-    <p id="footer-right">by NETWAYS GmbH (www.netways.de)</p>
+
+<div class="net-footer">
+    <p>Graphite + Grafana Training</p>
+    <p>by NETWAYS GmbH (www.netways.de)</p>
 </div>
