@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
 
     graphing1.vm.provider "virtualbox" do |vb|
       vb.name = "graphing1"
-      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      vb.customize ["modifyvm", :id, "--memory", "4096"]
       vb.customize ["modifyvm", :id, "--cpus", "2"]
     end
   end
