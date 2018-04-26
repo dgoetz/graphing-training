@@ -62,7 +62,7 @@ To prepare the Graphite installation we need to install some required packages f
 Required packages for Graphite-Web:
 
     @@@Sh
-    # yum -y install python-scandir mod_wsgi
+    # yum -y install python-scandir mod_wsgi httpd
     # yum -y install dejavu-sans-fonts dejavu-serif-fonts
 
 An exported shell variable will simplify the navigation when copying or moving files around:
@@ -79,9 +79,9 @@ An exported shell variable will simplify the navigation when copying or moving f
 After all requirements are fulfilled, the installation of the Graphite components via PyPI is pretty simple:
 
     @@@Sh
-    # pip install carbon==1.1.2
-    # pip install whisper==1.1.2
-    # pip install graphite-web==1.1.2
+    # pip install carbon==1.1.3
+    # pip install whisper==1.1.3
+    # pip install graphite-web==1.1.3
 
 
 !SLIDE
@@ -90,19 +90,19 @@ After all requirements are fulfilled, the installation of the Graphite component
 Due to a bug in Carbon and Graphite-Web >= 1.0.0 Python packages are not stored correctly, so we create symlinks as workaround:
 
     @@@Sh
-    # ln -s $GRAPHITE/lib/carbon-1.1.2-py2.7\
-    .egg-info/ /usr/lib/python2.7/site-packages/
-    # ln -s $GRAPHITE/webapp/graphite_web-1.1.2-py2.7\
-    .egg-info/ /usr/lib/python2.7/site-packages/
+    # ln -s $GRAPHITE/lib/carbon-1.1.3-py2.7.egg-info/ \
+    /usr/lib/python2.7/site-packages/
+    # ln -s /opt/graphite/webapp/graphite_web-1.1.3-py2.7.egg-info/ \
+    /usr/lib/python2.7/site-packages/
 
 Finally `pip` should list the installed Graphite packages:
 
     @@@Sh
     # pip list
     ...
-    carbon (1.1.2)
-    graphite-web (1.1.2)
-    whisper (1.1.2)
+    carbon (1.1.3)
+    graphite-web (1.1.3)
+    whisper (1.1.3)
 
 
 !SLIDE
@@ -285,7 +285,7 @@ File: **/etc/httpd/conf.d/graphite-web.conf**
         Require all granted
     </Directory>
 
-Finally we can start the Apache webserver:
+Finally we can restart the pre-installed Apache webserver:
 
     @@@Sh
     # systemctl start httpd.service
@@ -313,18 +313,20 @@ Graphite 0.9.16 on CentOS 7:
     @@@Sh
     # yum -y install python-carbon python-whisper
     # yum -y install graphite-web
+
     # systemctl enable carbon-cache.service --now
 
 File: **/etc/graphite-web/local_settings.py**
 
     @@@Sh
     SECRET_KEY = 'random-string'
+
     TIME_ZONE = 'Europe/Berlin'
 
     # python /usr/lib/python2.7/site-packages/graphite/manage.py syncdb
 
 
-!SLIDE small
+!SLIDE
 # EPEL Package Installation (2/2)
 
 File: **/etc/httpd/conf.d/graphite-web.conf**
@@ -338,7 +340,6 @@ File: **/etc/httpd/conf.d/graphite-web.conf**
       </IfModule>
       ...
     </Directory>
-
 
     # chown apache:apache /var/lib/graphite-web/graphite.db 
     # systemctl enable httpd.service --now
