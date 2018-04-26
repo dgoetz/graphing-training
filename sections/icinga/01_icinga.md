@@ -16,7 +16,7 @@ Icinga is actually a tool for availability monitoring, which tells you if your h
 ****
 
 Project: https://www.icinga.com<br/>
-Docs: https://www.icinga.com/resources/docs
+Documentation: https://www.icinga.com/resources/docs
 
 ~~~ENDSECTION~~~
 
@@ -168,6 +168,13 @@ Validate the configuration and restart Icinga 2:
     # icinga2 daemon -C
     # systemctl restart icinga2.service
 
+~~~SECTION:handouts~~~
+****
+
+Documentation: https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#graphitewriter
+
+~~~ENDSECTION~~~
+
 
 !SLIDE small
 # Icinga 2 InfluxDB Feature
@@ -195,6 +202,13 @@ Validate the configuration and restart Icinga 2:
     @@@Sh
     # icinga2 daemon -C
     # systemctl restart icinga2.service
+
+~~~SECTION:handouts~~~
+****
+
+Documentation: https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#influxdbwriter
+
+~~~ENDSECTION~~~
 
 
 !SLIDE noprint
