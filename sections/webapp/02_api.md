@@ -46,7 +46,7 @@ Create a JSON output of the free diskspace from one of your servers. Output only
 
     @@@Sh
     http://graphite/render
-    ?target=collectd.graphing1.df-root.df_complex-free.value
+    ?target=collectd.graphing1.df-root.df_complex-free
     &from=-5min
     &format=json
 
@@ -63,7 +63,7 @@ Build an average of the CPUs system time from two of your servers. Add a title t
         (
           averageSeries
           (
-            collectd.graphing[1-2].cpu-*.cpu-system.value
+            collectd.graphing[1-2].cpu-*.cpu-system
           ), 
         "CPU system"
         )
@@ -84,7 +84,6 @@ Function                      | Description
 /metrics/expand?query=a.b.c.d | Expands the given query with matching paths.
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Metrics API: http://graphite-api.readthedocs.io/en/latest/api.html#the-metrics-api
