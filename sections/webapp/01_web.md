@@ -37,8 +37,8 @@ Content of **/opt/graphite/storage/index**:
 
     @@@Sh
     ...
-    collectd.graphing1.cpu-0.cpu-wait.value
-    collectd.graphing1.cpu-0.cpu-user.value
+    collectd.graphing1.cpu-0.cpu-wait
+    collectd.graphing1.cpu-0.cpu-user
     collectd.graphing1.interface-lo.if_packets.rx
     collectd.graphing1.interface-lo.if_packets.tx
     collectd.graphing1.interface-lo.if_octets.tx
