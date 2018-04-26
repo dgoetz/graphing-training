@@ -1,4 +1,4 @@
-!SLIDE smbullets
+!SLIDE
 # Icinga Overview
 
 * Active and passive monitoring
@@ -16,7 +16,7 @@ Icinga is actually a tool for availability monitoring, which tells you if your h
 ****
 
 Project: https://www.icinga.com<br/>
-Documentation: https://www.icinga.com/resources/docs
+Docs: https://www.icinga.com/resources/docs
 
 ~~~ENDSECTION~~~
 
@@ -143,10 +143,9 @@ With graphs that show thresholds one can see occuring problems on first sight.
 !SLIDE small
 # Icinga 2 Graphite Feature
 
-Every part of Icinga 2 is a module, also called feature. To add Graphite support to Icinga 2 you need to enable and configure the proper feature.
+To add Graphite support to Icinga 2 you need to enable and configure the proper feature.
 
     @@@Sh 
-    # icinga2 feature list
     # icinga2 feature enable graphite
 
 Edit the configuration for the Graphite feature and enable at least sending of thresholds.
@@ -171,7 +170,7 @@ Validate the configuration and restart Icinga 2:
 ~~~SECTION:handouts~~~
 ****
 
-Documentation: https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#graphitewriter
+Docs: https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#graphitewriter
 
 ~~~ENDSECTION~~~
 
@@ -206,7 +205,7 @@ Validate the configuration and restart Icinga 2:
 ~~~SECTION:handouts~~~
 ****
 
-Documentation: https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#influxdbwriter
+Docs: https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#influxdbwriter
 
 ~~~ENDSECTION~~~
 

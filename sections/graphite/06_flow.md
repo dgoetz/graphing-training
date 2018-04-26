@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Data Flow
 
 
-!SLIDE smbullets small
+!SLIDE small noprint
 # Receive Data
 
 To receive metrics, Graphite provides by default two interfaces. On Port 2003 Carbon  is listening with a plain text protocol, on port 2004 with the so-called "Pickle protocol".
@@ -19,6 +19,28 @@ Tags must be appended to the metrics path with semicolon: "**;\<tag-key>=\<tag-v
 
     @@@Sh
     # echo "localhost.tmp.files;os=linux;dist=centos `ls /tmp | wc -l` `date +%s`"
+    localhost.tmp.files;os=linux;dist=centos 9 1522237082
+
+
+!SLIDE small printonly
+# Receive Data
+
+To receive metrics, Graphite provides by default two interfaces. On Port 2003 Carbon  is listening with a plain text protocol, on port 2004 with the so-called "Pickle protocol".
+
+While the plain text protocol is pretty simple "**\<metric.path>.\<value>.\<timestamp>**", the Pickle protocol is more complex and looks more like a multidimensional array. The advantage of the plain text protocol is its simplicity, the Pickle protocol instead is more efficient. In addition, multiple metrics can be transferred in a bulk.
+
+    @@@Sh
+    # echo "localhost.tmp.files `ls /tmp | wc -l` `date +%s`"
+    localhost.tmp.files 9 1522237082
+
+    # echo "localhost.tmp.files `ls /tmp | wc -l` `date +%s`" \
+    | nc localhost 2003
+
+Tags must be appended to the metrics path with semicolon: "**;\<tag-key>=\<tag-value>**"
+
+    @@@Sh
+    # echo "localhost.tmp.files;os=linux;dist=centos \
+    `ls /tmp | wc -l` `date +%s`"
     localhost.tmp.files;os=linux;dist=centos 9 1522237082
 
 

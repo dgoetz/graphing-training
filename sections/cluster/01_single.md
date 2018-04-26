@@ -74,7 +74,7 @@ Start Carbon Cache daemon for instance "b" with systemd:
     # systemctl enable carbon-cache-b.service
 
 
-!SLIDE small
+!SLIDE small noprint
 # Carbon Relay with Multiple Caches
 
 Add Carbon Cache instances to Relay configuration in **carbon.conf**:
@@ -93,6 +93,22 @@ Restart Carbon Relay:
 
     @@@Sh
     # systemctl restart carbon-relay.service
+
+
+!SLIDE small printonly
+# Carbon Relay with Multiple Caches
+
+Add Carbon Cache instances to Relay configuration in **carbon.conf**:
+
+    @@@Sh
+    [relay]
+    LINE_RECEIVER_PORT = 2003
+    PICKLE_RECEIVER_PORT = 2004
+
+    RELAY_METHOD = consistent-hashing
+    REPLICATION_FACTOR = 1
+
+    DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
 
 
 !SLIDE noprint
@@ -115,7 +131,8 @@ Graphite-Web needs to be configured to query both Carbon Caches.
 File: **/opt/graphite/webapp/graphite/local_settings.py**:
 
     @@@Sh
-    CARBONLINK_HOSTS = ["127.0.0.1:7002:a", "127.0.0.1:7102:b"]
+    CARBONLINK_HOSTS = ["127.0.0.1:7002:a", \
+    "127.0.0.1:7102:b"]
 
 Restart Apache:
 
@@ -135,7 +152,7 @@ Restart Apache:
 <center><img src="./_images/graphite-cluster-aggregator.png" style="width:460px"/></center>
 
 
-!SLIDE small
+!SLIDE small noprint
 # Carbon Relay with Aggregator
 
 Change Relay configuration in **carbon.conf**:
@@ -156,7 +173,23 @@ Restart Carbon Relay:
     # systemctl restart carbon-relay.service
 
 
-!SLIDE small
+!SLIDE small printonly
+# Carbon Relay with Aggregator
+
+Change Relay configuration in **carbon.conf**:
+
+    @@@Sh
+    [relay]
+    LINE_RECEIVER_PORT = 2003
+    PICKLE_RECEIVER_PORT = 2004
+
+    RELAY_METHOD = consistent-hashing
+    REPLICATION_FACTOR = 1
+
+    DESTINATIONS = 127.0.0.1:2014
+
+
+!SLIDE small noprint
 # Carbon Aggregator with Multiple Caches
 
 Change Aggregator configuration in **carbon.conf**:
@@ -169,6 +202,30 @@ Change Aggregator configuration in **carbon.conf**:
     FORWARD_ALL = True
 
     DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b # former: 127.0.0.1:2024
+
+    REPLICATION_FACTOR = 1
+
+Restart Carbon Aggregator:
+
+    @@@Sh
+    # systemctl restart carbon-aggregator.service
+
+**Note:** The configuration for the Carbon Caches remains unchanged.
+
+
+!SLIDE small printonly
+# Carbon Aggregator with Multiple Caches
+
+Change Aggregator configuration in **carbon.conf**:
+
+    @@@Sh
+    [aggregator]
+    LINE_RECEIVER_PORT = 2013
+    PICKLE_RECEIVER_PORT = 2014
+
+    FORWARD_ALL = True
+
+    DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
 
     REPLICATION_FACTOR = 1
 

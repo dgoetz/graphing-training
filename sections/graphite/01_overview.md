@@ -13,6 +13,6 @@ Graphite is not just a single product, it consists of multiple components which 
 
 Website: https://graphiteapp.org<br/>
 Project: https://github.com/graphite-project<br/>
-Documentation: http://graphite.readthedocs.io
+Docs: http://graphite.readthedocs.io
 
 ~~~ENDSECTION~~~

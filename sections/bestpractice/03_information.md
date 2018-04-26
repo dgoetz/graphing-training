@@ -17,7 +17,7 @@ Keep informed!
 ~~~SECTION:handouts~~~
 ****
 
-Documentation: http://graphite.readthedocs.org/en/latest/<br/>
+Docs: http://graphite.readthedocs.org/en/latest/<br/>
 StackExchange: http://stackexchange.com/filters/27311/graphite<br/>
 IRC channel: http://irc.netsplit.de/channels/details.php?room=%23graphite&net=freenode<br/>
 GitHub projects: https://github.com/graphite-project

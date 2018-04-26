@@ -16,7 +16,7 @@
 ****
 
 InfluxData: https://www.influxdata.com<br/>
-Documentation: https://docs.influxdata.com
+Docs: https://docs.influxdata.com
 
 ~~~ENDSECTION~~~
 
@@ -43,7 +43,8 @@ File: **/etc/yum.repos.d/influxdb.repo**
     @@@Sh
     [influxdb]
     name = InfluxDB Repository - RHEL \$releasever
-    baseurl = https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+    baseurl = https://repos.influxdata.com/rhel/\$releasever/\
+      $basearch/stable
     enabled = 1
     gpgcheck = 1
     gpgkey = https://repos.influxdata.com/influxdb.key

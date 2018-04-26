@@ -223,7 +223,7 @@ Tool                                  | Description
 # Common Whisper Tools Usage (2/2)
 
     @@@Sh
-    # whisper-resize.py --nobackup metricsReceived.wsp 60s:120d
+    # whisper-resize.py --nobackup metricsReceived.wsp 60:120d
     Retrieving all data from the archives
     Creating new whisper database: metricsReceived.wsp.tmp
     Created: metricsReceived.wsp.tmp (1555228 bytes)

@@ -14,11 +14,10 @@ Since version 2.0 Grafana ships with its own backend server and since 3.0 additi
 * Alerts
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Project: http://grafana.org<br/>
-Documentation: http://docs.grafana.org
+Docs: http://docs.grafana.org
 
 ~~~ENDSECTION~~~
 
@@ -58,7 +57,8 @@ File: **/etc/yum.repos.d/grafana.repo**
     @@@Sh
     [grafana]
     name=grafana
-    baseurl=https://packagecloud.io/grafana/stable/el/7/$basearch
+    baseurl=https://packagecloud.io/grafana/stable/el/7/\
+      $basearch
     repo_gpgcheck=1
     enabled=1
     gpgcheck=1

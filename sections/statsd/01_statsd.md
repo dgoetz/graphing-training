@@ -14,7 +14,7 @@ StatsD is most interesting for developers since it is very easy to embed code wh
 ****
 
 Project: https://github.com/etsy/statsd<br/>
-Documentation: https://github.com/etsy/statsd/tree/master/docs
+Docs: https://github.com/etsy/statsd/tree/master/docs
 
 ~~~ENDSECTION~~~
 

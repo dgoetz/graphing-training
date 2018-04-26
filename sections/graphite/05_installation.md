@@ -92,8 +92,8 @@ Due to a bug in Carbon and Graphite-Web >= 1.0.0 Python packages are not stored 
     @@@Sh
     # ln -s $GRAPHITE/lib/carbon-1.1.3-py2.7.egg-info/ \
     /usr/lib/python2.7/site-packages/
-    # ln -s /opt/graphite/webapp/graphite_web-1.1.3-py2.7.egg-info/ \
-    /usr/lib/python2.7/site-packages/
+    # ln -s /opt/graphite/webapp/graphite_web-1.1.3\
+    -py2.7.egg-info/ /usr/lib/python2.7/site-packages/
 
 Finally `pip` should list the installed Graphite packages:
 
@@ -240,8 +240,8 @@ Graphite-Web will use a SQLite database per default, but it can be changed to Po
     @@@SQL
     CREATE DATABASE graphite;
 
-    GRANT ALL PRIVILEGES ON graphite.* TO 'graphite'@'localhost' \
-    IDENTIFIED BY 'graphite';
+    GRANT ALL PRIVILEGES ON graphite.* TO 'graphite'\
+    @'localhost' IDENTIFIED BY 'graphite';
 
 File: **/opt/graphite/webapp/graphite/local_settings.py**
 
@@ -375,7 +375,8 @@ File: **/etc/graphite-web/local_settings.py**
 
     TIME_ZONE = 'Europe/Berlin'
 
-    # python /usr/lib/python2.7/site-packages/graphite/manage.py syncdb
+    # python /usr/lib/python2.7/site-packages/\
+    graphite/manage.py syncdb
 
 
 !SLIDE

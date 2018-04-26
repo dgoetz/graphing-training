@@ -95,7 +95,7 @@ Project: https://github.com/lomik/go-whisper
 ****
 
 Project: https://github.com/pyr/cyanite<br/>
-Documentation: http://cyanite.io<br/>
+Docs: http://cyanite.io<br/>
 Storage Finder: https://github.com/brutasse/graphite-cyanite
 
 ~~~ENDSECTION~~~
