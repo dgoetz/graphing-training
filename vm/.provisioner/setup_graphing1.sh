@@ -30,7 +30,7 @@ yum -y install python2-pip gcc
 yum -y install python-devel cairo-devel libffi-devel
 
 cp /usr/local/src/carbon/carbon-cache-a.service /etc/systemd/system/carbon-cache-a.service
-cp /usr/local/src/carbon/carbon-cache-a.service /etc/systemd/system/carbon-cache-b.service
+cp /usr/local/src/carbon/carbon-cache-b.service /etc/systemd/system/carbon-cache-b.service
 cp /usr/local/src/carbon/carbon-relay.service /etc/systemd/system/carbon-relay.service
 cp /usr/local/src/carbon/carbon-aggregator.service /etc/systemd/system/carbon-aggregator.service
 systemctl daemon-reload
