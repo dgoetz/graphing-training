@@ -51,8 +51,8 @@ collectd can be installed via packages. You should take care that you install a 
 After the installation you should edit **/etc/collectd.conf**. It should include the following content:
 
     @@@Sh
-    Hostname            "graphing1"
-    FQDNLookup          false # default: true
+    Hostname            "graphing1" # default: FQDN
+    FQDNLookup          false       # default: true
     Interval            10
     MaxReadInterval     86400
     Timeout             2
