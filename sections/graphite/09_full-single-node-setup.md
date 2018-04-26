@@ -91,6 +91,7 @@ File: **/etc/systemd/system/carbon-relay.service**
     StandardOutput=syslog
     StandardError=syslog
     ExecStart=/opt/graphite/bin/carbon-relay.py \
+      --instance=a \
       --config=/opt/graphite/conf/carbon.conf \
       --pidfile=/var/run/carbon-relay.pid \
       --logdir=/var/log/carbon/ start
@@ -173,6 +174,7 @@ File: **/etc/systemd/system/carbon-aggregator.service**
     StandardOutput=syslog
     StandardError=syslog
     ExecStart=/opt/graphite/bin/carbon-aggregator.py \
+      --instance=a \
       --config=/opt/graphite/conf/carbon.conf \
       --pidfile=/var/run/carbon-aggregator.pid \
       --logdir=/var/log/carbon/ start

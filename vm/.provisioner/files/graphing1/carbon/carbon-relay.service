@@ -7,6 +7,7 @@ Type=forking
 StandardOutput=syslog
 StandardError=syslog
 ExecStart=/opt/graphite/bin/carbon-relay.py \
+  --instance=a \
   --config=/opt/graphite/conf/carbon.conf \
   --pidfile=/var/run/carbon-relay.pid \
   --logdir=/var/log/carbon/ start
