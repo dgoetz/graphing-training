@@ -125,6 +125,23 @@ File: **/etc/telegraf/telegraf.conf**
         servers = ["localhost:2003"]
         prefix = "telegraf"
 
+
+!SLIDE
+# Telegraf Graphite Output Plugin
+
+Care about a proper storage schema:
+
+File: **/opt/graphite/conf/storage-schemas.conf**
+
+    @@@Sh
+    [...]
+
+    [telegraf]
+    pattern = ^telegraf\.
+    retentions = 10s:5d
+
+    [...]
+
 Restart Telegraf with systemd:
 
     @@@Sh
