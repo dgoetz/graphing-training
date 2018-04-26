@@ -288,8 +288,7 @@ File: **/etc/httpd/conf.d/graphite-web.conf**
 Finally we can restart the pre-installed Apache webserver:
 
     @@@Sh
-    # systemctl start httpd.service
-    # systemctl enable httpd.service
+    # systemctl restart httpd.service
 
 
 !SLIDE
