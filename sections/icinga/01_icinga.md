@@ -169,6 +169,34 @@ Validate the configuration and restart Icinga 2:
     # systemctl restart icinga2.service
 
 
+!SLIDE small
+# Icinga 2 InfluxDB Feature
+
+Enabling the Icinga InfluxDB feature is similar than the Graphite feature:
+
+    @@@Sh
+    # icinga2 feature enable influxdb
+
+File: **/etc/icinga2/features-enabled/influxdb.conf**
+
+    @@@Sh
+    object InfluxdbWriter "influxdb" {
+      host = "127.0.0.1"            // default
+      port = 8086                   // default
+      database = "icinga2"          // default
+      ...
+
+      enable_send_thresholds = true // optional
+      enable_send_metadata = true   // optional
+    }
+
+Validate the configuration and restart Icinga 2:
+
+    @@@Sh
+    # icinga2 daemon -C
+    # systemctl restart icinga2.service
+
+
 !SLIDE noprint
 # Grafana Dashboard
 
