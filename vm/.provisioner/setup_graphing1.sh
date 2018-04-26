@@ -38,6 +38,7 @@ systemctl daemon-reload
 # Graphite-Web
 yum -y install python-scandir mod_wsgi
 yum -y install dejavu-sans-fonts dejavu-serif-fonts
+yum -y install MySQL-python
 
 # collectd
 yum -y install collectd

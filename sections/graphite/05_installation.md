@@ -233,27 +233,76 @@ File: **/opt/graphite/webapp/graphite/local_settings.py**
 
 
 !SLIDE small
+# Graphite-Web MySQL Database
+
+Graphite-Web will use a SQLite database per default, but it can be changed to PostgreSQL, MySQL or Oracle. Here's an example for MySQL:
+
+    @@@SQL
+    CREATE DATABASE graphite;
+
+    GRANT ALL PRIVILEGES ON graphite.* TO 'graphite'@'localhost' \
+    IDENTIFIED BY 'graphite';
+
+File: **/opt/graphite/webapp/graphite/local_settings.py**
+
+    @@@Sh
+    DATABASES = {
+        'default': {
+            'NAME': 'graphite',
+            'ENGINE': 'django.db.backends.mysql',
+            'USER': 'graphite',
+            'PASSWORD': 'graphite',
+            'HOST': 'localhost',
+            'PORT': '3306'
+        }
+    }
+
+**Note:** Package `MySQL-python` is already pre-installed on "graphing1.localdomain".
+
+!SLIDE
 # Graphite-Web Database Initialization
 
-We will use a SQLite database which needs to be initialized first:
+The database needs to be initialized:
 
     @@@Sh
     # PYTHONPATH=$GRAPHITE/webapp django-admin.py \
     migrate --settings=graphite.settings --run-syncdb
 
-And also the static files:
+After the initialization we should create a user with admin rights. This user can later be used to login to Graphite-Web and store graphs and dashboards.
 
     @@@Sh
     # PYTHONPATH=$GRAPHITE/webapp django-admin.py \
-    collectstatic --noinput --settings=graphite.settings
+    createsuperuser --settings=graphite.settings
 
-The initialization of the DB also creates a user. This user can later be used to login to Graphite-Web and store graphs and dashboards. 
+    Username (leave blank to use 'root'):
+    Email address:
+    Password: ******
+    Password (again): ******
+    Superuser created successfully.
+
+**Note:** The users' password can be changed with subcommand `changepassword`. 
+
+~~~SECTION:handouts~~~
+****
+
+Show all Django subcommands:
+
+    @@@Sh
+    # PYTHONPATH=$GRAPHITE/webapp django-admin.py help \
+    --settings=graphite.settings
+
+~~~ENDSECTION~~~
+
+
+!SLIDE
+# Graphite-Web Verification
 
 Django's command-line utility also provides subcommands to `check` and `test` the installed components:
 
     @@@Sh
     # PYTHONPATH=$GRAPHITE/webapp django-admin.py check \
     --settings=graphite.settings
+
     # PYTHONPATH=$GRAPHITE/webapp django-admin.py test \
     --settings=graphite.settings
 
@@ -261,7 +310,7 @@ Django's command-line utility also provides subcommands to `check` and `test` th
 !SLIDE
 # Graphite-Web Permissions
 
-The SQLite database and the webapp logs are located in the storage directory, therefore we change the owner to `apache`:
+The SQLite database and the webapp logs are located in the storage directory, therefore we change the owner to *apache*:
 
     @@@Sh
     # chown apache:root $GRAPHITE/storage
@@ -276,7 +325,11 @@ It's also important to change the permissions for the log directory, otherwise y
 !SLIDE
 # Apache Configuration
 
-The default HTTP name for Graphite-Web is `graphite` and configured in **graphite-web.conf**. In order to access Graphite-Web we have to set permissions to the static directory:
+The default HTTP name for Graphite-Web is `graphite` and configured in **graphite-web.conf**. In order to access Graphite-Web we have to create the static files and allow web access to the directory:
+
+    @@@Sh
+    # PYTHONPATH=$GRAPHITE/webapp django-admin.py \
+    collectstatic --noinput --settings=graphite.settings
 
 File: **/etc/httpd/conf.d/graphite-web.conf**
 
