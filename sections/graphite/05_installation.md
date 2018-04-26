@@ -305,7 +305,7 @@ However it's **always** recommended to **have a look at the logs**!
 
 
 !SLIDE
-# EPEL Package Installation (1/2)
+# Alternative EPEL Package Installation (1/2)
 
 Graphite 0.9.16 on CentOS 7:
 
@@ -326,7 +326,7 @@ File: **/etc/graphite-web/local_settings.py**
 
 
 !SLIDE
-# EPEL Package Installation (2/2)
+# Alternative EPEL Package Installation (2/2)
 
 File: **/etc/httpd/conf.d/graphite-web.conf**
 
