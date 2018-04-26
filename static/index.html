@@ -92,7 +92,7 @@
 <div class="title-cover">
     <div class="title-name">Graphite + Grafana</div>
     <div class="title-subtitle">Time Series Metrics</div>
-    <div class="title-release">Version: 2.0.0</div>
+    <div class="title-release">Version: 2.1.0</div>
     <div class="title-footer">We love Open Source</div>
 </div>
 
@@ -354,7 +354,7 @@
 
 <p>Website: <a href="https://graphiteapp.org" target="_blank">https://graphiteapp.org</a><br>
 Project: <a href="https://github.com/graphite-project" target="_blank">https://github.com/graphite-project</a><br>
-Documentation: <a href="http://graphite.readthedocs.io" target="_blank">http://graphite.readthedocs.io</a></p>
+Docs: <a href="http://graphite.readthedocs.io" target="_blank">http://graphite.readthedocs.io</a></p>
 
 </div>
 <canvas class="annotations"></canvas>
@@ -735,7 +735,7 @@ Documentation: <a href="http://graphite.readthedocs.io" target="_blank">http://g
 
 <p>Required packages for Graphite-Web:</p>
 
-<pre class="highlight"><code class="language-sh"># yum -y install python-scandir mod_wsgi
+<pre class="highlight"><code class="language-sh"># yum -y install python-scandir mod_wsgi httpd
 # yum -y install dejavu-sans-fonts dejavu-serif-fonts</code></pre>
 
 <p>An exported shell variable will simplify the navigation when copying or moving files around:</p>
@@ -762,9 +762,9 @@ Documentation: <a href="http://graphite.readthedocs.io" target="_blank">http://g
 
 <p>After all requirements are fulfilled, the installation of the Graphite components via PyPI is pretty simple:</p>
 
-<pre class="highlight"><code class="language-sh"># pip install carbon==1.1.2
-# pip install whisper==1.1.2
-# pip install graphite-web==1.1.2</code></pre>
+<pre class="highlight"><code class="language-sh"># pip install carbon==1.1.3
+# pip install whisper==1.1.3
+# pip install graphite-web==1.1.3</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -784,18 +784,18 @@ Documentation: <a href="http://graphite.readthedocs.io" target="_blank">http://g
 
 <p>Due to a bug in Carbon and Graphite-Web &gt;= 1.0.0 Python packages are not stored correctly, so we create symlinks as workaround:</p>
 
-<pre class="highlight"><code class="language-sh"># ln -s $GRAPHITE/lib/carbon-1.1.2-py2.7\
-.egg-info/ /usr/lib/python2.7/site-packages/
-# ln -s $GRAPHITE/webapp/graphite_web-1.1.2-py2.7\
-.egg-info/ /usr/lib/python2.7/site-packages/</code></pre>
+<pre class="highlight"><code class="language-sh"># ln -s $GRAPHITE/lib/carbon-1.1.3-py2.7.egg-info/ \
+/usr/lib/python2.7/site-packages/
+# ln -s /opt/graphite/webapp/graphite_web-1.1.3\
+-py2.7.egg-info/ /usr/lib/python2.7/site-packages/</code></pre>
 
 <p>Finally <code>pip</code> should list the installed Graphite packages:</p>
 
 <pre class="highlight"><code class="language-sh"># pip list
 ...
-carbon (1.1.2)
-graphite-web (1.1.2)
-whisper (1.1.2)</code></pre>
+carbon (1.1.3)
+graphite-web (1.1.3)
+whisper (1.1.3)</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -1015,26 +1015,29 @@ TIME_ZONE = 'Europe/Berlin'</code></pre>
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
 </div>
 
-<h1>Graphite-Web Database Initialization</h1>
+<h1>Graphite-Web MySQL Database</h1>
 
-<p>We will use a SQLite database which needs to be initialized first:</p>
+<p>Graphite-Web will use a SQLite database per default, but it can be changed to PostgreSQL, MySQL or Oracle. Here's an example for MySQL:</p>
 
-<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py \
-migrate --settings=graphite.settings --run-syncdb</code></pre>
+<pre class="highlight"><code class="language-sql">CREATE DATABASE graphite;
 
-<p>And also the static files:</p>
+GRANT ALL PRIVILEGES ON graphite.* TO 'graphite'\
+@'localhost' IDENTIFIED BY 'graphite';</code></pre>
 
-<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py \
-collectstatic --noinput --settings=graphite.settings</code></pre>
+<p>File: <strong>/opt/graphite/webapp/graphite/local_settings.py</strong></p>
 
-<p>The initialization of the DB also creates a user. This user can later be used to login to Graphite-Web and store graphs and dashboards. </p>
+<pre class="highlight"><code class="language-sh">DATABASES = {
+    'default': {
+        'NAME': 'graphite',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'graphite',
+        'PASSWORD': 'graphite',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+}</code></pre>
 
-<p>Django's command-line utility also provides subcommands to <code>check</code> and <code>test</code> the installed components:</p>
-
-<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py check \
---settings=graphite.settings
-# PYTHONPATH=$GRAPHITE/webapp django-admin.py test \
---settings=graphite.settings</code></pre>
+<p><strong>Note:</strong> Package <code>MySQL-python</code> is already pre-installed on "graphing1.localdomain".</p>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -1050,9 +1053,79 @@ collectstatic --noinput --settings=graphite.settings</code></pre>
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
 </div>
 
+<h1>Graphite-Web Database Initialization</h1>
+
+<p>The database needs to be initialized:</p>
+
+<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py \
+migrate --settings=graphite.settings --run-syncdb</code></pre>
+
+<p>After the initialization we should create a user with admin rights. This user can later be used to login to Graphite-Web and store graphs and dashboards.</p>
+
+<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py \
+createsuperuser --settings=graphite.settings
+
+Username (leave blank to use 'root'):
+Email address:
+Password: ******
+Password (again): ******
+Superuser created successfully.</code></pre>
+
+<p><strong>Note:</strong> The users' password can be changed with subcommand <code>changepassword</code>. </p>
+
+
+
+<div class="net-footer">
+    <p>Graphite + Grafana Training</p>
+    <p>by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+<div class="notes-section handouts">
+
+<hr>
+
+<p>Show all Django subcommands:</p>
+
+<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py help \
+--settings=graphite.settings</code></pre>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation17" class="slide" data-transition="none">
+<div class="content " ref="sections/graphite/05_installation:17">
+<h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
+<div class="net-header">
+    <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
+</div>
+
+<h1>Graphite-Web Verification</h1>
+
+<p>Django's command-line utility also provides subcommands to <code>check</code> and <code>test</code> the installed components:</p>
+
+<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py check \
+--settings=graphite.settings
+
+# PYTHONPATH=$GRAPHITE/webapp django-admin.py test \
+--settings=graphite.settings</code></pre>
+
+<div class="net-footer">
+    <p>Graphite + Grafana Training</p>
+    <p>by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation18" class="slide" data-transition="none">
+<div class="content " ref="sections/graphite/05_installation:18">
+<h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
+<div class="net-header">
+    <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
+</div>
+
 <h1>Graphite-Web Permissions</h1>
 
-<p>The SQLite database and the webapp logs are located in the storage directory, therefore we change the owner to <code>apache</code>:</p>
+<p>The SQLite database and the webapp logs are located in the storage directory, therefore we change the owner to <em>apache</em>:</p>
 
 <pre class="highlight"><code class="language-sh"># chown apache:root $GRAPHITE/storage
 # chown apache:apache $GRAPHITE/storage/graphite.db</code></pre>
@@ -1068,8 +1141,8 @@ collectstatic --noinput --settings=graphite.settings</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation17" class="slide" data-transition="none">
-<div class="content " ref="sections/graphite/05_installation:17">
+<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation19" class="slide" data-transition="none">
+<div class="content " ref="sections/graphite/05_installation:19">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -1077,7 +1150,10 @@ collectstatic --noinput --settings=graphite.settings</code></pre>
 
 <h1>Apache Configuration</h1>
 
-<p>The default HTTP name for Graphite-Web is <code>graphite</code> and configured in <strong>graphite-web.conf</strong>. In order to access Graphite-Web we have to set permissions to the static directory:</p>
+<p>The default HTTP name for Graphite-Web is <code>graphite</code> and configured in <strong>graphite-web.conf</strong>. In order to access Graphite-Web we have to create the static files and allow web access to the directory:</p>
+
+<pre class="highlight"><code class="language-sh"># PYTHONPATH=$GRAPHITE/webapp django-admin.py \
+collectstatic --noinput --settings=graphite.settings</code></pre>
 
 <p>File: <strong>/etc/httpd/conf.d/graphite-web.conf</strong></p>
 
@@ -1085,10 +1161,9 @@ collectstatic --noinput --settings=graphite.settings</code></pre>
     Require all granted
 &lt;/Directory&gt;</code></pre>
 
-<p>Finally we can start the Apache webserver:</p>
+<p>Finally we can restart the pre-installed Apache webserver:</p>
 
-<pre class="highlight"><code class="language-sh"># systemctl start httpd.service
-# systemctl enable httpd.service</code></pre>
+<pre class="highlight"><code class="language-sh"># systemctl restart httpd.service</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -1097,8 +1172,8 @@ collectstatic --noinput --settings=graphite.settings</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation18" class="slide" data-transition="none">
-<div class="content " ref="sections/graphite/05_installation:18">
+<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation20" class="slide" data-transition="none">
+<div class="content " ref="sections/graphite/05_installation:20">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -1128,27 +1203,30 @@ collectstatic --noinput --settings=graphite.settings</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation19" class="slide" data-transition="none">
-<div class="content " ref="sections/graphite/05_installation:19">
+<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation21" class="slide" data-transition="none">
+<div class="content " ref="sections/graphite/05_installation:21">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
 </div>
 
-<h1>EPEL Package Installation (1/2)</h1>
+<h1>Alternative EPEL Package Installation (1/2)</h1>
 
 <p>Graphite 0.9.16 on CentOS 7:</p>
 
 <pre class="highlight"><code class="language-sh"># yum -y install python-carbon python-whisper
 # yum -y install graphite-web
+
 # systemctl enable carbon-cache.service --now</code></pre>
 
 <p>File: <strong>/etc/graphite-web/local_settings.py</strong></p>
 
 <pre class="highlight"><code class="language-sh">SECRET_KEY = 'random-string'
+
 TIME_ZONE = 'Europe/Berlin'
 
-# python /usr/lib/python2.7/site-packages/graphite/manage.py syncdb</code></pre>
+# python /usr/lib/python2.7/site-packages/\
+graphite/manage.py syncdb</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -1157,14 +1235,14 @@ TIME_ZONE = 'Europe/Berlin'
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation20" class="slide small" data-transition="none">
-<div class="content small" ref="sections/graphite/05_installation:20">
+<div data-section="sections/graphite/" data-title="05_installation" id="sections_graphite_05_installation22" class="slide" data-transition="none">
+<div class="content " ref="sections/graphite/05_installation:22">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
 </div>
 
-<h1>EPEL Package Installation (2/2)</h1>
+<h1>Alternative EPEL Package Installation (2/2)</h1>
 
 <p>File: <strong>/etc/httpd/conf.d/graphite-web.conf</strong></p>
 
@@ -1176,7 +1254,6 @@ TIME_ZONE = 'Europe/Berlin'
   &lt;/IfModule&gt;
   ...
 &lt;/Directory&gt;
-
 
 # chown apache:apache /var/lib/graphite-web/graphite.db 
 # systemctl enable httpd.service --now</code></pre>
@@ -1212,8 +1289,8 @@ TIME_ZONE = 'Europe/Berlin'
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/graphite/" data-title="06_flow" id="sections_graphite_06_flow2" class="slide smbullets small" data-transition="none">
-<div class="content smbullets small" ref="sections/graphite/06_flow:2">
+<div data-section="sections/graphite/" data-title="06_flow" id="sections_graphite_06_flow2" class="slide small printonly" data-transition="none">
+<div class="content small printonly" ref="sections/graphite/06_flow:2">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -1223,12 +1300,19 @@ TIME_ZONE = 'Europe/Berlin'
 
 <p>To receive metrics, Graphite provides by default two interfaces. On Port 2003 Carbon  is listening with a plain text protocol, on port 2004 with the so-called "Pickle protocol".</p>
 
-<p>While the plain text protocol is pretty simple "&lt;metric path&gt;.&lt;metric value&gt;.&lt;metric timestamp&gt;", the Pickle protocol is more complex and looks more like a multidimensional array. The advantage of the plain text protocol is its simplicity, the Pickle protocol instead is more efficient. In addition, multiple metrics can be transferred in a bulk.</p>
+<p>While the plain text protocol is pretty simple "<strong>&lt;metric.path&gt;.&lt;value&gt;.&lt;timestamp&gt;</strong>", the Pickle protocol is more complex and looks more like a multidimensional array. The advantage of the plain text protocol is its simplicity, the Pickle protocol instead is more efficient. In addition, multiple metrics can be transferred in a bulk.</p>
 
 <pre class="highlight"><code class="language-sh"># echo "localhost.tmp.files `ls /tmp | wc -l` `date +%s`"
 localhost.tmp.files 9 1522237082
 
-# echo "localhost.tmp.files `ls /tmp | wc -l` `date +%s`" | nc localhost 2003</code></pre>
+# echo "localhost.tmp.files `ls /tmp | wc -l` `date +%s`" \
+| nc localhost 2003</code></pre>
+
+<p>Tags must be appended to the metrics path with semicolon: "<strong>;&lt;tag-key&gt;=&lt;tag-value&gt;</strong>"</p>
+
+<pre class="highlight"><code class="language-sh"># echo "localhost.tmp.files;os=linux;dist=centos \
+`ls /tmp | wc -l` `date +%s`"
+localhost.tmp.files;os=linux;dist=centos 9 1522237082</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -1921,7 +2005,7 @@ offset: 28</code></pre>
 
 <h1>Common Whisper Tools Usage (2/2)</h1>
 
-<pre class="highlight"><code class="language-sh"># whisper-resize.py --nobackup metricsReceived.wsp 60s:120d
+<pre class="highlight"><code class="language-sh"># whisper-resize.py --nobackup metricsReceived.wsp 60:120d
 Retrieving all data from the archives
 Creating new whisper database: metricsReceived.wsp.tmp
 Created: metricsReceived.wsp.tmp (1555228 bytes)
@@ -2204,6 +2288,7 @@ Type=forking
 StandardOutput=syslog
 StandardError=syslog
 ExecStart=/opt/graphite/bin/carbon-relay.py \
+  --instance=a \
   --config=/opt/graphite/conf/carbon.conf \
   --pidfile=/var/run/carbon-relay.pid \
   --logdir=/var/log/carbon/ start
@@ -2340,6 +2425,7 @@ Type=forking
 StandardOutput=syslog
 StandardError=syslog
 ExecStart=/opt/graphite/bin/carbon-aggregator.py \
+  --instance=a \
   --config=/opt/graphite/conf/carbon.conf \
   --pidfile=/var/run/carbon-aggregator.pid \
   --logdir=/var/log/carbon/ start
@@ -2521,8 +2607,8 @@ Docs: <a href="https://collectd.org/documentation.shtml" target="_blank">https:/
 
 <p>After the installation you should edit <strong>/etc/collectd.conf</strong>. It should include the following content:</p>
 
-<pre class="highlight"><code class="language-sh">Hostname            "graphing1"
-FQDNLookup          false # default: true
+<pre class="highlight"><code class="language-sh">Hostname            "graphing1" # default: FQDN
+FQDNLookup          false       # default: true
 Interval            10
 MaxReadInterval     86400
 Timeout             2
@@ -2772,8 +2858,8 @@ new metric collectd.graphing1.interface-enp0s3.\
 <p>Content of <strong>/opt/graphite/storage/index</strong>:</p>
 
 <pre class="highlight"><code class="language-sh">...
-collectd.graphing1.cpu-0.cpu-wait.value
-collectd.graphing1.cpu-0.cpu-user.value
+collectd.graphing1.cpu-0.cpu-wait
+collectd.graphing1.cpu-0.cpu-user
 collectd.graphing1.interface-lo.if_packets.rx
 collectd.graphing1.interface-lo.if_packets.tx
 collectd.graphing1.interface-lo.if_octets.tx
@@ -2899,7 +2985,7 @@ collectd.graphing1.interface-lo.if_octets.rx
 <p>Create a JSON output of the free diskspace from one of your servers. Output only the last 5 minutes.</p>
 
 <pre class="highlight"><code class="language-sh">http://graphite/render
-?target=collectd.graphing1.df-root.df_complex-free.value
+?target=collectd.graphing1.df-root.df_complex-free
 &amp;from=-5min
 &amp;format=json</code></pre>
 
@@ -2927,7 +3013,7 @@ collectd.graphing1.interface-lo.if_octets.rx
     (
       averageSeries
       (
-        collectd.graphing[1-2].cpu-*.cpu-system.value
+        collectd.graphing[1-2].cpu-*.cpu-system
       ), 
     "CPU system"
     )
@@ -3043,7 +3129,7 @@ collectd.graphing1.interface-lo.if_octets.rx
 <hr>
 
 <p>Project: <a href="http://grafana.org" target="_blank">http://grafana.org</a><br>
-Documentation: <a href="http://docs.grafana.org" target="_blank">http://docs.grafana.org</a></p>
+Docs: <a href="http://docs.grafana.org" target="_blank">http://docs.grafana.org</a></p>
 
 </div>
 <canvas class="annotations"></canvas>
@@ -3104,7 +3190,8 @@ What's New: <a href="http://docs.grafana.org/guides/whats-new-in-v5/" target="_b
 
 <pre class="highlight"><code class="language-sh">[grafana]
 name=grafana
-baseurl=https://packagecloud.io/grafana/stable/el/7/$basearch
+baseurl=https://packagecloud.io/grafana/stable/el/7/\
+  $basearch
 repo_gpgcheck=1
 enabled=1
 gpgcheck=1
@@ -3356,8 +3443,8 @@ WantedBy=multi-user.target</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/cluster/" data-title="01_single" id="sections_cluster_01_single6" class="slide small" data-transition="none">
-<div class="content small" ref="sections/cluster/01_single:6">
+<div data-section="sections/cluster/" data-title="01_single" id="sections_cluster_01_single6" class="slide small printonly" data-transition="none">
+<div class="content small printonly" ref="sections/cluster/01_single:6">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite Cluster</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -3374,12 +3461,7 @@ PICKLE_RECEIVER_PORT = 2004
 RELAY_METHOD = consistent-hashing
 REPLICATION_FACTOR = 1
 
-DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
-  # former: 127.0.0.1:2014</code></pre>
-
-<p>Restart Carbon Relay:</p>
-
-<pre class="highlight"><code class="language-sh"># systemctl restart carbon-relay.service</code></pre>
+DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -3420,7 +3502,8 @@ DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
 
 <p>File: <strong>/opt/graphite/webapp/graphite/local_settings.py</strong>:</p>
 
-<pre class="highlight"><code class="language-sh">CARBONLINK_HOSTS = ["127.0.0.1:7002:a", "127.0.0.1:7102:b"]</code></pre>
+<pre class="highlight"><code class="language-sh">CARBONLINK_HOSTS = ["127.0.0.1:7002:a", \
+"127.0.0.1:7102:b"]</code></pre>
 
 <p>Restart Apache:</p>
 
@@ -3452,8 +3535,8 @@ DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/cluster/" data-title="01_single" id="sections_cluster_01_single10" class="slide small" data-transition="none">
-<div class="content small" ref="sections/cluster/01_single:10">
+<div data-section="sections/cluster/" data-title="01_single" id="sections_cluster_01_single10" class="slide small printonly" data-transition="none">
+<div class="content small printonly" ref="sections/cluster/01_single:10">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite Cluster</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -3467,15 +3550,10 @@ DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
 LINE_RECEIVER_PORT = 2003
 PICKLE_RECEIVER_PORT = 2004
 
-RELAY_METHOD = consistent-hashing # only with 1 Aggregator
+RELAY_METHOD = consistent-hashing
 REPLICATION_FACTOR = 1
 
-DESTINATIONS = 127.0.0.1:2014
-  # former: 127.0.0.1:2024:a, 127.0.0.1:2124:b</code></pre>
-
-<p>Restart Carbon Relay:</p>
-
-<pre class="highlight"><code class="language-sh"># systemctl restart carbon-relay.service</code></pre>
+DESTINATIONS = 127.0.0.1:2014</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -3484,8 +3562,8 @@ DESTINATIONS = 127.0.0.1:2014
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/cluster/" data-title="01_single" id="sections_cluster_01_single11" class="slide small" data-transition="none">
-<div class="content small" ref="sections/cluster/01_single:11">
+<div data-section="sections/cluster/" data-title="01_single" id="sections_cluster_01_single11" class="slide small printonly" data-transition="none">
+<div class="content small printonly" ref="sections/cluster/01_single:11">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite Cluster</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -3502,7 +3580,6 @@ PICKLE_RECEIVER_PORT = 2014
 FORWARD_ALL = True
 
 DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
-  # former: 127.0.0.1:2024
 
 REPLICATION_FACTOR = 1</code></pre>
 
@@ -3738,7 +3815,7 @@ LOCAL_DATA_DIR = /opt/graphite/storage/whisper1/
 [cache:b]
 LOCAL_DATA_DIR = /opt/graphite/storage/whisper2/</code></pre>
 
-<p>And to restart the Cache daemons:</p>
+<p>Restart the Cache daemons:</p>
 
 <pre class="highlight"><code class="language-sh"># systemctl restart carbon-cache-a.service
 # systemctl restart carbon-cache-b.service</code></pre>
@@ -3763,10 +3840,10 @@ LOCAL_DATA_DIR = /opt/graphite/storage/whisper2/</code></pre>
 
 <p>File: <strong>/opt/graphite/webapp/graphite/local_settings.py</strong></p>
 
-<pre class="highlight"><code class="language-sh">STANDARD_DIRS = [ "/opt/graphite/storage/whisper1", \
-  "/opt/graphite/storage/whisper2" ]</code></pre>
+<pre class="highlight"><code class="language-sh">STANDARD_DIRS = ["/opt/graphite/storage/whisper1", \
+"/opt/graphite/storage/whisper2"]</code></pre>
 
-<p>Aftwards Apache requires a reload:</p>
+<p>Afterwards Apache requires a reload:</p>
 
 <pre class="highlight"><code class="language-sh"># systemctl reload httpd.service</code></pre>
 
@@ -3866,7 +3943,7 @@ LOCAL_DATA_DIR = /opt/graphite/storage/whisper2/</code></pre>
 <hr>
 
 <p>Project: <a href="https://github.com/etsy/statsd" target="_blank">https://github.com/etsy/statsd</a><br>
-Documentation: <a href="https://github.com/etsy/statsd/tree/master/docs" target="_blank">https://github.com/etsy/statsd/tree/master/docs</a></p>
+Docs: <a href="https://github.com/etsy/statsd/tree/master/docs" target="_blank">https://github.com/etsy/statsd/tree/master/docs</a></p>
 
 </div>
 <canvas class="annotations"></canvas>
@@ -4513,7 +4590,7 @@ aggregationMethod = average</code></pre>
 <hr>
 
 <p>InfluxData: <a href="https://www.influxdata.com" target="_blank">https://www.influxdata.com</a><br>
-Documentation: <a href="https://docs.influxdata.com" target="_blank">https://docs.influxdata.com</a></p>
+Docs: <a href="https://docs.influxdata.com" target="_blank">https://docs.influxdata.com</a></p>
 
 </div>
 <canvas class="annotations"></canvas>
@@ -4552,7 +4629,8 @@ Documentation: <a href="https://docs.influxdata.com" target="_blank">https://doc
 
 <pre class="highlight"><code class="language-sh">[influxdb]
 name = InfluxDB Repository - RHEL \$releasever
-baseurl = https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+baseurl = https://repos.influxdata.com/rhel/\$releasever/\
+  $basearch/stable
 enabled = 1
 gpgcheck = 1
 gpgkey = https://repos.influxdata.com/influxdb.key
@@ -4697,6 +4775,34 @@ gpgkey = https://repos.influxdata.com/influxdb.key
     servers = ["localhost:2003"]
     prefix = "telegraf"</code></pre>
 
+<div class="net-footer">
+    <p>Graphite + Grafana Training</p>
+    <p>by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb9" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:9">
+<h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
+<div class="net-header">
+    <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
+</div>
+
+<h1>Telegraf Graphite Output Plugin</h1>
+
+<p>Care about a proper storage schema:</p>
+
+<p>File: <strong>/opt/graphite/conf/storage-schemas.conf</strong></p>
+
+<pre class="highlight"><code class="language-sh">[...]
+
+[telegraf]
+pattern = ^telegraf\.
+retentions = 10s:5d
+
+[...]</code></pre>
+
 <p>Restart Telegraf with systemd:</p>
 
 <pre class="highlight"><code class="language-sh"># systemctl restart telegraf.service</code></pre>
@@ -4717,8 +4823,8 @@ gpgkey = https://repos.influxdata.com/influxdb.key
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb9" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:9">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb10" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:10">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -4758,8 +4864,8 @@ measurement,tag(s) field(s) timestamp</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb10" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:10">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb11" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:11">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -4793,8 +4899,8 @@ cpu,host=graping2 value=1.20 1422568543702900257'</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb11" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:11">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb12" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:12">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -4826,8 +4932,8 @@ Date: Fri, 09 Jun 2017 06:43:02 GMT</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb12" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:12">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb13" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:13">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -4857,8 +4963,8 @@ FROM \"cpu\" WHERE \"region\"='us-west'"</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb13" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:13">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb14" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:14">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -4896,8 +5002,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb14" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:14">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb15" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:15">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -4953,8 +5059,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb15" class="slide small" data-transition="none">
-<div class="content small" ref="sections/influxdb/01_influxdb:15">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb16" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb/01_influxdb:16">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -4983,8 +5089,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb16" class="slide small" data-transition="none">
-<div class="content small" ref="sections/influxdb/01_influxdb:16">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb17" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb/01_influxdb:17">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5013,8 +5119,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb17" class="slide printonly" data-transition="none">
-<div class="content printonly" ref="sections/influxdb/01_influxdb:17">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb18" class="slide printonly" data-transition="none">
+<div class="content printonly" ref="sections/influxdb/01_influxdb:18">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5034,8 +5140,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb18" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:18">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb19" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:19">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5073,8 +5179,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb19" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:19">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb20" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:20">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5101,8 +5207,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb20" class="slide small" data-transition="none">
-<div class="content small" ref="sections/influxdb/01_influxdb:20">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb21" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb/01_influxdb:21">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5139,8 +5245,8 @@ SELECT * FROM load_shortterm
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb21" class="slide printonly" data-transition="none">
-<div class="content printonly" ref="sections/influxdb/01_influxdb:21">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb22" class="slide printonly" data-transition="none">
+<div class="content printonly" ref="sections/influxdb/01_influxdb:22">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5160,8 +5266,8 @@ SELECT * FROM load_shortterm
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb22" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:22">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb23" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:23">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5190,8 +5296,8 @@ SELECT * FROM load_shortterm
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb23" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:23">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb24" class="slide" data-transition="none">
+<div class="content " ref="sections/influxdb/01_influxdb:24">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5202,7 +5308,6 @@ SELECT * FROM load_shortterm
 <p>We have to stop serval services due to limited system resources in our training environment:</p>
 
 <pre class="highlight"><code class="language-sh"># systemctl stop statsd.service
-# systemctl stop collectd.service
 # systemctl stop telegraf.service
 # systemctl stop chronograf.service
 # systemctl stop influxdb.service</code></pre>
@@ -5462,8 +5567,8 @@ sys.cpu.user 1356998400 42.5 host=webserver01 cpu=0</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/icinga/" data-title="01_icinga" id="sections_icinga_01_icinga1" class="slide smbullets" data-transition="none">
-<div class="content smbullets" ref="sections/icinga/01_icinga:1">
+<div data-section="sections/icinga/" data-title="01_icinga" id="sections_icinga_01_icinga1" class="slide" data-transition="none">
+<div class="content " ref="sections/icinga/01_icinga:1">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Icinga</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5726,10 +5831,9 @@ retentions = 1m:2d,5m:10d,30m:90d,360m:4y
 
 <h1>Icinga 2 Graphite Feature</h1>
 
-<p>Every part of Icinga 2 is a module, also called feature. To add Graphite support to Icinga 2 you need to enable and configure the proper feature.</p>
+<p>To add Graphite support to Icinga 2 you need to enable and configure the proper feature.</p>
 
-<pre class="highlight"><code class="language-sh"># icinga2 feature list
-# icinga2 feature enable graphite</code></pre>
+<pre class="highlight"><code class="language-sh"># icinga2 feature enable graphite</code></pre>
 
 <p>Edit the configuration for the Graphite feature and enable at least sending of thresholds.</p>
 
@@ -5748,15 +5852,70 @@ retentions = 1m:2d,5m:10d,30m:90d,360m:4y
 <pre class="highlight"><code class="language-sh"># icinga2 daemon -C
 # systemctl restart icinga2.service</code></pre>
 
+
+
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
     <p>by NETWAYS GmbH (www.netways.de)</p>
 </div>
 </div>
+<div class="notes-section handouts">
+
+<hr>
+
+<p>Docs: <a href="https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#graphitewriter" target="_blank">https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#graphitewriter</a></p>
+
+</div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/icinga/" data-title="01_icinga" id="sections_icinga_01_icinga10" class="slide printonly" data-transition="none">
-<div class="content printonly" ref="sections/icinga/01_icinga:10">
+<div data-section="sections/icinga/" data-title="01_icinga" id="sections_icinga_01_icinga10" class="slide small" data-transition="none">
+<div class="content small" ref="sections/icinga/01_icinga:10">
+<h1 class="section_title">~~~SECTION:MAJOR~~~ Icinga</h1>
+<div class="net-header">
+    <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
+</div>
+
+<h1>Icinga 2 InfluxDB Feature</h1>
+
+<p>Enabling the Icinga InfluxDB feature is similar than the Graphite feature:</p>
+
+<pre class="highlight"><code class="language-sh"># icinga2 feature enable influxdb</code></pre>
+
+<p>File: <strong>/etc/icinga2/features-enabled/influxdb.conf</strong></p>
+
+<pre class="highlight"><code class="language-sh">object InfluxdbWriter "influxdb" {
+  host = "127.0.0.1"            // default
+  port = 8086                   // default
+  database = "icinga2"          // default
+  ...
+
+  enable_send_thresholds = true // optional
+  enable_send_metadata = true   // optional
+}</code></pre>
+
+<p>Validate the configuration and restart Icinga 2:</p>
+
+<pre class="highlight"><code class="language-sh"># icinga2 daemon -C
+# systemctl restart icinga2.service</code></pre>
+
+
+
+<div class="net-footer">
+    <p>Graphite + Grafana Training</p>
+    <p>by NETWAYS GmbH (www.netways.de)</p>
+</div>
+</div>
+<div class="notes-section handouts">
+
+<hr>
+
+<p>Docs: <a href="https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#influxdbwriter" target="_blank">https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#influxdbwriter</a></p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="sections/icinga/" data-title="01_icinga" id="sections_icinga_01_icinga11" class="slide printonly" data-transition="none">
+<div class="content printonly" ref="sections/icinga/01_icinga:11">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Icinga</h1>
 <div class="net-header">
     <img src="./file///global/_images/netways/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS" width="215px" height="100px">
@@ -5879,6 +6038,11 @@ Docs: <a href="http://obfuscurity.com/2012/05/Polling-Graphite-with-Nagios" targ
   assign where host.name == "graphing1.localdomain"
 }</code></pre>
 
+<p>Validate the configuration and reload Icinga 2:</p>
+
+<pre class="highlight"><code class="language-sh"># icinga2 daemon -C
+# systemctl reload icinga2.service</code></pre>
+
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
     <p>by NETWAYS GmbH (www.netways.de)</p>
@@ -5978,12 +6142,12 @@ eventstream.types:
 
 <p>Finally we can start Elasticsearch and Icingabeat:</p>
 
-<pre class="highlight"><code class="language-sh"># systemd start elasticsearch.service
-# systemd start icingabeat.service</code></pre>
+<pre class="highlight"><code class="language-sh"># systemctl start elasticsearch.service
+# systemctl start icingabeat.service</code></pre>
 
 <p><strong>Note:</strong> If you're interested you can also start Kibana, it will be available at: <a href="http://192.168.56.101:5601" target="_blank">http://192.168.56.101:5601</a></p>
 
-<pre class="highlight"><code class="language-sh"># systemd start kibana.service</code></pre>
+<pre class="highlight"><code class="language-sh"># systemctl start kibana.service</code></pre>
 
 <div class="net-footer">
     <p>Graphite + Grafana Training</p>
@@ -6706,7 +6870,7 @@ accessmode = "proxy"</code></pre>
 <hr>
 
 <p>Project: <a href="https://github.com/pyr/cyanite" target="_blank">https://github.com/pyr/cyanite</a><br>
-Documentation: <a href="http://cyanite.io" target="_blank">http://cyanite.io</a><br>
+Docs: <a href="http://cyanite.io" target="_blank">http://cyanite.io</a><br>
 Storage Finder: <a href="https://github.com/brutasse/graphite-cyanite" target="_blank">https://github.com/brutasse/graphite-cyanite</a></p>
 
 </div>
@@ -7742,7 +7906,7 @@ Cluster Backend: <a href="https://github.com/lomik/graphite-clickhouse" target="
 
 <hr>
 
-<p>Documentation: <a href="http://graphite.readthedocs.org/en/latest/" target="_blank">http://graphite.readthedocs.org/en/latest/</a><br>
+<p>Docs: <a href="http://graphite.readthedocs.org/en/latest/" target="_blank">http://graphite.readthedocs.org/en/latest/</a><br>
 StackExchange: <a href="http://stackexchange.com/filters/27311/graphite" target="_blank">http://stackexchange.com/filters/27311/graphite</a><br>
 IRC channel: <a href="http://irc.netsplit.de/channels/details.php?room=%23graphite&amp;net=freenode" target="_blank">http://irc.netsplit.de/channels/details.php?room=%23graphite&amp;net=freenode</a><br>
 GitHub projects: <a href="https://github.com/graphite-project" target="_blank">https://github.com/graphite-project</a></p>

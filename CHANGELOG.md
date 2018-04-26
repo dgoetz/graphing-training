@@ -1,6 +1,28 @@
 # Open Source Training for Graphite and Grafana CHANGELOG
 
-## v2.0.0 (2018-04-12)
+## v2.1.0 (2018-04-26)
+
+### Notes
+
+* Few enhancements, tiny typos and workflow improvements
+* Updated Virtual Machines
+
+### Enhancements
+
+* Update to Graphite 1.1.3
+* Telegraf storage schema
+* Tag protocol schema (refs #6)
+* More RAM for graphing1.localdomain
+* Icinga 2 InfluxDB Feature (refs #1)
+
+### Bugs
+
+* Wrong release date for v2.0.0 in CHANGELOG
+* Incorrect collectd values in Render API Samples
+* Wrong Service Unit File for Graphite Carbon Cache (instance b)
+* Few typos and workflow improvements 
+
+## v2.0.0 (2018-04-13)
 
 ### Notes
 
