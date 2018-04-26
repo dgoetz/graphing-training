@@ -451,7 +451,6 @@ We have to stop serval services due to limited system resources in our training 
 
     @@@Sh
     # systemctl stop statsd.service
-    # systemctl stop collectd.service
     # systemctl stop telegraf.service
     # systemctl stop chronograf.service
     # systemctl stop influxdb.service

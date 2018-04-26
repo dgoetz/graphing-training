@@ -42,7 +42,7 @@ It's possible to use different storage directories for each Carbon Cache. We hav
     [cache:b]
     LOCAL_DATA_DIR = /opt/graphite/storage/whisper2/
 
-And to restart the Cache daemons:
+Restart the Cache daemons:
 
     @@@Sh
     # systemctl restart carbon-cache-a.service
@@ -57,10 +57,10 @@ The configuration for Graphite-Web has to be changed in order to support differe
 File: **/opt/graphite/webapp/graphite/local_settings.py**
 
     @@@Sh
-    STANDARD_DIRS = [ "/opt/graphite/storage/whisper1", \
-      "/opt/graphite/storage/whisper2" ]
+    STANDARD_DIRS = ["/opt/graphite/storage/whisper1", \
+    "/opt/graphite/storage/whisper2"]
 
-Aftwards Apache requires a reload:
+Afterwards Apache requires a reload:
 
     @@@Sh
     # systemctl reload httpd.service

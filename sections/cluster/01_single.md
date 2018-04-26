@@ -87,8 +87,7 @@ Add Carbon Cache instances to Relay configuration in **carbon.conf**:
     RELAY_METHOD = consistent-hashing
     REPLICATION_FACTOR = 1
 
-    DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
-      # former: 127.0.0.1:2014
+    DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b # former: 127.0.0.1:2014
 
 Restart Carbon Relay:
 
@@ -149,8 +148,7 @@ Change Relay configuration in **carbon.conf**:
     RELAY_METHOD = consistent-hashing # only with 1 Aggregator
     REPLICATION_FACTOR = 1
 
-    DESTINATIONS = 127.0.0.1:2014
-      # former: 127.0.0.1:2024:a, 127.0.0.1:2124:b
+    DESTINATIONS = 127.0.0.1:2014 # former: 127.0.0.1:2024:a, 127.0.0.1:2124:b
 
 Restart Carbon Relay:
 
@@ -170,8 +168,7 @@ Change Aggregator configuration in **carbon.conf**:
 
     FORWARD_ALL = True
 
-    DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b
-      # former: 127.0.0.1:2024
+    DESTINATIONS = 127.0.0.1:2024:a, 127.0.0.1:2124:b # former: 127.0.0.1:2024
 
     REPLICATION_FACTOR = 1
 

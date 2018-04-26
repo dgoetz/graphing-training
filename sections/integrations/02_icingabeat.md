@@ -22,7 +22,6 @@ Icingabeat is an Elastic Beat that fetches data from the Icinga 2 API and sends 
 **Note:** Icingabeat, Elasticsearch and Kibana are already pre-installed on "graphing1.localdomain".
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Project: https://github.com/Icinga/icingabeat
@@ -58,13 +57,13 @@ File: **/etc/icingabeat/icingabeat.yml**
 Finally we can start Elasticsearch and Icingabeat:
 
     @@@Sh
-    # systemd start elasticsearch.service
-    # systemd start icingabeat.service
+    # systemctl start elasticsearch.service
+    # systemctl start icingabeat.service
 
 **Note:** If you're interested you can also start Kibana, it will be available at: http://192.168.56.101:5601
 
     @@@Sh
-    # systemd start kibana.service
+    # systemctl start kibana.service
 
 
 !SLIDE noprint

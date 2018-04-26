@@ -46,6 +46,12 @@ File: **/etc/icinga2/training/services.conf**
       assign where host.name == "graphing1.localdomain"
     }
 
+Validate the configuration and reload Icinga 2:
+
+    @@@Sh
+    # icinga2 daemon -C
+    # systemctl reload icinga2.service
+
 
 !SLIDE small printonly
 # Graph Monitoring
@@ -69,3 +75,9 @@ File: **/etc/icinga2/training/services.conf**
 
       assign where host.name == "graphing1.localdomain"
     }
+
+Validate the configuration and reload Icinga 2:
+
+    @@@Sh
+    # icinga2 daemon -C
+    # systemctl reload icinga2.service
