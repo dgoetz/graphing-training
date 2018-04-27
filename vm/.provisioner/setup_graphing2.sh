@@ -29,10 +29,10 @@ yum -y install vim-enhanced epel-release nmap-ncat tree rsync
 yum -y install python2-pip gcc
 yum -y install python-devel cairo-devel libffi-devel
 
-pip install carbon==1.1.2
-pip install whisper==1.1.2
+pip install carbon==1.1.3
+pip install whisper==1.1.3
 
-ln -s /opt/graphite/lib/carbon-1.1.2-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
+ln -s /opt/graphite/lib/carbon-1.1.3-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
 cp /usr/local/src/carbon/carbon.conf /opt/graphite/conf/carbon.conf
 cp /usr/local/src/carbon/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
 cp /opt/graphite/conf/aggregation-rules.conf.example /opt/graphite/conf/aggregation-rules.conf
@@ -56,9 +56,9 @@ systemctl enable carbon-relay.service
 yum -y install python-scandir mod_wsgi
 yum -y install dejavu-sans-fonts dejavu-serif-fonts
 
-pip install graphite-web==1.1.2
+pip install graphite-web==1.1.3
 
-ln -s /opt/graphite/webapp/graphite_web-1.1.2-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
+ln -s /opt/graphite/webapp/graphite_web-1.1.3-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
 
 cp /opt/graphite/conf/graphite.wsgi.example /opt/graphite/conf/graphite.wsgi
 cp /usr/local/src/graphite-web/graphite-web.conf /etc/httpd/conf.d/graphite-web.conf
