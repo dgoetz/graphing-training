@@ -51,6 +51,7 @@ cp /usr/local/src/collectd/network.conf /etc/collectd.d/network.conf
 
 # Grafana
 cp /usr/local/src/grafana/grafana.repo /etc/yum.repos.d/grafana.repo
+rpm --import https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
 yum -y install grafana
 systemctl stop grafana-server.service
 systemctl disable grafana-server.service
