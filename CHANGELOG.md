@@ -1,5 +1,21 @@
 # Open Source Training for Graphite and Grafana CHANGELOG
 
+## v2.1.1 (2018-04-30)
+
+### Notes
+
+* Bugfix release for provisioning
+* Updated Virtual Machines
+
+### Enhancements
+
+* Update to Graphite 1.1.3 on graphing2.localdomain
+
+### Bugs
+
+* Missing Icinga files for graphing1.localdomain
+* GPG key for Grafana repo
+
 ## v2.1.0 (2018-04-26)
 
 ### Notes
