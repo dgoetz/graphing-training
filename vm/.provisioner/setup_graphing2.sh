@@ -23,7 +23,8 @@ echo -e '192.168.56.101 \t graphing1.localdomain graphing1 graphite' >> /etc/hos
 echo -e '192.168.56.102 \t graphing2.localdomain graphing2' >> /etc/hosts
 
 # Base
-yum -y install vim-enhanced epel-release nmap-ncat tree rsync
+yum -y install yum-plugin-fastestmirror deltarpm vim-enhanced epel-release nmap-ncat tree rsync
+yum -y update
 
 # Graphite
 yum -y install python2-pip gcc
@@ -33,14 +34,14 @@ pip install carbon==1.1.3
 pip install whisper==1.1.3
 
 ln -s /opt/graphite/lib/carbon-1.1.3-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
-cp /usr/local/src/carbon/carbon.conf /opt/graphite/conf/carbon.conf
-cp /usr/local/src/carbon/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
-cp /opt/graphite/conf/aggregation-rules.conf.example /opt/graphite/conf/aggregation-rules.conf
+install -m 0644 -o root -g root /usr/local/src/carbon/carbon.conf /opt/graphite/conf/carbon.conf
+install -m 0644 -o root -g root /usr/local/src/carbon/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
+install -m 0644 -o root -g root /opt/graphite/conf/aggregation-rules.conf.example /opt/graphite/conf/aggregation-rules.conf
 
-cp /usr/local/src/carbon/carbon-cache-a.service /etc/systemd/system/carbon-cache-a.service
-cp /usr/local/src/carbon/carbon-cache-b.service /etc/systemd/system/carbon-cache-b.service
-cp /usr/local/src/carbon/carbon-aggregator.service /etc/systemd/system/carbon-aggregator.service
-cp /usr/local/src/carbon/carbon-relay.service /etc/systemd/system/carbon-relay.service
+install -m 0644 -o root -g root /usr/local/src/carbon/carbon-cache-a.service /etc/systemd/system/carbon-cache-a.service
+install -m 0644 -o root -g root /usr/local/src/carbon/carbon-cache-b.service /etc/systemd/system/carbon-cache-b.service
+install -m 0644 -o root -g root /usr/local/src/carbon/carbon-aggregator.service /etc/systemd/system/carbon-aggregator.service
+install -m 0644 -o root -g root /usr/local/src/carbon/carbon-relay.service /etc/systemd/system/carbon-relay.service
 systemctl daemon-reload
 
 systemctl start carbon-cache-a.service
@@ -60,9 +61,9 @@ pip install graphite-web==1.1.3
 
 ln -s /opt/graphite/webapp/graphite_web-1.1.3-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
 
-cp /opt/graphite/conf/graphite.wsgi.example /opt/graphite/conf/graphite.wsgi
-cp /usr/local/src/graphite-web/graphite-web.conf /etc/httpd/conf.d/graphite-web.conf
-cp /usr/local/src/graphite-web/local_settings.py /opt/graphite/webapp/graphite/local_settings.py
+install -m 0755 -o root -g root /opt/graphite/conf/graphite.wsgi.example /opt/graphite/conf/graphite.wsgi
+install -m 0644 -o root -g root /usr/local/src/graphite-web/graphite-web.conf /etc/httpd/conf.d/graphite-web.conf
+install -m 0644 -o root -g root /usr/local/src/graphite-web/local_settings.py /opt/graphite/webapp/graphite/local_settings.py
 
 PYTHONPATH=/opt/graphite/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
 PYTHONPATH=/opt/graphite/webapp django-admin.py collectstatic --noinput --settings=graphite.settings

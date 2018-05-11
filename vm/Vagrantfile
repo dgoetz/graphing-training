@@ -8,7 +8,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.define "graphing1" do |graphing1|
-    graphing1.vm.box = "bento/centos-7.4"
+    graphing1.vm.box = "bento/centos-7"
     graphing1.vm.hostname = "graphing1.localdomain"
     graphing1.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
     graphing1.vm.provision "file", source: ".provisioner/files/graphing1", destination: "/usr/local/src"
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "graphing2" do |graphing2|
-    graphing2.vm.box = "bento/centos-7.4"
+    graphing2.vm.box = "bento/centos-7"
     graphing2.vm.hostname = "graphing2.localdomain"
     graphing2.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
     graphing2.vm.provision "file", source: ".provisioner/files/graphing2", destination: "/usr/local/src"
