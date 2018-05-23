@@ -23,7 +23,7 @@ echo -e '192.168.56.101 \t graphing1.localdomain graphing1 graphite' >> /etc/hos
 echo -e '192.168.56.102 \t graphing2.localdomain graphing2' >> /etc/hosts
 
 # Base
-yum -y install yum-plugin-fastestmirror deltarpm vim-enhanced epel-release nmap-ncat tree rsync git mailx
+yum -y install yum-plugin-fastestmirror deltarpm yum-utils vim-enhanced epel-release nmap-ncat tree rsync git mailx
 yum -y update
 
 # Graphite
@@ -158,3 +158,6 @@ systemctl disable kibana.service
 yum -y install https://github.com/Icinga/icingabeat/releases/download/v6.1.1/icingabeat-6.1.1.x86_64.rpm
 icingabeat setup
 systemctl disable icingabeat
+
+# Clean old kernels
+package-cleanup -y --oldkernels --count=2

@@ -23,7 +23,7 @@ echo -e '192.168.56.101 \t graphing1.localdomain graphing1 graphite' >> /etc/hos
 echo -e '192.168.56.102 \t graphing2.localdomain graphing2' >> /etc/hosts
 
 # Base
-yum -y install yum-plugin-fastestmirror deltarpm vim-enhanced epel-release nmap-ncat tree rsync
+yum -y install yum-plugin-fastestmirror deltarpm yum-utils vim-enhanced epel-release nmap-ncat tree rsync
 yum -y update
 
 # Graphite
@@ -74,3 +74,6 @@ chown -Rf apache:root /opt/graphite/storage/log
 
 systemctl start httpd.service
 systemctl enable httpd.service
+
+# Clean old kernels
+package-cleanup -y --oldkernels --count=2
