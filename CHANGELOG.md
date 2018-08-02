@@ -1,5 +1,20 @@
 # Open Source Training for Graphite and Grafana CHANGELOG
 
+## v2.2.0 (2018-08-02)
+
+### Notes
+
+* New layout (https://github.com/NETWAYS/training-global)
+* Updated Virtual Machines
+
+### Enhancements
+
+* CSS styles
+* Pre and post slides
+* NETWAYS Training Wizard
+* Dockerfile
+* Cleanup old kernels
+
 ## v2.1.1 (2018-04-30)
 
 ### Notes
