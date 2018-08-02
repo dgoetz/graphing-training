@@ -65,7 +65,6 @@ Algorithm  | Description
 ---------- | -------------
 **sorted** (default) | All metrics in the cache will be counted and an ordered list of them will be sorted according to the number of datapoints in the cache at the moment of the list's creation. Metrics will then be flushed from the cache to disk in that order.
 **timesorted** | All metrics in the list will be looked at and sorted according to the timestamp of there datapoints. The metric that were the least recently written will be written first. This is an hybrid strategy between max and sorted which is particularly adapted to sets of metrics with non-uniform resolutions.
-**max**    | The writer thread will always pop and flush the metric from cache that has the most datapoints. This will give a strong flush preference to frequently updated metrics and will also reduce random file-io. Infrequently updated metrics may only ever be persisted to disk at daemon shutdown if there are a large number of metrics which receive very frequent updates OR if disk i/o is very slow.
 
 
 !SLIDE small
@@ -73,6 +72,7 @@ Algorithm  | Description
 
 Algorithm  | Description
 ---------- | -------------
+**max**    | The writer thread will always pop and flush the metric from cache that has the most datapoints. This will give a strong flush preference to frequently updated metrics and will also reduce random file-io. Infrequently updated metrics may only ever be persisted to disk at daemon shutdown if there are a large number of metrics which receive very frequent updates OR if disk i/o is very slow.
 **naive**  | Metrics will be flushed from the cache to disk in an unordered fashion. This strategy may be desirable in situations where the storage for whisper files is solid state, CPU resources are very limited or deference to the OS's i/o scheduler is expected to compensate for the random write pattern.
 
 

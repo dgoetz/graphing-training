@@ -92,7 +92,7 @@
 <div class="title-cover">
     <div class="title-name">Graphite + Grafana</div>
     <div class="title-subtitle">Time Series Metrics</div>
-    <div class="title-release">Version: 2.1.1</div>
+    <div class="title-release">Version: 2.2.0</div>
 </div>
 
 <div class="net-footer">
@@ -1387,10 +1387,6 @@ localhost.tmp.files;os=linux;dist=centos 9 1522237082</code></pre>
 <td><strong>timesorted</strong></td>
 <td>All metrics in the list will be looked at and sorted according to the timestamp of there datapoints. The metric that were the least recently written will be written first. This is an hybrid strategy between max and sorted which is particularly adapted to sets of metrics with non-uniform resolutions.</td>
 </tr>
-<tr>
-<td><strong>max</strong></td>
-<td>The writer thread will always pop and flush the metric from cache that has the most datapoints. This will give a strong flush preference to frequently updated metrics and will also reduce random file-io. Infrequently updated metrics may only ever be persisted to disk at daemon shutdown if there are a large number of metrics which receive very frequent updates OR if disk i/o is very slow.</td>
-</tr>
 </tbody>
 </table>
 
@@ -1418,6 +1414,10 @@ localhost.tmp.files;os=linux;dist=centos 9 1522237082</code></pre>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><strong>max</strong></td>
+<td>The writer thread will always pop and flush the metric from cache that has the most datapoints. This will give a strong flush preference to frequently updated metrics and will also reduce random file-io. Infrequently updated metrics may only ever be persisted to disk at daemon shutdown if there are a large number of metrics which receive very frequent updates OR if disk i/o is very slow.</td>
+</tr>
 <tr>
 <td><strong>naive</strong></td>
 <td>Metrics will be flushed from the cache to disk in an unordered fashion. This strategy may be desirable in situations where the storage for whisper files is solid state, CPU resources are very limited or deference to the OS's i/o scheduler is expected to compensate for the random write pattern.</td>
@@ -2809,7 +2809,7 @@ new metric collectd.graphing1.interface-enp0s3.\
 <h1>Graphite-Web</h1>
 
 <p></p>
-<center><img src="./file//sections/webapp/_images/graphite-web.png" style="width:460px;height:243px;"></center>
+<center><img src="./file//sections/webapp/_images/graphite-web.png" style="width:450px;height:238px;"></center>
 
 <div class="net-footer">
     <p>Open Source Training</p>

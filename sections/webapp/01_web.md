@@ -7,7 +7,7 @@
 !SLIDE printonly
 # Graphite-Web
 
-<center><img src="./_images/graphite-web.png" style="width:460px;height:243px;"/></center>
+<center><img src="./_images/graphite-web.png" style="width:450px;height:238px;"/></center>
 
 
 !SLIDE small smbullets
