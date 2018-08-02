@@ -1,7 +1,6 @@
 { 
-  "title": "Graphite + Grafana",
+  "name": "Graphite + Grafana",
   "subtitle": "Time Series Metrics",
-  "location": "Nuremberg",
   "author": "Blerim Sheqa & Markus Waldm&uuml;ller",
   "release": "2.1.1",
 
@@ -9,31 +8,35 @@
   "logo": "/global/_images/netways/netways-logo-1366.png",
 
   "protected": ["presenter", "onepage", "print"],
+
   "user": "netways",
   "password": "awesome",
 
   "templates" : {
-    "default": "./global/templates/default.tpl"
+    "default": "global/layouts/netways.tpl"
   },
 
   "sections": [
-   {"section":"global/Pre/Title"},
+    {"section": "global/pre/netways/title"},
+    {"section": "trainer"},
+    {"section": "global/pre/netways/about"},
+    {"section": "global/pre/hints"}, 
 
-   {"section":"sections/introduction/"},
-   {"section":"sections/graphite/"},
-   {"section":"sections/collectd/"},
-   {"section":"sections/webapp/"},
-   {"section":"sections/grafana/"},
-   {"section":"sections/cluster/"},
-   {"section":"sections/StatsD/"},
-   {"section":"sections/influxdb/"},
-   {"section":"sections/opentsdb/"},
-   {"section":"sections/icinga/"},
-   {"section":"sections/integrations/"},
-   {"section":"sections/alternatives/"},
-   {"section":"sections/optimization/"},
-   {"section":"sections/bestpractice/"},
+    {"section":"sections/introduction/"},
+    {"section":"sections/graphite/"},
+    {"section":"sections/collectd/"},
+    {"section":"sections/webapp/"},
+    {"section":"sections/grafana/"},
+    {"section":"sections/cluster/"},
+    {"section":"sections/StatsD/"},
+    {"section":"sections/influxdb/"},
+    {"section":"sections/opentsdb/"},
+    {"section":"sections/icinga/"},
+    {"section":"sections/integrations/"},
+    {"section":"sections/alternatives/"},
+    {"section":"sections/optimization/"},
+    {"section":"sections/bestpractice/"},
 
-   {"section":"global/Post"}
+    {"section": "global/post"}
   ]
 }
