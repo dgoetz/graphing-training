@@ -29,7 +29,7 @@ Project: https://github.com/lomik/go-carbon
 # go-carbon Features
 
 * Receive metrics from TCP and UDP (plaintext protocol)
-* Receive metrics with Pickle protocl (TCP only)
+* Receive metrics with Pickle protocol (TCP only)
 * Receive metrics from HTTP and Apache Kafka
 * Uses same configuration files as Carbon Cache
 * Automatic config reload for many configuration sections
