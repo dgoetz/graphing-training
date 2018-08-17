@@ -41,7 +41,7 @@ File: **/opt/graphite/conf/carbon.conf**
     DESTINATIONS = 127.0.0.1:2024     # default: :2004
 
 
-!SLIDE small
+!SLIDE
 # Carbon Relay Configuration
 
 Take care of **relay-rules.conf**:
@@ -76,7 +76,7 @@ Example rule in **/opt/graphite/conf/relay-rules.conf** with `rules` RELAY_METHO
     destinations = 127.0.0.1:2204:b
 
 
-!SLIDE small
+!SLIDE
 # Carbon Relay Service Unit
 
 File: **/etc/systemd/system/carbon-relay.service**
@@ -102,7 +102,7 @@ File: **/etc/systemd/system/carbon-relay.service**
     WantedBy=multi-user.target
 
 
-!SLIDE small
+!SLIDE
 # Start Carbon Relay Daemon
 
 Start Carbon Relay daemon with systemd:
@@ -115,7 +115,7 @@ Start Carbon Relay daemon with systemd:
     # systemctl enable carbon-relay.service
 
 
-!SLIDE small
+!SLIDE
 # Carbon Aggregator Configuration 
 
 Take care of **aggregation-rules.conf**:
@@ -125,7 +125,7 @@ Take care of **aggregation-rules.conf**:
     $GRAPHITE/conf/aggregation-rules.conf
 
 
-!SLIDE small
+!SLIDE
 # Aggregation Rules
 
 When using Carbon Aggregator, the most important configuration is made in **aggregation-rules.conf**. The file accepts input patterns for metrics and is able to merge multiple incoming metrics to one final metric which is then written as single Whisper file.
@@ -138,7 +138,7 @@ Each line of the configuration should look like this:
 This will capture any metric that matches `input_pattern`. Every `frequency` seconds it will calculate the destination metric using the specified `method` which can be `sum` or `avg`. The config also accepts placeholders.
 
 
-!SLIDE small smbullets
+!SLIDE
 # Aggregation Rules Example
 
 Here is an example of an Apache environment. Goal is to track requests from all application servers and store the sum in a single metric:
@@ -159,7 +159,7 @@ The result is, that metrics matching the pattern will get summed each 60 seconds
     prod.applications.apache.all.requests
 
 
-!SLIDE small
+!SLIDE
 # Carbon Aggregator Service Unit
 
 File: **/etc/systemd/system/carbon-aggregator.service**
@@ -185,7 +185,7 @@ File: **/etc/systemd/system/carbon-aggregator.service**
     WantedBy=multi-user.target
 
 
-!SLIDE small
+!SLIDE
 # Start Carbon Aggregator Daemon
 
 Start Carbon Aggregator daemon with systemd:
@@ -196,7 +196,7 @@ Start Carbon Aggregator daemon with systemd:
     # systemctl enable carbon-aggregator.service
 
 
-!SLIDE small smbullets
+!SLIDE
 # Rewrite Rules
 
 With rewrite rules, metric paths can be rewritten before Whisper files are created. This is handy when your collector sends metric paths which are not accurate. The configuration for rewrite rules takes place in **rewrite-rules.conf**. This functionality is currently only available for Carbon Aggregator.
@@ -211,7 +211,6 @@ These are some rewrite rules commonly used when collectd sends metrics:
     @@@Sh
     [pre]
     \.load\.load\. = .load.
-    \.memory\.memory\. = .memory.
     \.mysql\.stats\. = .mysql.
     _TCP80 = .TCP80
 

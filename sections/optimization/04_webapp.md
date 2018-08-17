@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Webapp
 
 
-!SLIDE smbullets
+!SLIDE
 # Graphite-Web Limitations
 
 * Performance impacts
@@ -11,7 +11,7 @@
 * Overhead when only API is needed
 
 
-!SLIDE smbullets
+!SLIDE
 # Optimize Webapp
 
 * Generate index

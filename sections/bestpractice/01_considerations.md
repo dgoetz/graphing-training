@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Considerations
 
 
-!SLIDE smbullets
+!SLIDE
 # Setup
 
 * Use fast disks (SSD's) and as many CPU cores as possible
@@ -16,7 +16,7 @@
 * Know the limits of the installation
 
 
-!SLIDE smbullets
+!SLIDE
 # Operating
 
 * Keep an eye of internal statistics (Monitoring!)
@@ -30,7 +30,7 @@
  * Disk usage (df, ...)
 
 
-!SLIDE smbullets
+!SLIDE
 # Maintenance
 
 * Think about backups (Validation!)

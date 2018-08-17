@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Graphite Installation
 
 
-!SLIDE smbullets
+!SLIDE
 # Installation methods
 
 * Installation from source
@@ -18,7 +18,7 @@
  * Salt
 
 
-!SLIDE smbullets
+!SLIDE
 # Installation via Puppet
 
 * Configuration management solution
@@ -232,7 +232,7 @@ File: **/opt/graphite/webapp/graphite/local_settings.py**
     TIME_ZONE = 'Europe/Berlin'
 
 
-!SLIDE small
+!SLIDE
 # Graphite-Web MySQL Database
 
 Graphite-Web will use a SQLite database per default, but it can be changed to PostgreSQL, MySQL or Oracle. Here's an example for MySQL:

@@ -14,7 +14,7 @@
 <center><img src="./_images/graphite-big-cluster.png" style="width:460px"/></center>
 
 
-!SLIDE small
+!SLIDE
 # Multiple Graphite-Web Instances
 
 For failover purposes of Graphite-Web we have to edit `CLUSTER_SERVERS`.
@@ -30,7 +30,7 @@ And reload Apache:
     # systemctl reload httpd.service
 
 
-!SLIDE small
+!SLIDE
 # Multiple Whisper Directories
 
 It's possible to use different storage directories for each Carbon Cache. We have to adjust the configuration in **/opt/graphite/conf/carbon.conf**:
@@ -49,7 +49,7 @@ Restart the Cache daemons:
     # systemctl restart carbon-cache-b.service
 
 
-!SLIDE small
+!SLIDE
 # Multiple Whisper Directories with Graphite-Web
 
 The configuration for Graphite-Web has to be changed in order to support different storage directories.

@@ -21,7 +21,7 @@ Docs: https://www.icinga.com/resources/docs
 ~~~ENDSECTION~~~
 
 
-!SLIDE smbullets
+!SLIDE
 # Icinga Checks
 
 Icinga executes checks and evaluates results to trigger notifications or events. A spin-off product of these checks are performance data.
@@ -35,7 +35,7 @@ Icinga executes checks and evaluates results to trigger notifications or events.
 * Full compatibility to Nagios plugins
 
 
-!SLIDE smbullets
+!SLIDE
 # Forwarding Data with Icinga 2
 
 One of Icinga 2's key features is the forwarding of stuff. Nearly any data can be forwarded to one or multiple backends.
@@ -54,7 +54,7 @@ One of Icinga 2's key features is the forwarding of stuff. Nearly any data can b
  * Elasticsearch
 
 
-!SLIDE smbullets
+!SLIDE
 # Training Environment
 
 One of your training virtual machines already includes the following installation:
@@ -67,7 +67,7 @@ One of your training virtual machines already includes the following installatio
 <center><img src="./_images/icinga2-installation-overview.png" style="width:460px;height:290px;"/></center>
 
 
-!SLIDE smbullets
+!SLIDE
 # Icinga Web 2
 
 Icinga Web 2 is a webinterface for Icinga. You can view the current state of your hosts and services and check out historical data.
@@ -99,7 +99,7 @@ Icinga Web 2 is available on "graphing1.localdomain" under "/icingaweb2" with us
 <center><img src="./_images/icingaweb2.png" style="width:460px;height:244px;"/></center>
 
 
-!SLIDE small
+!SLIDE
 # Storage Schema for Icinga 2
 
 Icinga 2 provides a storage schema with use for Graphite. Keep in mind that storage schemas are applied from the top to the bottom and the first match wins. How your storage schema looks like depends on your check intervals. By default the check interval is set to 1 minute.

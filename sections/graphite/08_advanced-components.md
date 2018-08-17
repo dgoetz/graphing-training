@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Advanced Components
 
 
-!SLIDE smbullets noprint
+!SLIDE noprint
 # Carbon Relay
 
 * Forward incoming metrics to another Carbon daemon
@@ -16,7 +16,7 @@ Carbon Relay is a kind of "loadbalancer" for Carbon Cache and/or Aggregator. It 
 <center><img src="./_images/graphite-cache-aggregator-relay.png"/></center>
 
 
-!SLIDE smbullets printonly
+!SLIDE printonly
 # Carbon Relay
 
 * Forward incoming metrics to another Carbon daemon
@@ -30,7 +30,7 @@ Carbon Relay is a kind of "loadbalancer" for Carbon Cache and/or Aggregator. It 
 <center><img src="./_images/graphite-cache-aggregator-relay.png" style="width:460px"/></center>
 
 
-!SLIDE smbullets noprint
+!SLIDE noprint
 # Carbon Aggregator
 
 * In front of Carbon Cache
@@ -43,7 +43,7 @@ Carbon Aggregator sits in front of Carbon Cache and receives metrics. The functi
 <center><img src="./_images/graphite-cache-aggregator.png"/></center>
 
 
-!SLIDE smbullets printonly
+!SLIDE printonly
 # Carbon Aggregator
 
 * In front of Carbon Cache

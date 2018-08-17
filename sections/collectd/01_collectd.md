@@ -23,7 +23,7 @@ Docs: https://collectd.org/documentation.shtml
 ~~~ENDSECTION~~~
 
 
-!SLIDE small
+!SLIDE
 # collectd
 
 collectd is a daemon that runs on your server and collects periodically performance data about several parts of the system. One of many plugins is "write_graphite" which lets you send those collected data to a Graphite server. 
@@ -154,7 +154,7 @@ File: **/etc/collectd.d/write_graphite.conf**
     </Plugin>
 
 
-!SLIDE small
+!SLIDE
 # Restart collectd Daemon
 
 After configuration changes collectd needs to be restarted:

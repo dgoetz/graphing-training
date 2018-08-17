@@ -1,4 +1,4 @@
-!SLIDE smbullets
+!SLIDE
 # Graphite Overview
 
 * Store numeric time-series data

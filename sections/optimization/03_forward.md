@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Forwarding
 
 
-!SLIDE smbullets
+!SLIDE
 # Carbon Relay Limitations
 
 * Queue is growing continuously
@@ -12,7 +12,7 @@
 * No aggregation functionality
 
 
-!SLIDE smbullets
+!SLIDE
 # Optimize Relay
 
 * Adjust `MAX_QUEUE_SIZE` (Defaults to `10000`)
@@ -24,7 +24,7 @@
 * Replace with alternative Relay
 
 
-!SLIDE smbullets
+!SLIDE
 # Carbon Aggregator Limitations
 
 * Queue is growing continuously
@@ -33,7 +33,7 @@
 * Only *consistent-hashing* supported
 
 
-!SLIDE smbullets
+!SLIDE
 # Optimize Aggregator
 
 * Adjust `MAX_QUEUE_SIZE` (Defaults to `10000`)

@@ -1,7 +1,7 @@
 !SLIDE subsectionnonum
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Storage
 
-!SLIDE smbullets
+!SLIDE
 # Whisper Limitations
 
 * Performance is slower than RRD, since Whisper is written in Python
@@ -9,7 +9,7 @@
 * Updates end up involving a lot of IO calls
 
 
-!SLIDE smbullets
+!SLIDE
 # Optimize Storage
 
 * Reduce incoming datapoints

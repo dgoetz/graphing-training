@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Graph Monitoring
 
 
-!SLIDE smbullets
+!SLIDE
 # Graph Monitoring
 
 Icinga can be used to monitor nearly anything. It goes without saying that there is a way you can monitor also your graphs with it.
@@ -24,7 +24,7 @@ Docs: http://obfuscurity.com/2012/05/Polling-Graphite-with-Nagios
 ~~~ENDSECTION~~~
 
 
-!SLIDE small noprint
+!SLIDE noprint small
 # Graph Monitoring
 
 Add a new service to one of your hosts to check metrics from Graphite. Ideally the datapoints you are checking do not come from Icinga itself. The CheckCommand for the `check_graphite` plugin is provided via Icinga Template Library (ITL).
@@ -53,7 +53,7 @@ Validate the configuration and reload Icinga 2:
     # systemctl reload icinga2.service
 
 
-!SLIDE small printonly
+!SLIDE printonly
 # Graph Monitoring
 
 Add a new service to one of your hosts to check metrics from Graphite. Ideally the datapoints you are checking do not come from Icinga itself. The CheckCommand for the `check_graphite` plugin is provided via Icinga Template Library (ITL).

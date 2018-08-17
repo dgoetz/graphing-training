@@ -25,7 +25,7 @@ Project: https://github.com/lomik/go-carbon
 ~~~ENDSECTION~~~
 
 
-!SLIDE smbullets
+!SLIDE
 # go-carbon Features
 
 * Receive metrics from TCP and UDP (plaintext protocol)
@@ -38,7 +38,7 @@ Project: https://github.com/lomik/go-carbon
 * Supports *carbonapi*, which is useful in supported setups
 
 
-!SLIDE smbullets
+!SLIDE
 # go-carbon Pros/Cons
 
 * Pros:

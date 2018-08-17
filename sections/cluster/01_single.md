@@ -18,7 +18,7 @@ In this scenario Carbon Relay distributes metrics over 2 Carbon Caches. As the c
 <center><img src="./_images/graphite-cluster-middle.png" style="width:95%"/></center>
 
 
-!SLIDE small
+!SLIDE
 # Multiple Carbon Caches
 
 All Carbon daemons are configured in **carbon.conf** where each daemon gets its own section.
@@ -37,7 +37,7 @@ Configure multiple caches in **/opt/graphite/conf/carbon.conf**:
     CACHE_QUERY_PORT = 7102
 
 
-!SLIDE small
+!SLIDE
 # Carbon Cache Service Unit for additional instance
 
 File: **/etc/systemd/system/carbon-cache-b.service**
@@ -63,7 +63,7 @@ File: **/etc/systemd/system/carbon-cache-b.service**
     WantedBy=multi-user.target
 
 
-!SLIDE small
+!SLIDE
 # Start Carbon Cache Daemon for additional instance 
 
 Start Carbon Cache daemon for instance "b" with systemd:
@@ -74,7 +74,7 @@ Start Carbon Cache daemon for instance "b" with systemd:
     # systemctl enable carbon-cache-b.service
 
 
-!SLIDE small noprint
+!SLIDE noprint small
 # Carbon Relay with Multiple Caches
 
 Add Carbon Cache instances to Relay configuration in **carbon.conf**:
@@ -95,7 +95,7 @@ Restart Carbon Relay:
     # systemctl restart carbon-relay.service
 
 
-!SLIDE small printonly
+!SLIDE printonly
 # Carbon Relay with Multiple Caches
 
 Add Carbon Cache instances to Relay configuration in **carbon.conf**:
@@ -123,7 +123,7 @@ Add Carbon Cache instances to Relay configuration in **carbon.conf**:
 <center><img src="./_images/graphite-cluster-graphite-web.png" style="width:460px"/></center>
 
 
-!SLIDE small
+!SLIDE
 # Graphite-Web with Multiple Caches
 
 Graphite-Web needs to be configured to query both Carbon Caches.
@@ -152,7 +152,7 @@ Restart Apache:
 <center><img src="./_images/graphite-cluster-aggregator.png" style="width:460px"/></center>
 
 
-!SLIDE small noprint
+!SLIDE noprint small
 # Carbon Relay with Aggregator
 
 Change Relay configuration in **carbon.conf**:
@@ -173,7 +173,7 @@ Restart Carbon Relay:
     # systemctl restart carbon-relay.service
 
 
-!SLIDE small printonly
+!SLIDE printonly
 # Carbon Relay with Aggregator
 
 Change Relay configuration in **carbon.conf**:
@@ -189,7 +189,7 @@ Change Relay configuration in **carbon.conf**:
     DESTINATIONS = 127.0.0.1:2014
 
 
-!SLIDE small noprint
+!SLIDE noprint small
 # Carbon Aggregator with Multiple Caches
 
 Change Aggregator configuration in **carbon.conf**:
@@ -213,7 +213,7 @@ Restart Carbon Aggregator:
 **Note:** The configuration for the Carbon Caches remains unchanged.
 
 
-!SLIDE small printonly
+!SLIDE printonly
 # Carbon Aggregator with Multiple Caches
 
 Change Aggregator configuration in **carbon.conf**:
@@ -269,7 +269,7 @@ Each Carbon daemon will start dropping or not accepting metrics if its queue or 
 <center><img src="./_images/graphite-queues-and-caches.png" style="width:460px"/></center>
 
 
-!SLIDE small
+!SLIDE
 # Carbonate
 
 Carbonate brings some usefull tools to handle different tasks in Graphite clusters, for example to redistribute datapoints manually when new nodes are introduced.
@@ -286,7 +286,7 @@ The configuration of Carbonate is done in: **/opt/graphite/conf/carbonate.conf**
     SSH_USER = carbonate # optional
 
 
-!SLIDE small
+!SLIDE
 # Carbonate Tools
 
 Tool                  | Description

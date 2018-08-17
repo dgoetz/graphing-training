@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Basic Components
 
 
-!SLIDE smbullets
+!SLIDE
 # Components of Graphite
 
 Graphite is a scalable system which provides realtime graphing. Graphite was originally developed by Chris Davis from orbitz.com, where it was used to visualize business-critical data. Graphite is not a single application, it consists of multiple components which together provide a fully functional performance monitoring solution.
@@ -21,7 +21,7 @@ Graphite was published in 2008 under the "Apache 2.0" license.
 ~~~ENDSECTION~~~
 
 
-!SLIDE smbullets
+!SLIDE
 # Carbon Cache
 
 * Accepts metrics over TCP or UDP
@@ -35,7 +35,7 @@ Graphite was published in 2008 under the "Apache 2.0" license.
 Carbon Cache accepts metrics and provides a mechanism to cache those for a defined amount of time. It uses the underlying Whisper libraries to store permanently to disk. In a growing environment with more I/O a single ``carbon-cache`` process may not be enough. To scale you can simply spawn multiple Carbon Caches.
 
 
-!SLIDE smbullets
+!SLIDE
 # Graphite-Web
 
 * Webinterface (Django)

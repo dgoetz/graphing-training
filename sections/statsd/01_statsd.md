@@ -163,6 +163,7 @@ File: **/opt/graphite/conf/storage-schemas.conf**
 
 !SLIDE small
 # Storage Aggregation (1/2)
+
 Since StatsD supports several aggregation methods those need to be handled by Graphite too.
 
 Add the following to **/opt/graphite/conf/storage-aggregation.conf**. Keep in mind that patterns are applied from top to bottom and first match wins. You should keep the following rules above other rules.

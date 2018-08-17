@@ -2,7 +2,7 @@
 # ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Data Storage
 
 
-!SLIDE smbullets
+!SLIDE
 # Whisper
 
 * File based time-series database
@@ -36,7 +36,7 @@ Whisper is slower than RRD, but fast enough for most purposes. This is the conse
 In practice the difference is measured in hundreds of microseconds which leads to less than a millisecond difference for most operations. Anyway, storing time-series data always causes high I/O on your disk. Using Carbon Relay you can distribute this load to multiple servers.
 
 
-!SLIDE small
+!SLIDE
 # Metric Path
 
 The metric path determines the hierarchy in which data is being held and can be seen as an address of your data. Each element of the metric path describes also a directory on the filesystem where Whisper files are stored. The last element is the filename.
@@ -60,7 +60,7 @@ With Graphite-Web metrics can be accessed by using globs (wildcards or character
     berlin.dc1.r12.server{1,2,3}.load.longterm
 
 
-!SLIDE smbullets
+!SLIDE
 # Storage Schema
 
 **storage-schemas.conf** stores the configuration about retention and frequency in which datapoints should be stored. The config file includes multiple sections which are applied from the top to the bottom. Based on patterns it matches metric paths and tells Whisper how to store the data. The first pattern that matches is being applied for the metric path, other sections are ignored.
@@ -72,7 +72,7 @@ With Graphite-Web metrics can be accessed by using globs (wildcards or character
 * Whisper file is created on first metric received
 
 
-!SLIDE small
+!SLIDE
 # Storage Schema Configuration
 
 Each section has 3 lines:
@@ -118,7 +118,7 @@ Default aggregation entry:
 This configuration doesn't affect the first archive and already created Whisper files will not be affected by configuration changes!
 
 
-!SLIDE small
+!SLIDE
 # Whisper File Size
 
 Example storage schema:
@@ -165,7 +165,7 @@ There's also a script for the calculation of the Whisper file size available: ht
 ~~~ENDSECTION~~~
 
 
-!SLIDE small
+!SLIDE
 # Whisper Tools (1/2)
 
 Whisper comes with some default tools. With those it is possible to create, edit and view Whisper files.
@@ -182,7 +182,7 @@ Tool                                  | Description
 **whisper-fill.py**                   | Backfill datapoints from one whisper file into another
 
 
-!SLIDE small
+!SLIDE
 # Whisper Tools (2/2)
 
 Tool                                  | Description
@@ -195,7 +195,7 @@ Tool                                  | Description
 **whisper-update.py**                 | Update value
 
 
-!SLIDE small
+!SLIDE
 # Common Whisper Tools Usage (1/2)
 
     @@@Sh
@@ -219,7 +219,7 @@ Tool                                  | Description
     offset: 28
 
 
-!SLIDE small
+!SLIDE
 # Common Whisper Tools Usage (2/2)
 
     @@@Sh
@@ -235,7 +235,7 @@ Tool                                  | Description
     Created: test.wsp (63124 bytes)
 
 
-!SLIDE small
+!SLIDE
 # White- and Blacklisting
 
 When this feature is enabled, each Carbon daemon will only accept metrics that are whitelisted and reject those which are blacklisted. 

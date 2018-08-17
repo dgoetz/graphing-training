@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Graphite-Web API
 
 
-!SLIDE smbullets
+!SLIDE
 # HTTP API
 
 The interactive webinterface of Graphite-Web is called Composer. Aside to this Graphite-Web also has a HTTP API which consists of two parts:
@@ -11,7 +11,7 @@ The interactive webinterface of Graphite-Web is called Composer. Aside to this G
 * Metrics API
 
 
-!SLIDE smbullets
+!SLIDE
 # Render API
 
 The Render API can be used to retrieve and visualize datapoints. The API can be used to embed graphs in own applications or webinterfaces. Mostly the API is used by 3rd party dashboard tools like Grafana.
@@ -26,7 +26,7 @@ The Render API can be used to retrieve and visualize datapoints. The API can be 
 Parameters: http://graphite.readthedocs.org/en/latest/render_api.html#graph-parameters
 
 
-!SLIDE small
+!SLIDE
 # Render API - Sample 1
 
 Create a simple graph of the load of one of your servers in the last hour. Output as PNG with the resolution of 800x600.
@@ -39,7 +39,7 @@ Create a simple graph of the load of one of your servers in the last hour. Outpu
     &height=600
 
 
-!SLIDE small
+!SLIDE
 # Render API - Sample 2
 
 Create a JSON output of the free diskspace from one of your servers. Output only the last 5 minutes.
@@ -51,7 +51,7 @@ Create a JSON output of the free diskspace from one of your servers. Output only
     &format=json
 
 
-!SLIDE small
+!SLIDE
 # Render API - Sample 3
 
 Build an average of the CPUs system time from two of your servers. Add a title to the graph and change the background color. Set a minimum of 0 and create an alias for the legend called "CPU system".

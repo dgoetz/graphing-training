@@ -1,4 +1,4 @@
-!SLIDE smbullets
+!SLIDE
 # Overview of InfluxDB
 
 * Time series data storage
@@ -33,7 +33,7 @@ Docs: https://docs.influxdata.com
 <center><img src="./_images/Tick-Stack-Complete.png" style="width:420px;height:332px;"/></center>
 
 
-!SLIDE small
+!SLIDE
 # InfluxData Installation
 
 InfluxData provides packages for most common used Unix operating systems.
@@ -54,7 +54,7 @@ File: **/etc/yum.repos.d/influxdb.repo**
 **Note:** InfluxDB, Chronograf and Telegraf are already pre-installed on "graphing1.localdomain".
 
 
-!SLIDE small
+!SLIDE
 # InfluxData Services 
 
 We have to start InfluxDB, Chronograf and Telegraf:
@@ -65,7 +65,7 @@ We have to start InfluxDB, Chronograf and Telegraf:
     # systemctl start telegraf.service
 
 
-!SLIDE smbullets
+!SLIDE
 # InfluxDB Ports
 
 InfluxDB opens a bunch of ports. Not all of them are used by default, but its good to know what they are useful for.
@@ -290,7 +290,7 @@ The InfluxDB Shell is part of every InfluxDB installation.
  * Default port: `8089`
 
 
-!SLIDE small
+!SLIDE
 # Prepare InfluxDB for collectd
 
 Both, "CollectD" and "Graphite"-Service Plugins can be used to connect collectd to InfluxDB. In this case we want to use the "CollectD" Service Plugin and enable it in **/etc/influxdb/influxdb.conf**:
@@ -310,7 +310,7 @@ After a restart of InfluxDB the `collectd` database must be created manually:
     --data-urlencode "q=CREATE DATABASE collectd"
 
 
-!SLIDE small
+!SLIDE
 # Connect collectd to InfluxDB
 
 InfluxDB opens port 25826 after the restart, so we can connect collectd to send data to InfluxDB.

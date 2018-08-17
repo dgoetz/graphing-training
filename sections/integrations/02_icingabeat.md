@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Icingabeat
 
 
-!SLIDE small noprint
+!SLIDE noprint
 # Icingabeat
 
 Icingabeat is an Elastic Beat that fetches data from the Icinga 2 API and sends it either directly to Elasticsearch or Logstash. There are also example dashboards for Kibana available.
@@ -12,7 +12,7 @@ Icingabeat is an Elastic Beat that fetches data from the Icinga 2 API and sends 
 **Note:** Icingabeat, Elasticsearch and Kibana are already pre-installed on "graphing1.localdomain".
 
 
-!SLIDE small printonly
+!SLIDE printonly
 # Icingabeat
 
 Icingabeat is an Elastic Beat that fetches data from the Icinga 2 API and sends it either directly to Elasticsearch or Logstash. There are also example dashboards for Kibana available.

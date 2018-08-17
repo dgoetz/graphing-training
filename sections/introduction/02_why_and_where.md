@@ -2,7 +2,7 @@
 # ~~~SECTION:MAJOR~~~ Why we need graphs
 
 
-!SLIDE smbullets
+!SLIDE
 # Why Operators need it
 
 * State of single server or application
@@ -17,7 +17,7 @@
  * ...
 
 
-!SLIDE smbullets
+!SLIDE
 # Why Devs need it
 
 * Debugging
@@ -27,13 +27,13 @@
 * Follow impacts of growing usage
 
 
-!SLIDE smbullets
+!SLIDE
 # Why Managers need it
 
 * Service Level Agreements (SLAs)
 
 
-!SLIDE smbullets
+!SLIDE
 # Why all of us need it
 
 * Capacity Management

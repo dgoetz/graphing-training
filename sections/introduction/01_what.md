@@ -2,7 +2,7 @@
 # ~~~SECTION:MAJOR~~~ Performance Graphing
 
 
-!SLIDE smbullets 
+!SLIDE
 # What it is
 
 * All about numbers and time
@@ -12,7 +12,7 @@
 * View the state of something
 
 
-!SLIDE smbullets
+!SLIDE
 # What it is not
 
 * Alerting in any way

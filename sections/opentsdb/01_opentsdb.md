@@ -1,4 +1,4 @@
-!SLIDE smbullets
+!SLIDE
 # OpenTSDB
 
 * Time series database
@@ -19,7 +19,7 @@ Docs: http://opentsdb.net/docs/build/html
 ~~~ENDSECTION~~~
 
 
-!SLIDE smbullets
+!SLIDE
 # OpenTSDB
 
 OpenTSDB is a time series database based on Apaches HBase. With this underlying technology it is possible to distribute and scale data across a big amount of servers.
@@ -55,7 +55,7 @@ HBase: http://hbase.apache.org
 <center><img src="./_images/opentsdb-concept.png" style="width:460px"/></center>
 
 
-!SLIDE small
+!SLIDE
 # OpenTSDB Metrics
 
 OpenTSDB uses some kind of Graphites metric path combined with tags to identify datapoints:
@@ -65,7 +65,7 @@ OpenTSDB uses some kind of Graphites metric path combined with tags to identify 
     sys.cpu.user 1356998400 42.5 host=webserver01 cpu=0
 
 
-!SLIDE smbullets
+!SLIDE
 # OpenTSDB Collectors
 
 To collect data several clients are available:
@@ -80,7 +80,7 @@ https://github.com/auxesis/collectd-opentsdb
 https://www.icinga.com
 
 
-!SLIDE smbullets
+!SLIDE
 # OpenTSDB Client Libraries
 
 For communication with OpenTSDB multiple client libraries exist. Some of them can just pull data where other may read and write metrics.
@@ -93,7 +93,7 @@ For communication with OpenTSDB multiple client libraries exist. Some of them ca
 * vert.x (write)
 
 
-!SLIDE smbullets
+!SLIDE
 # OpenTSDB Frontends
 
 Beside the simple built-in GUI there are some other webinterfaces for OpenTSDB dashboards:

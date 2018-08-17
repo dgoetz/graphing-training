@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Data Flow
 
 
-!SLIDE small noprint
+!SLIDE noprint
 # Receive Data
 
 To receive metrics, Graphite provides by default two interfaces. On Port 2003 Carbon  is listening with a plain text protocol, on port 2004 with the so-called "Pickle protocol".
@@ -22,7 +22,7 @@ Tags must be appended to the metrics path with semicolon: "**;\<tag-key>=\<tag-v
     localhost.tmp.files;os=linux;dist=centos 9 1522237082
 
 
-!SLIDE small printonly
+!SLIDE printonly
 # Receive Data
 
 To receive metrics, Graphite provides by default two interfaces. On Port 2003 Carbon  is listening with a plain text protocol, on port 2004 with the so-called "Pickle protocol".
@@ -44,7 +44,7 @@ Tags must be appended to the metrics path with semicolon: "**;\<tag-key>=\<tag-v
     localhost.tmp.files;os=linux;dist=centos 9 1522237082
 
 
-!SLIDE smbullets
+!SLIDE
 # Carbon Cache Datapoint Flow
 
 * Datapoint arrives at Carbon Cache
@@ -56,7 +56,7 @@ Tags must be appended to the metrics path with semicolon: "**;\<tag-key>=\<tag-v
   * All datapoints of one queue are written at once to the corresponding Whisper file: update_many()
 
 
-!SLIDE small
+!SLIDE
 # Carbon Cache Write Algorithms (1/2)
 
 The thread that writes metrics to disk can use on of the following strategies determining the order in which metrics are removed from cache and flushed to disk. This setting can be adjusted in **carbon.conf** with `CACHE_WRITE_STRATEGY` in the `[cache]` section.
@@ -67,7 +67,7 @@ Algorithm  | Description
 **timesorted** | All metrics in the list will be looked at and sorted according to the timestamp of there datapoints. The metric that were the least recently written will be written first. This is an hybrid strategy between max and sorted which is particularly adapted to sets of metrics with non-uniform resolutions.
 
 
-!SLIDE small
+!SLIDE
 # Carbon Cache Write Algorithms (2/2)
 
 Algorithm  | Description
@@ -76,7 +76,7 @@ Algorithm  | Description
 **naive**  | Metrics will be flushed from the cache to disk in an unordered fashion. This strategy may be desirable in situations where the storage for whisper files is solid state, CPU resources are very limited or deference to the OS's i/o scheduler is expected to compensate for the random write pattern.
 
 
-!SLIDE smbullets small
+!SLIDE
 # Internal Statistics (1/2)
 
 Metric                 | Meaning
@@ -94,7 +94,7 @@ Metric                 | Meaning
 **creates**            | Number of Whisper files successfully created.
 
 
-!SLIDE smbullets small
+!SLIDE
 # Internal Statistics (2/2)
 
 Metric                 | Meaning

@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Cache
 
 
-!SLIDE smbullets
+!SLIDE
 # Carbon Cache Limitations
 
 * Cache is not able to keep up with incoming datapoints
@@ -10,7 +10,7 @@
 * System runs out of memory when `MAX_CACHE_SIZE` is set to high
 
 
-!SLIDE smbullets
+!SLIDE
 # Optimize Cache (1/2)
 
 * Adjust `MAX_CREATES_PER_MINUTE` (Defaults to `50`)
@@ -23,7 +23,7 @@
 * Set `WHISPER_LOCK_WRITES` when multiple Carbon Caches write to the same files (Defaults to `False`)
 
 
-!SLIDE smbullets
+!SLIDE
 # Optimize Cache (2/2)
 
 * Increase page cache (disk cache) for less read iops

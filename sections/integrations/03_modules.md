@@ -82,7 +82,7 @@ Project: https://github.com/Mikesch-mp/icingaweb2-module-grafana
 ~~~ENDSECTION~~~
 
 
-!SLIDE small
+!SLIDE
 # Grafana Module Configuration
 
 The Grafana module provides two default dashboards `base-metrics.json` and `icinga2-default.json` which have to be imported into Grafana.
