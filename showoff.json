@@ -4,8 +4,7 @@
   "author": "Blerim Sheqa & Markus Waldm&uuml;ller",
   "release": "2.2.0",
 
-  "favicon": "image/global/favicon.ico",
-  "logo": "/global/_images/netways/netways-logo-1366.png",
+  "favicon": "global/favicon.ico",
 
   "protected": ["presenter", "onepage", "print"],
 
@@ -18,6 +17,7 @@
 
   "sections": [
     {"section": "global/pre/netways/title"},
+    {"section": "global/pre/netways/toc"},
     {"section": "trainer"},
     {"section": "global/pre/netways/about"},
     {"section": "global/pre/hints"}, 
