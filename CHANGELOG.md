@@ -1,5 +1,17 @@
 # Open Source Training for Graphite and Grafana CHANGELOG
 
+## v2.2.1 (2018-08-17)
+
+### Notes
+
+* Layout optimizations
+
+### Enhancements
+
+* CSS styles
+* Pre slides
+* NETWAYS Training Wizard
+
 ## v2.2.0 (2018-08-02)
 
 ### Notes
