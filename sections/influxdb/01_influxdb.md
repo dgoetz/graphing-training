@@ -2,7 +2,7 @@
 # Overview of InfluxDB
 
 * Time series data storage
-* Part of TICK Stack
+* Part of TICK Stack (**T**elegraf, **I**nfluxDB, **C**hronograf and **K**apacitor)
 * Stores event data (exceptions, deploys, logins, ...)
 * SQL like query language
 * HTTP(S) API
@@ -271,7 +271,7 @@ The InfluxDB Shell is part of every InfluxDB installation.
     > quit
 
 
-!SLIDE
+!SLIDE small
 # InfluxDB Listeners
 
 * HTTP API
@@ -293,7 +293,7 @@ The InfluxDB Shell is part of every InfluxDB installation.
 !SLIDE
 # Prepare InfluxDB for collectd
 
-Both, "CollectD" and "Graphite"-Service Plugins can be used to connect collectd to InfluxDB. In this case we want to use the "CollectD" Service Plugin and enable it in **/etc/influxdb/influxdb.conf**:
+Both, *collectd* and *Graphite* Service Plugins can be used to connect collectd to InfluxDB. In this case we want to use the *collectd* Service Plugin and enable it in **/etc/influxdb/influxdb.conf**:
 
     @@@Sh
     [[collectd]]

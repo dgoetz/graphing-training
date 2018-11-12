@@ -214,4 +214,4 @@ These are some rewrite rules commonly used when collectd sends metrics:
     \.mysql\.stats\. = .mysql.
     _TCP80 = .TCP80
 
-Rewrite rules consist of two sections `[pre]` and `[post]`. Rules in the pre section are applied before aggregation and rules in the post section after aggregation takes place.
+Rewrite rules consists of two sections `[pre]` and `[post]`. Rules in the pre section are applied before aggregation and rules in the post section after aggregation takes place.

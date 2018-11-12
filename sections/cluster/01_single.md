@@ -272,7 +272,7 @@ Each Carbon daemon will start dropping or not accepting metrics if its queue or 
 !SLIDE
 # Carbonate
 
-Carbonate brings some usefull tools to handle different tasks in Graphite clusters, for example to redistribute datapoints manually when new nodes are introduced.
+Carbonate brings some useful tools to handle different tasks in Graphite clusters, for example to redistribute datapoints manually when new nodes are introduced.
 
     @@@Sh
     # pip install carbonate

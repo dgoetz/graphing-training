@@ -2,7 +2,7 @@
 #~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~ Benchmarking
 
 
-!SLIDE
+!SLIDE small
 # Haggar - Carbon Load Generation Tool
 
 Installation and run on CentOS:

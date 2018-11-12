@@ -213,7 +213,7 @@ Docs: https://www.icinga.com/docs/icinga2/latest/doc/09-object-types/#influxdbwr
 !SLIDE noprint
 # Grafana Dashboard
 
-With Icinga 2 as Collector you can import a dashboard called "**Icinga2 with Graphite**" provided by the Icinga Project with ID "56".
+With Icinga 2 as collector you can import a dashboard called "**Icinga2 with Graphite**" provided by the Icinga Project with ID "56".
 
 <center><img src="./_images/grafana-dashboard.png" style="width:800px;height:352px;"/></center>
 
@@ -221,6 +221,6 @@ With Icinga 2 as Collector you can import a dashboard called "**Icinga2 with Gra
 !SLIDE printonly
 # Grafana Dashboard
 
-With Icinga 2 as Collector you can import a dashboard called "**Icinga2 with Graphite**" provided by the Icinga Project with ID "56".
+With Icinga 2 as collector you can import a dashboard called "**Icinga2 with Graphite**" provided by the Icinga Project with ID "56".
 
 <center><img src="./_images/grafana-dashboard.png" style="width:460px;height:203px;"/></center>

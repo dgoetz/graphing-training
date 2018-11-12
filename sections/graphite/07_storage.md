@@ -105,7 +105,7 @@ When downsampling data Whisper will do an average over a set of datapoints. This
 * xFilesFactor
  * Ratio of datapoints that are required to do an aggregation to the next archive (float between 0 and 1)
 * aggregationMethod
- * average, sum, min, max, or last
+ * average (default), sum, min, max, or last
 
 Default aggregation entry:
 
@@ -118,7 +118,7 @@ Default aggregation entry:
 This configuration doesn't affect the first archive and already created Whisper files will not be affected by configuration changes!
 
 
-!SLIDE
+!SLIDE small
 # Whisper File Size
 
 Example storage schema:

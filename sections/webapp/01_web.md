@@ -41,11 +41,11 @@ Content of **/opt/graphite/storage/index**:
     collectd.graphing1.cpu-0.cpu-user
     collectd.graphing1.interface-lo.if_packets.rx
     collectd.graphing1.interface-lo.if_packets.tx
-    collectd.graphing1.interface-lo.if_octets.tx
-    collectd.graphing1.interface-lo.if_octets.rx
     ...
 
 An optional cronjob that creates the index each hour may look like this:
 
     @@@Sh
     0 * * * * /opt/graphite/bin/build-index.sh > /dev/null
+
+**Note:** If it takes longer than 60 seconds the `FETCH_TIMEOUT` in **/opt/graphite/webapp/graphite/settings.py** must be adjusted.

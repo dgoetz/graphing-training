@@ -26,7 +26,7 @@ Docs: https://collectd.org/documentation.shtml
 !SLIDE
 # collectd
 
-collectd is a daemon that runs on your server and collects periodically performance data about several parts of the system. One of many plugins is "write_graphite" which lets you send those collected data to a Graphite server. 
+collectd is a daemon that runs on your server and collects periodically performance data about several parts of the system. One of many plugins is *write_graphite* which lets you send those collected data to a Graphite server. 
 
 collectd provides a lot of plugins by default. Each plugin serves a specific set of data and mostly can be configured to fit your needs. Some plugins differ from others, for example there are plugins which are just for forwarding the statistics to receivers like Graphite. There are also plugins which enable you to write your own plugins in languages like Perl, Python or Java.
 
@@ -80,7 +80,7 @@ By creating config files inside **/etc/colletcd.d/** the configuration of plugin
 !SLIDE
 # collectd DF Plugin
 
-This example shows the content of the "DF" plugin, all other plugins are configured in the same manner.
+This example shows the content of the *DF* plugin, all other plugins are configured in the same manner.
 
 File: **/etc/collectd.d/df.conf**
 
