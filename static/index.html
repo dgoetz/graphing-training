@@ -92,7 +92,7 @@
 <div class="title-cover">
     <div class="title-name">Graphite + Grafana</div>
     <div class="title-subtitle">Time Series Metrics</div>
-    <div class="title-release">Version: 2.2.1</div>
+    <div class="title-release">Version: 2.2.2</div>
 </div>
 
 <div class="net-footer">
@@ -120,8 +120,8 @@
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="global/pre/hints" data-title="00_hints" id="global_pre_hints_00_hints" class="slide smbullets" data-transition="none">
-<div class="content smbullets" ref="global/pre/hints/00_hints">
+<div data-section="global/pre/hints" data-title="00_hints" id="global_pre_hints_00_hints" class="slide" data-transition="none">
+<div class="content " ref="global/pre/hints/00_hints">
 <h1 class="section_title">Graphite + Grafana</h1>
 <div class="net-header">
     <img src="./file///global/pre/netways/_images/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS Training" width="215px" height="100px">
@@ -1386,7 +1386,7 @@ localhost.tmp.files;os=linux;dist=centos 9 1522237082</code></pre>
 
 <h1>Carbon Cache Write Algorithms (1/2)</h1>
 
-<p>The thread that writes metrics to disk can use on of the following strategies determining the order in which metrics are removed from cache and flushed to disk. This setting can be adjusted in <strong>carbon.conf</strong> with <code>CACHE_WRITE_STRATEGY</code> in the <code>[cache]</code> section.</p>
+<p>The thread that writes metrics to disk can use one of the following strategies determining the order in which metrics are removed from cache and flushed to disk. This setting can be adjusted in <strong>carbon.conf</strong> with <code>CACHE_WRITE_STRATEGY</code> in the <code>[cache]</code> section.</p>
 
 <table>
 <thead>
@@ -1782,7 +1782,7 @@ retentions = 1s:30m,1m:1d,5m:7d</code></pre>
 <li>aggregationMethod
 
 <ul>
-<li>average, sum, min, max, or last</li>
+<li>average (default), sum, min, max, or last</li>
 </ul>
 </li>
 </ul>
@@ -1803,8 +1803,8 @@ aggregationMethod = average</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/graphite/" data-title="07_storage" id="sections_graphite_07_storage9" class="slide" data-transition="none">
-<div class="content " ref="sections/graphite/07_storage:9">
+<div data-section="sections/graphite/" data-title="07_storage" id="sections_graphite_07_storage9" class="slide small" data-transition="none">
+<div class="content small" ref="sections/graphite/07_storage:9">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Graphite</h1>
 <div class="net-header">
     <img src="./file///global/pre/netways/_images/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS Training" width="215px" height="100px">
@@ -2508,7 +2508,7 @@ WantedBy=multi-user.target</code></pre>
 \.mysql\.stats\. = .mysql.
 _TCP80 = .TCP80</code></pre>
 
-<p>Rewrite rules consist of two sections <code>[pre]</code> and <code>[post]</code>. Rules in the pre section are applied before aggregation and rules in the post section after aggregation takes place.</p>
+<p>Rewrite rules consists of two sections <code>[pre]</code> and <code>[post]</code>. Rules in the pre section are applied before aggregation and rules in the post section after aggregation takes place.</p>
 
 <div class="net-footer">
     <p>Open Source Training</p>
@@ -2591,7 +2591,7 @@ Docs: <a href="https://collectd.org/documentation.shtml" target="_blank">https:/
 
 <h1>collectd</h1>
 
-<p>collectd is a daemon that runs on your server and collects periodically performance data about several parts of the system. One of many plugins is "write_graphite" which lets you send those collected data to a Graphite server. </p>
+<p>collectd is a daemon that runs on your server and collects periodically performance data about several parts of the system. One of many plugins is <em>write_graphite</em> which lets you send those collected data to a Graphite server. </p>
 
 <p>collectd provides a lot of plugins by default. Each plugin serves a specific set of data and mostly can be configured to fit your needs. Some plugins differ from others, for example there are plugins which are just for forwarding the statistics to receivers like Graphite. There are also plugins which enable you to write your own plugins in languages like Perl, Python or Java.</p>
 
@@ -2680,7 +2680,7 @@ This page also includes the documentation of each plugin.</p>
 
 <h1>collectd DF Plugin</h1>
 
-<p>This example shows the content of the "DF" plugin, all other plugins are configured in the same manner.</p>
+<p>This example shows the content of the <em>DF</em> plugin, all other plugins are configured in the same manner.</p>
 
 <p>File: <strong>/etc/collectd.d/df.conf</strong></p>
 
@@ -2883,13 +2883,13 @@ collectd.graphing1.cpu-0.cpu-wait
 collectd.graphing1.cpu-0.cpu-user
 collectd.graphing1.interface-lo.if_packets.rx
 collectd.graphing1.interface-lo.if_packets.tx
-collectd.graphing1.interface-lo.if_octets.tx
-collectd.graphing1.interface-lo.if_octets.rx
 ...</code></pre>
 
 <p>An optional cronjob that creates the index each hour may look like this:</p>
 
 <pre class="highlight"><code class="language-sh">0 * * * * /opt/graphite/bin/build-index.sh &gt; /dev/null</code></pre>
+
+<p><strong>Note:</strong> If it takes longer than 60 seconds the <code>FETCH_TIMEOUT</code> in <strong>/opt/graphite/webapp/graphite/settings.py</strong> must be adjusted.</p>
 
 <div class="net-footer">
     <p>Open Source Training</p>
@@ -3271,7 +3271,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt</code></pre>
 <p>The first step after installation is to add the Graphite data source:</p>
 
 <p></p>
-<center><img src="./file//sections/grafana/_images/grafana-graphite-datasource.png" style="width:320px;height:400px;"></center>
+<center><img src="./file//sections/grafana/_images/grafana-graphite-datasource.png" style="width:338px;height:400px;"></center>
 
 <div class="net-footer">
     <p>Open Source Training</p>
@@ -3668,7 +3668,7 @@ REPLICATION_FACTOR = 1</code></pre>
 
 <h1>Carbonate</h1>
 
-<p>Carbonate brings some usefull tools to handle different tasks in Graphite clusters, for example to redistribute datapoints manually when new nodes are introduced.</p>
+<p>Carbonate brings some useful tools to handle different tasks in Graphite clusters, for example to redistribute datapoints manually when new nodes are introduced.</p>
 
 <pre class="highlight"><code class="language-sh"># pip install carbonate</code></pre>
 
@@ -4589,7 +4589,7 @@ aggregationMethod = average</code></pre>
 
 <ul>
 <li>Time series data storage</li>
-<li>Part of TICK Stack</li>
+<li>Part of TICK Stack (<strong>T</strong>elegraf, <strong>I</strong>nfluxDB, <strong>C</strong>hronograf and <strong>K</strong>apacitor)</li>
 <li>Stores event data (exceptions, deploys, logins, ...)</li>
 <li>SQL like query language</li>
 <li>HTTP(S) API</li>
@@ -5023,8 +5023,8 @@ time       host      region  value
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb15" class="slide" data-transition="none">
-<div class="content " ref="sections/influxdb/01_influxdb:15">
+<div data-section="sections/influxdb/" data-title="01_influxdb" id="sections_influxdb_01_influxdb15" class="slide small" data-transition="none">
+<div class="content small" ref="sections/influxdb/01_influxdb:15">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ InfluxDB</h1>
 <div class="net-header">
     <img src="./file///global/pre/netways/_images/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS Training" width="215px" height="100px">
@@ -5089,7 +5089,7 @@ time       host      region  value
 
 <h1>Prepare InfluxDB for collectd</h1>
 
-<p>Both, "CollectD" and "Graphite"-Service Plugins can be used to connect collectd to InfluxDB. In this case we want to use the "CollectD" Service Plugin and enable it in <strong>/etc/influxdb/influxdb.conf</strong>:</p>
+<p>Both, <em>collectd</em> and <em>Graphite</em> Service Plugins can be used to connect collectd to InfluxDB. In this case we want to use the <em>collectd</em> Service Plugin and enable it in <strong>/etc/influxdb/influxdb.conf</strong>:</p>
 
 <pre class="highlight"><code class="language-sh">[[collectd]]
   enabled = true
@@ -5278,7 +5278,7 @@ SELECT * FROM load_shortterm
 <p>Add the InfluxDB data source with the "<strong>collectd</strong>" database to Grafana:</p>
 
 <p></p>
-<center><img src="./file//sections/influxdb/_images/grafana-influxdb-datasource.png" style="width:321px;height:450px;"></center>
+<center><img src="./file//sections/influxdb/_images/grafana-influxdb-datasource.png" style="width:357px;height:450px;"></center>
 
 <div class="net-footer">
     <p>Open Source Training</p>
@@ -5944,7 +5944,7 @@ retentions = 1m:2d,5m:10d,30m:90d,360m:4y
 
 <h1>Grafana Dashboard</h1>
 
-<p>With Icinga 2 as Collector you can import a dashboard called "<strong>Icinga2 with Graphite</strong>" provided by the Icinga Project with ID "56".</p>
+<p>With Icinga 2 as collector you can import a dashboard called "<strong>Icinga2 with Graphite</strong>" provided by the Icinga Project with ID "56".</p>
 
 <p></p>
 <center><img src="./file//sections/icinga/_images/grafana-dashboard.png" style="width:460px;height:203px;"></center>
@@ -7796,8 +7796,8 @@ Cluster Backend: <a href="https://github.com/lomik/graphite-clickhouse" target="
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="sections/bestpractice/" data-title="02_benchmarking" id="sections_bestpractice_02_benchmarking2" class="slide" data-transition="none">
-<div class="content " ref="sections/bestpractice/02_benchmarking:2">
+<div data-section="sections/bestpractice/" data-title="02_benchmarking" id="sections_bestpractice_02_benchmarking2" class="slide small" data-transition="none">
+<div class="content small" ref="sections/bestpractice/02_benchmarking:2">
 <h1 class="section_title">~~~SECTION:MAJOR~~~ Best Practice</h1>
 <div class="net-header">
     <img src="./file///global/pre/netways/_images/Schulung_Stammlogo_2000px_ENG.jpg" alt="NETWAYS Training" width="215px" height="100px">
