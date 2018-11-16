@@ -419,7 +419,7 @@ Delete data:
 
 Add the InfluxDB data source with the "**collectd**" database to Grafana:
 
-<center><img src="./_images/grafana-influxdb-datasource.png" style="width:357px;height:500px;"/></center>
+<center><img src="./_images/grafana-influxdb-datasource.png" style="width:397px;height:500px;"/></center>
 
 
 !SLIDE printonly
@@ -427,7 +427,7 @@ Add the InfluxDB data source with the "**collectd**" database to Grafana:
 
 Add the InfluxDB data source with the "**collectd**" database to Grafana:
 
-<center><img src="./_images/grafana-influxdb-datasource.png" style="width:321px;height:450px;"/></center>
+<center><img src="./_images/grafana-influxdb-datasource.png" style="width:357px;height:450px;"/></center>
 
 
 !SLIDE
