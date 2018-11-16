@@ -94,7 +94,7 @@ Basic settings like the used database, authentication or logging settings can be
 
 The first step after installation is to add the Graphite data source:
 
-<center><img src="./_images/grafana-graphite-datasource.png" style="width:400px;height:500px;"/></center>
+<center><img src="./_images/grafana-graphite-datasource.png" style="width:433px;height:512px;"/></center>
 
 
 !SLIDE printonly
@@ -102,7 +102,7 @@ The first step after installation is to add the Graphite data source:
 
 The first step after installation is to add the Graphite data source:
 
-<center><img src="./_images/grafana-graphite-datasource.png" style="width:320px;height:400px;"/></center>
+<center><img src="./_images/grafana-graphite-datasource.png" style="width:338px;height:400px;"/></center>
 
 
 !SLIDE noprint
