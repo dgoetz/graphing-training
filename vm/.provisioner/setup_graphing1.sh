@@ -129,7 +129,7 @@ mysql -u root -pnetways -e "GRANT SELECT ON icinga.* TO 'icingaweb2'@'localhost'
 mysql -u root -pnetways icingaweb2 < /usr/share/doc/icingaweb2/schema/mysql.schema.sql
 mysql -u root -pnetways icingaweb2 -e "INSERT INTO icingaweb_user (name, active, password_hash) VALUES ('icingaadmin', 1, '\$2y\$10\$X1vz9OKE7Le/DQPWFxnkUuz3r17ZoHiQka4olknd.v14ABaoMVvWC');"
 
-echo "date.timezone = 'Europe/Berlin'" >> /etc/opt/rh/rh-php71/php.ini
+sed -i -- 's/;date.timezone =/date.timezone = "Europe\/Berlin"/' /etc/opt/rh/rh-php71/php.ini
 systemctl start rh-php71-php-fpm.service
 systemctl enable rh-php71-php-fpm.service
 systemctl start httpd.service
