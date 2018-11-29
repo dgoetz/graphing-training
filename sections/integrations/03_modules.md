@@ -43,7 +43,7 @@ The Graphite module can be installed via git:
     /usr/share/icingaweb2/modules/graphite
 
     # cd /usr/share/icingaweb2/modules/graphite/
-    # git checkout v1.0.1
+    # git checkout v1.1.1
 
 After that the module must be enabled and adapted to the environment:
 
