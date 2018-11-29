@@ -200,13 +200,13 @@ Multiple Points:
     # curl -i -XPOST 'http://localhost:8086/write?db=metrics' \
     --data-binary 'cpu,host=graphing2 value=0.67 \
     cpu,host=graphing1,region=europe value=2.0 \
-    cpu,host=graping2 value=1.20 1422568543702900257'
+    cpu,host=grapingh2 value=1.20 1422568543702900257'
 
 **Note:** If points are provided without timestamp, the server's local timestamp is used.
 
 
 !SLIDE
-# HTTP Repsonses
+# HTTP Responses
 
 * **2xx**: If your write request received `HTTP 204 No Content`, it was a success!
 * **4xx**: InfluxDB could not understand the request.
