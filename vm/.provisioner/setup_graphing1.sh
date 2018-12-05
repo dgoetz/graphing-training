@@ -84,6 +84,7 @@ rpm --import https://packages.icinga.com/icinga.key
 yum -y install https://packages.icinga.com/epel/icinga-rpm-release-7-latest.noarch.rpm
 yum -y install icinga2 icinga2-ido-mysql nagios-plugins-all
 mysql -u root -pnetways icinga < /usr/share/icinga2-ido-mysql/schema/mysql.sql
+icinga2 feature enable ido-mysql
 systemctl start icinga2.service
 systemctl enable icinga2.service
 
