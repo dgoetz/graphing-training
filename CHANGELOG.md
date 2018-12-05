@@ -1,5 +1,40 @@
 # Open Source Training for Graphite and Grafana CHANGELOG
 
+## v2.2.3 (2018-12-05)
+
+### Notes
+
+* Updated Virtual Machines
+
+### Enhancements
+
+* Update Grafana 5.3.4
+* Update InfluxDB 1.7.1 and TICK Stack
+* Update Icinga 2.10.2 and Icinga Web 2.6.2
+* Update Graphite Module v1.1.0
+* Update Icingabeat v6.3.3
+* Update Elasticsearch and Kibana 6.5.1
+
+### Bugs
+
+* Fix date.timezone in php.ini
+
+## v2.2.2 (2018-11-16)
+
+### Notes
+
+* Tiny improvements
+
+### Enhancements
+
+* Ignore PDF documents
+* Global slides 
+
+### Bugs
+
+* Avoid shared folders from Vagrant
+* Update Grafana screenshots
+
 ## v2.2.1 (2018-08-17)
 
 ### Notes
