@@ -27,13 +27,22 @@ yum -y install yum-plugin-fastestmirror deltarpm yum-utils vim-enhanced epel-rel
 yum -y update
 
 # Graphite
-yum -y install python2-pip gcc
-yum -y install python-devel cairo-devel libffi-devel
+yum -y install python3 python3-devel gcc
 
-pip install carbon==1.1.3
-pip install whisper==1.1.3
+cd /opt/
+python3 -m venv graphite
+source graphite/bin/activate
 
-ln -s /opt/graphite/lib/carbon-1.1.3-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
+pip install --upgrade pip setuptools
+pip install whisper==1.1.7
+pip install Django==2.1
+pip install carbon==1.1.7
+
+mv /opt/graphite/lib/python3.6/site-packages/carbon/ /opt/graphite/lib/
+mv /opt/graphite/lib/python3.6/site-packages/carbon-1.1.7-py3.6.egg-info/ /opt/graphite/lib/
+mv /opt/graphite/lib/python3.6/site-packages/twisted/ /opt/graphite/lib/
+ln -s /opt/graphite/lib/carbon-1.1.7-py3.6.egg-info/ /opt/graphite/lib/python3.6/site-packages/
+
 install -m 0644 -o root -g root /usr/local/src/carbon/carbon.conf /opt/graphite/conf/carbon.conf
 install -m 0644 -o root -g root /usr/local/src/carbon/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
 install -m 0644 -o root -g root /opt/graphite/conf/aggregation-rules.conf.example /opt/graphite/conf/aggregation-rules.conf
@@ -54,12 +63,17 @@ systemctl start carbon-relay.service
 systemctl enable carbon-relay.service
 
 # Graphite-Web
-yum -y install python-scandir mod_wsgi
+yum -y install httpd httpd-devel
 yum -y install dejavu-sans-fonts dejavu-serif-fonts
+yum -y install cairo-devel libffi-devel
 
-pip install graphite-web==1.1.3
+pip install graphite-web==1.1.7
+pip install mod-wsgi
+mod_wsgi-express install-module > /etc/httpd/conf.modules.d/02-wsgi.conf
 
-ln -s /opt/graphite/webapp/graphite_web-1.1.3-py2.7.egg-info/ /usr/lib/python2.7/site-packages/
+mv /opt/graphite/lib/python3.6/site-packages/graphite/ /opt/graphite/webapp/
+mv /opt/graphite/lib/python3.6/site-packages/graphite_web-1.1.7-py3.6.egg-info/ /opt/graphite/webapp/
+ln -s /opt/graphite/webapp/graphite_web-1.1.7-py3.6.egg-info/ /opt/graphite/lib/python3.6/site-packages/
 
 install -m 0755 -o root -g root /opt/graphite/conf/graphite.wsgi.example /opt/graphite/conf/graphite.wsgi
 install -m 0644 -o root -g root /usr/local/src/graphite-web/graphite-web.conf /etc/httpd/conf.d/graphite-web.conf
@@ -67,6 +81,7 @@ install -m 0644 -o root -g root /usr/local/src/graphite-web/local_settings.py /o
 
 PYTHONPATH=/opt/graphite/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
 PYTHONPATH=/opt/graphite/webapp django-admin.py collectstatic --noinput --settings=graphite.settings
+deactivate
 
 chown apache:root /opt/graphite/storage
 chown apache:apache /opt/graphite/storage/graphite.db

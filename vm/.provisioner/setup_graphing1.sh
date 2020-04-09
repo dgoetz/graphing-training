@@ -27,8 +27,7 @@ yum -y install yum-plugin-fastestmirror deltarpm yum-utils vim-enhanced epel-rel
 yum -y update
 
 # Graphite
-yum -y install python2-pip gcc
-yum -y install python-devel cairo-devel libffi-devel
+yum -y install python3 python3-devel gcc
 
 install -m 0644 -o root -g root /usr/local/src/carbon/carbon-cache-a.service /etc/systemd/system/carbon-cache-a.service
 install -m 0644 -o root -g root /usr/local/src/carbon/carbon-cache-b.service /etc/systemd/system/carbon-cache-b.service
@@ -37,8 +36,9 @@ install -m 0644 -o root -g root /usr/local/src/carbon/carbon-aggregator.service 
 systemctl daemon-reload
 
 # Graphite-Web
-yum -y install python-scandir mod_wsgi
+yum -y install httpd httpd-devel
 yum -y install dejavu-sans-fonts dejavu-serif-fonts
+yum -y install cairo-devel libffi-devel
 yum -y install MySQL-python
 
 # collectd
@@ -85,6 +85,7 @@ yum -y install https://packages.icinga.com/epel/icinga-rpm-release-7-latest.noar
 yum -y install icinga2 icinga2-ido-mysql nagios-plugins-all
 mysql -u root -pnetways icinga < /usr/share/icinga2-ido-mysql/schema/mysql.sql
 icinga2 feature enable ido-mysql
+icinga2 feature disable notification
 systemctl start icinga2.service
 systemctl enable icinga2.service
 
