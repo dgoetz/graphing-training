@@ -56,21 +56,39 @@ In this course we've decided to do the installation from PyPI via pip. So the at
 To prepare the Graphite installation we need to install some required packages first:
 
     @@@Sh
-    # yum -y install python2-pip gcc
-    # yum -y install python-devel cairo-devel libffi-devel
+    # yum -y install python3 python3-devel gcc
 
 Required packages for Graphite-Web:
 
     @@@Sh
-    # yum -y install python-scandir mod_wsgi httpd
+    # yum -y install httpd httpd-devel
     # yum -y install dejavu-sans-fonts dejavu-serif-fonts
+    # yum -y install cairo-devel libffi-devel
 
 An exported shell variable will simplify the navigation when copying or moving files around:
 
     @@@Sh
     # export GRAPHITE=/opt/graphite
 
-**Note:** All package requirements for Graphite and Graphite-Web are already pre-installed on "graphing1.localdomain".
+**Note:** All package requirements for Graphite and Graphite-Web are already pre-installed on "graphing1".
+
+
+!SLIDE
+# Python Virtualenv
+
+CentOS 7 ships Python 2 by default, that's why we start a virtual Python 3 environment in "/opt/graphite":
+
+    @@@Sh
+    # cd /opt/
+    # python3 -m venv graphite
+    # source graphite/bin/activate
+
+**Note:** The Python virtual environment can be excited with `deactivate`.
+
+An older version of Django is required in order to work with SQLite provided from CentOS 7:
+
+    @@@Sh
+    # pip install Django==2.1
 
 
 !SLIDE
@@ -79,30 +97,41 @@ An exported shell variable will simplify the navigation when copying or moving f
 After all requirements are fulfilled, the installation of the Graphite components via PyPI is pretty simple:
 
     @@@Sh
-    # pip install carbon==1.1.3
-    # pip install whisper==1.1.3
-    # pip install graphite-web==1.1.3
+    # pip install carbon==1.1.7
+    # pip install whisper==1.1.7
+    # pip install graphite-web==1.1.7
 
 
-!SLIDE
+!SLIDE small
 # Python Packages
 
-Due to a bug in Carbon and Graphite-Web >= 1.0.0 Python packages are not stored correctly, so we create symlinks as workaround:
+Due to incompatibilities in Carbon, Twisted and Graphite-Web >= 1.0.0 with pip and the virtual environment, Python packages are not stored correctly. So we move them and create symlinks as workaround:
 
     @@@Sh
-    # ln -s $GRAPHITE/lib/carbon-1.1.3-py2.7.egg-info/ \
-    /usr/lib/python2.7/site-packages/
-    # ln -s /opt/graphite/webapp/graphite_web-1.1.3\
-    -py2.7.egg-info/ /usr/lib/python2.7/site-packages/
+    # mv $GRAPHITE/lib/python3.6/site-packages/carbon/ \
+    $GRAPHITE/lib/
+    # mv $GRAPHITE/lib/python3.6/site-packages/\
+    carbon-1.1.7-py3.6.egg-info/$GRAPHITE/lib/
+    # mv $GRAPHITE/lib/python3.6/site-packages/twisted/ \
+    $GRAPHITE/lib/
+    # ln -s $GRAPHITE/lib/carbon-1.1.7-py3.6.egg-info/ \
+    $GRAPHITE/lib/python3.6/site-packages/
+
+    # mv $GRAPHITE/lib/python3.6/site-packages/graphite/ \
+    $GRAPHITE/webapp/
+    # mv $GRAPHITE/lib/python3.6/site-packages/\
+    graphite_web-1.1.7-py3.6.egg-info/$GRAPHITE/webapp/
+    # ln -s $GRAPHITE/webapp/graphite_web-1.1.7-py3.6.egg-info/ \
+    $GRAPHITE/lib/python3.6/site-packages/
+
 
 Finally `pip` should list the installed Graphite packages:
 
     @@@Sh
     # pip list
-    ...
-    carbon (1.1.3)
-    graphite-web (1.1.3)
-    whisper (1.1.3)
+    carbon (1.1.7)
+    graphite-web (1.1.7)
+    whisper (1.1.7)
 
 
 !SLIDE
@@ -337,6 +366,24 @@ File: **/etc/httpd/conf.d/graphite-web.conf**
     <Directory /opt/graphite/static>
         Require all granted
     </Directory>
+
+
+!SLIDE small
+# Apache with Python 3
+
+The provided "mod_wsgi" package from CentOS 7 is linked to Python 2, so we install them via pip and instruct Apache where to find it. After that we don't need the virtualenv any more and deactivate it:
+
+    @@@Sh
+    # pip install mod-wsgi
+    # mod_wsgi-express install-module >\
+    /etc/httpd/conf.modules.d/02-wsgi.conf
+    # deactivate
+
+In **/etc/httpd/conf.d/graphite-web.conf** the "pyton-path" for the virtual environment must be added to the **WSGIDaemonProcess**:
+
+    @@@Sh
+    WSGIDaemonProcess [...] python-path=/opt/graphite/webapp:\
+    /opt/graphite/lib/python3.6/site-packages
 
 Finally we can restart the pre-installed Apache webserver:
 
