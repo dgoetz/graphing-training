@@ -4,13 +4,7 @@
 timedatectl set-timezone Europe/Berlin
 
 # Users
-userdel -r vagrant
 useradd -c "NETWAYS Training" -p `openssl passwd -1 netways` training
-
-if [ -f /etc/sudoers.d/vagrant ]; then
-  rm /etc/sudoers.d/vagrant
-fi
-
 echo "%training ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/training
 
 echo -e 'Username: training' >> /etc/issue

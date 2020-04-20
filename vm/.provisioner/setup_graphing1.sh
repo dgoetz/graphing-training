@@ -4,13 +4,7 @@
 timedatectl set-timezone Europe/Berlin
 
 # Users
-userdel -r vagrant
 useradd -c "NETWAYS Training" -p `openssl passwd -1 netways` training
-
-if [ -f /etc/sudoers.d/vagrant ]; then
-  rm /etc/sudoers.d/vagrant
-fi
-
 echo "%training ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/training
 
 echo -e 'Username: training' >> /etc/issue
@@ -52,7 +46,7 @@ install -m 0644 -o root -g root /usr/local/src/collectd/write_graphite.conf /etc
 
 # Grafana
 install -m 0644 -o root -g root /usr/local/src/grafana/grafana.repo /etc/yum.repos.d/grafana.repo
-rpm --import https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+rpm --import https://packages.grafana.com/gpg.key
 yum -y install grafana
 systemctl stop grafana-server.service
 systemctl disable grafana-server.service
@@ -144,20 +138,19 @@ yum -y install rubygem-rest-client
 
 # Elasticsearch
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-install -m 0644 -o root -g root /usr/local/src/elastic/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo
+install -m 0644 -o root -g root /usr/local/src/elastic/elastic.repo /etc/yum.repos.d/elastic.repo
 yum -y install java-1.8.0-openjdk elasticsearch
 systemctl start elasticsearch.service
 systemctl disable elasticsearch.service
 
 # Kibana
-install -m 0644 -o root -g root /usr/local/src/elastic/kibana.repo /etc/yum.repos.d/kibana.repo
 yum -y install kibana
 echo 'server.host: "0.0.0.0"' >> /etc/kibana/kibana.yml
 systemctl start kibana.service
 systemctl disable kibana.service
 
 # Icingabeat
-yum -y install https://github.com/Icinga/icingabeat/releases/download/v6.3.3/icingabeat-6.3.3.x86_64.rpm
+yum -y install icingabeat
 icingabeat setup
 systemctl disable icingabeat
 
