@@ -1,5 +1,24 @@
 # Open Source Training for Graphite and Grafana CHANGELOG
 
+
+## v2.3.0 (2020-04-20)
+
+### Notes
+
+* Updated slides
+* Updated virtual machines
+
+### Enhancements
+
+* Use Python 3 with virtual environment
+* Keep Vagrant user
+* Update Graphite 1.1.7
+* Update Grafana 6.7.2
+* Update InfluxDB 1.8.0, Chronograf 1.7.17 and Telegraf 1.14.1
+* Update Icinga 2.11.3 and Icinga Web 2.7.3
+* Update Icingabeat 7.5.2
+* Update Elasticsearch 7.6.2 and Kibana 7.6.2
+
 ## v2.2.3 (2018-12-05)
 
 ### Notes

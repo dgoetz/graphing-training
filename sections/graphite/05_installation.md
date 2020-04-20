@@ -83,7 +83,7 @@ CentOS 7 ships Python 2 by default, that's why we start a virtual Python 3 envir
     # python3 -m venv graphite
     # source graphite/bin/activate
 
-**Note:** The Python virtual environment can be excited with `deactivate`.
+**Note:** The Python virtual environment can be exited with `deactivate`.
 
 An older version of Django is required in order to work with SQLite provided from CentOS 7:
 
