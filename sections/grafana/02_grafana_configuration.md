@@ -41,7 +41,7 @@ sections.
 
 !SLIDE
 
-## Grafana Service
+# Grafana Service
 
 Grafana provides a all-in-one package and comes with a own binary which serves
 its own webserver and database backend.
@@ -51,7 +51,7 @@ its own webserver and database backend.
 
 
 !SLIDE
-## Configuration Backend
+# Configuration Backend
 
 While a standard installation comes with a simple **sqlite** database backend to store configuration such as users, groups, dashboards and web sessions.
 
@@ -63,7 +63,7 @@ Default is a Sqlite Database:
     /var/lib/grafana/grafana.db
 
 !SLIDE
-## Configuration Backend
+# Configuration Backend
 
 Grafana does all database migration while starting up, to change the database backend edit the database type, credentials and restart Grafana.
 
