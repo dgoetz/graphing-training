@@ -176,7 +176,7 @@ Tool                                  | Description
 **whisper-auto-resize.py**            | Resize archives with default settings (>=1.0.0)
 **whisper-auto-update.py**            | Update values (>=1.0.0)
 **whisper-create.py**                 | Create a new Whisper file
-**whisper-diff.py**                   | Differences beetwen two Whisper files 
+**whisper-diff.py**                   | Differences between two Whisper files 
 **whisper-dump.py**                   | Dump raw Whisper data
 **whisper-fetch.py**                  | Dump readable (timestamp + value) data from Whisper files
 **whisper-fill.py**                   | Backfill datapoints from one whisper file into another

@@ -240,7 +240,7 @@ Restart Carbon Aggregator:
 !SLIDE noprint
 # Metric routing of Carbon Aggregator
 
-The Aggregator does not have the same complement of routing methods as the Relay and supports only `consistent-hashing`. For `rule-based` routing an additional Relay beetwen Aggregator and Cache(s) is needed.
+The Aggregator does not have the same complement of routing methods as the Relay and supports only `consistent-hashing`. For `rule-based` routing an additional Relay between Aggregator and Cache(s) is needed.
 
 <center><img src="./_images/graphite-cluster-aggregator-relay.png" style="width:40%"/></center>
 
@@ -248,7 +248,7 @@ The Aggregator does not have the same complement of routing methods as the Relay
 !SLIDE printonly
 # Metric routing of Carbon Aggregator
 
-The Aggregator does not have the same complement of routing methods as the Relay and supports only `consistent-hashing`. For `rule-based` routing an additional Relay beetwen Aggregator and Cache(s) is needed.
+The Aggregator does not have the same complement of routing methods as the Relay and supports only `consistent-hashing`. For `rule-based` routing an additional Relay between Aggregator and Cache(s) is needed.
 
 <center><img src="./_images/graphite-cluster-aggregator-relay.png" style="width:80%"/></center>
 
