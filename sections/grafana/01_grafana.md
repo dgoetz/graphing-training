@@ -41,8 +41,61 @@ Grafana v5.0 was released on March 1st 2018 and includes a lot of new features:
 ~~~SECTION:handouts~~~
 ****
 
-Release: https://grafana.com/blog/2018/03/01/grafana-v5.0-released/<br/>
+Release: https://grafana.com/blog/2018/03/01/grafana-v5.0-released/
+
 What's New: http://docs.grafana.org/guides/whats-new-in-v5/
+
+~~~ENDSECTION~~~
+
+!SLIDE
+# Grafana 6
+
+Grafana v6.0 was released on February 25th 2019 and aims for easier workflows:
+
+* Explore as new workflow for data exploration / troubleshooting
+* Grafana Loki integration
+* Gauge Panel
+* New Panel Editor UX
+* Google Stackdriver data source
+* Azure Monitor plugin
+* React Plugin support
+* Named Colors
+* Removal of user session storage
+
+~~~SECTION:handouts~~~
+****
+
+Release: https://grafana.com/blog/2019/02/25/grafana-v6.0-released/
+
+What's New: http://docs.grafana.org/guides/whats-new-in-v6-0/
+
+~~~ENDSECTION~~~
+
+!SLIDE
+# Grafana 7
+
+Grafana v7.0 was released on May 18th 2020 and incorporates community feedback and adds flexibility:
+
+
+* Redesign of Panel Editor
+* Explore 
+ * New tracing UI 
+ * Support for visualizing Jaeger and Zipkin
+* Transformations and simple Math operations
+* Field overrides for consistent visualization
+* Table panel
+* New plugins platform
+* New tutorials section in documentation
+* Support for Cloudwatch Logs
+* PhantomJS removed
+* Time zone support
+
+~~~SECTION:handouts~~~
+****
+
+Release: https://grafana.com/blog/2020/05/18/grafana-v7.0-released-new-plugin-architecture-visualizations-transformations-native-trace-support-and-more/
+
+What's New: http://docs.grafana.org/guides/whats-new-in-v7-0/
 
 ~~~ENDSECTION~~~
 

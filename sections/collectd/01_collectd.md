@@ -74,7 +74,7 @@ Start collectd with systemd:
 Plugins are enabled with the phrase `LoadPlugin <plugin>`. You can find a list of all collectd plugins here: https://collectd.org/wiki/index.php/Table_of_Plugins. 
 This page also includes the documentation of each plugin.
 
-By creating config files inside **/etc/colletcd.d/** the configuration of plugins will be way more tidy than configuring them all in one single file.
+By creating config files inside **/etc/collectd.d/** the configuration of plugins will be way more tidy than configuring them all in one single file.
 
 
 !SLIDE

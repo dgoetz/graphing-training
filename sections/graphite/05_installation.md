@@ -111,7 +111,7 @@ Due to incompatibilities in Carbon, Twisted and Graphite-Web >= 1.0.0 with pip a
     # mv $GRAPHITE/lib/python3.6/site-packages/carbon/ \
     $GRAPHITE/lib/
     # mv $GRAPHITE/lib/python3.6/site-packages/\
-    carbon-1.1.7-py3.6.egg-info/$GRAPHITE/lib/
+    carbon-1.1.7-py3.6.egg-info/ $GRAPHITE/lib/
     # mv $GRAPHITE/lib/python3.6/site-packages/twisted/ \
     $GRAPHITE/lib/
     # ln -s $GRAPHITE/lib/carbon-1.1.7-py3.6.egg-info/ \
@@ -120,7 +120,7 @@ Due to incompatibilities in Carbon, Twisted and Graphite-Web >= 1.0.0 with pip a
     # mv $GRAPHITE/lib/python3.6/site-packages/graphite/ \
     $GRAPHITE/webapp/
     # mv $GRAPHITE/lib/python3.6/site-packages/\
-    graphite_web-1.1.7-py3.6.egg-info/$GRAPHITE/webapp/
+    graphite_web-1.1.7-py3.6.egg-info/ $GRAPHITE/webapp/
     # ln -s $GRAPHITE/webapp/graphite_web-1.1.7-py3.6.egg-info/ \
     $GRAPHITE/lib/python3.6/site-packages/
 

@@ -7,7 +7,7 @@
 
 * Queue is growing continuously
 * Incoming datapoints are dropped or in waiting line
-* System runs out of memory when `MAX_QUEUE_SIZE` is set to high
+* System runs out of memory when `MAX_QUEUE_SIZE` is set too high
 * Only *consistent-hashing* or *regex based routing* supported
 * No aggregation functionality
 
@@ -29,7 +29,7 @@
 
 * Queue is growing continuously
 * Incoming datapoints are dropped or in waiting line
-* System runs out of memory when `MAX_QUEUE_SIZE` is set to high
+* System runs out of memory when `MAX_QUEUE_SIZE` is set too high
 * Only *consistent-hashing* supported
 
 

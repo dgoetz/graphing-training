@@ -17,4 +17,4 @@
 * Generate index
 * Use memcached 
 * Use dashboard alternatives
-* Use alernatives that provide only API functionality
+* Use alternatives that provide only API functionality
